@@ -12,4 +12,16 @@ import com.adaming.myapp.entities.Operation;
 
 public interface IDaoOperation extends IDaoGenerique<Operation> {
 
+	//=========================
+	// Methods
+	//=========================
+	
+	/*
+	 * effOperation
+	 * Faire une opération, en abstract pour les slasses filles
+	 * @param montant / idCompte / montantOperation
+	 * @return null
+	 */
+	
+	public abstract void effOperation(Long idCompte, double montantOperation);
 }

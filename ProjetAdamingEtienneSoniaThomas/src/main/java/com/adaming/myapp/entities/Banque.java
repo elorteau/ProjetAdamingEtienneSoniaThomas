@@ -131,10 +131,6 @@ public class Banque implements Serializable{
 	//=========================
 
 	
-
-
-	
-
 	/*
 	 * toString
 	 * ce que je fais 
