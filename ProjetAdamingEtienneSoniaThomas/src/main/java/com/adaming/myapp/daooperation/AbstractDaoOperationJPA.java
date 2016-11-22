@@ -12,4 +12,8 @@ import com.adaming.myapp.entities.Operation;
 
 public class AbstractDaoOperationJPA extends AbstractDaoGeneriqueJPA<Operation> {
 
+	/*
+	 * rédéfir les méthode spécique de IDaoOperation (cachée) 
+	 */
+
 }
