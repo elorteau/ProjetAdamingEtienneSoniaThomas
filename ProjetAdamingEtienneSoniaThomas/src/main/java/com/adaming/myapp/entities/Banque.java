@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
@@ -32,15 +33,15 @@ public class Banque implements Serializable{
 	private String nom;
 	private String adresse;
 	private int codePostal;
-	@OneToMany
-	@JoinTable(name="TB_Compte_Banque")
+	@OneToMany(mappedBy="idBanque")
 	private List<Compte> comptes;
-	@OneToMany
-	@JoinTable(name="TB_Employe_Banque")
+	@OneToMany(mappedBy="idBanque")
 	private List<Employe> employes;	
 	@ManyToMany
 	@JoinTable(name="TB_Client_Banque")
 	private List<Client> clients;
+	@OneToMany(mappedBy="idBanque")
+	private List<Groupe> groupes;
 	
 	//=========================
 	// Constructor
@@ -49,16 +50,12 @@ public class Banque implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Banque(Long idBanque, String nom, String adresse, int codePostal,
-			List<Compte> comptes, List<Employe> employes, List<Client> clients) {
+	public Banque(Long idBanque, String nom, String adresse, int codePostal) {
 		super();
 		this.idBanque = idBanque;
 		this.nom = nom;
 		this.adresse = adresse;
 		this.codePostal = codePostal;
-		this.comptes = comptes;
-		this.employes = employes;
-		this.clients = clients;
 	}
 	
 	//=========================
@@ -121,6 +118,13 @@ public class Banque implements Serializable{
 		this.clients = clients;
 	}
 	
+	public List<Groupe> getGroupes() {
+		return groupes;
+	}
+
+	public void setGroupes(List<Groupe> groupes) {
+		this.groupes = groupes;
+	}
 	
 	//=========================
 	// Methods
@@ -128,6 +132,8 @@ public class Banque implements Serializable{
 
 	
 
+
+	
 
 	/*
 	 * toString

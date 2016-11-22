@@ -54,7 +54,7 @@ public class Client implements Serializable{
 	}
 	
 	public Client(Long idCompte, Long code, String nom, String prenom,
-			Date dateEntree, String adresse, List<Compte> comptes) {
+			Date dateEntree, String adresse) {
 		super();
 		this.idCompte = idCompte;
 		this.code = code;
@@ -62,7 +62,6 @@ public class Client implements Serializable{
 		this.prenom = prenom;
 		this.dateEntree = dateEntree;
 		this.adresse = adresse;
-		this.comptes = comptes;
 	}
 
 	//=========================
@@ -143,7 +142,7 @@ public class Client implements Serializable{
 	public String toString() {
 		return "Client [idCompte=" + idCompte + ", code=" + code + ", nom="
 				+ nom + ", prenom=" + prenom + ", dateEntree=" + dateEntree
-				+ ", adresse=" + adresse + ", comptes=" + comptes + "]";
+				+ ", adresse=" + adresse + "]";
 	}
 	
 	
