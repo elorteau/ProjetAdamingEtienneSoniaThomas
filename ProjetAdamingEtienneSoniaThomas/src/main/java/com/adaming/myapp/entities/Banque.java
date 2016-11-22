@@ -24,4 +24,14 @@ public class Banque {
 	// Methods
 	//=========================
 
+	/*
+	 * toString
+	 * ce que je fais
+	 * @param
+	 * @return
+	 */
+	public String toString() {
+		return "";
+	}
+	
 }
