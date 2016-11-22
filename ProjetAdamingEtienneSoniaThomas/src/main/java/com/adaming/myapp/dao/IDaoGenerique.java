@@ -12,14 +12,14 @@ import java.util.List;
 
 public interface IDaoGenerique<T extends Serializable> {
 	
-	T add(T entity);
+	T add(final T entity);
 	
-	T getOne(Long id);
+	T getOne(final Long id);
 	
 	List<T> getAll();
 	
-	T update(T entity);
+	T update(final T entity);
 	
-	T delete(Long id);
+	T delete(final Long id);
 
 }

@@ -10,26 +10,40 @@ package com.adaming.myapp.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 public abstract class AbstractDaoGeneriqueJPA<T extends Serializable> {
 	
-	public T add(T entity) {
-		return null;
+	@PersistenceContext
+	protected EntityManager em;
+	
+	private Class <T> clazz;
+	
+	T add(T entity) {
+		em.persist(entity);
+		return entity;
 	}
 	
-	public T getOne(Long id) {
-		return null;
+	T getOne(Long id) {
+		T t = em.find(clazz, id);
+		return t;
 	}
 	
-	public List<T> getAll() {
-		return null;
+	@SuppressWarnings("unchecked")
+	List<T> getAll() {
+		return em.createQuery("from "+clazz.getName()).getResultList();
 	}
 	
-	public T update(T entity) {
-		return null;
+	T update(T entity) {
+		em.merge(entity);
+		return entity;
 	}
 	
-	public T delete(Long id) {
-		return null;
+	T delete(Long id) {
+		T t = getOne(id);
+		em.remove(t);
+		return t;
 	}
 
 }

@@ -11,5 +11,9 @@ import com.adaming.myapp.dao.AbstractDaoGeneriqueJPA;
 import com.adaming.myapp.entities.Banque;
 
 public class AbstractDaoBanqueJPA extends AbstractDaoGeneriqueJPA<Banque> {
+	
+	/*
+	 * rédéfir les méthode spécique de IDaoBanque (cachée) 
+	 */
 
 }
