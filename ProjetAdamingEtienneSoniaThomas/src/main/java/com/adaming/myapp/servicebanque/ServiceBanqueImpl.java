@@ -7,6 +7,8 @@
 
 package com.adaming.myapp.servicebanque;
 
+import com.adaming.myapp.service.IServiceGenerique;
+
 public class ServiceBanqueImpl extends AbstractServiceBanqueJPA implements IServiceBanque {
 
 }

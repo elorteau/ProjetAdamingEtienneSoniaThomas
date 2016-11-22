@@ -10,6 +10,6 @@ package com.adaming.myapp.servicebanque;
 import com.adaming.myapp.entities.Banque;
 import com.adaming.myapp.service.IServiceGenerique;
 
-public interface IServiceBanque extends IServiceGenerique<Banque> {
+public interface IServiceBanque extends IServiceGenerique <Banque> {
 
 }
