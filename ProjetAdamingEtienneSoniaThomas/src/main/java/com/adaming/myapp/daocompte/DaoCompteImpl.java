@@ -13,6 +13,9 @@ import com.adaming.myapp.entities.Compte;
 
 public class DaoCompteImpl extends AbstractDaoCompteJPA implements IDaoCompte {
 
+	//=====================
+	//   Methodes CRUD
+	//=====================
 	@Override
 	public Compte add(Compte entity) {
 		// TODO Auto-generated method stub

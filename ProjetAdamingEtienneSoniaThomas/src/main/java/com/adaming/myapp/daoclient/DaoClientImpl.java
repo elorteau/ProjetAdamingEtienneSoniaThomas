@@ -13,6 +13,10 @@ import com.adaming.myapp.entities.Client;
 
 public class DaoClientImpl extends AbstractDaoClientJPA implements IDaoClient {
 
+
+	//=====================
+	//   Methodes CRUD
+	//=====================
 	@Override
 	public Client add(Client entity) {
 		// TODO Auto-generated method stub

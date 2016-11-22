@@ -13,6 +13,9 @@ import com.adaming.myapp.entities.Employe;
 
 public class DaoEmployeImpl extends AbstractDaoEmployeJPA implements IDaoEmploye {
 
+	//=====================
+	//   Methodes CRUD
+	//=====================
 	@Override
 	public Employe add(Employe entity) {
 		// TODO Auto-generated method stub
