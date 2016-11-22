@@ -26,7 +26,7 @@ public class Banque {
 
 	/*
 	 * toString
-	 * ce que je fais
+	 * ce que je fais --> c'est tout pourri
 	 * @param
 	 * @return
 	 */
