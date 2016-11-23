@@ -13,34 +13,33 @@ import com.adaming.myapp.entities.Groupe;
 
 public class DaoGroupeImpl extends AbstractDaoGroupeJPA implements IDaoGroupe {
 
+	//=====================
+	//   Methodes CRUD
+	//=====================
+	
 	@Override
 	public Groupe add(Groupe entity) {
-		// TODO Auto-generated method stub
-		return add(entity);
+		return addAbstract(entity);
 	}
 
 	@Override
 	public Groupe getOne(Long id) {
-		// TODO Auto-generated method stub
-		return getOne(id);
+		return getOneAbstract(id);
 	}
 
 	@Override
 	public List<Groupe> getAll() {
-		// TODO Auto-generated method stub
-		return getAll();
+		return getAllAbstract();
 	}
 
 	@Override
 	public Groupe update(Groupe entity) {
-		// TODO Auto-generated method stub
-		return update(entity);
+		return updateAbstract(entity);
 	}
 
 	@Override
 	public Groupe delete(Long id) {
-		// TODO Auto-generated method stub
-		return delete(id);
+		return deleteAbstract(id);
 	}
 
 }

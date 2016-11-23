@@ -20,28 +20,28 @@ public abstract class AbstractDaoGeneriqueJPA<T extends Serializable> {
 	
 	private Class <T> clazz;
 	
-	T add(T entity) {
+	public T addAbstract(T entity) {
 		em.persist(entity);
 		return entity;
 	}
 	
-	T getOne(Long id) {
+	public T getOneAbstract(Long id) {
 		T t = em.find(clazz, id);
 		return t;
 	}
 	
 	@SuppressWarnings("unchecked")
-	List<T> getAll() {
+	public List<T> getAllAbstract() {
 		return em.createQuery("from "+clazz.getName()).getResultList();
 	}
 	
-	T update(T entity) {
+	public T updateAbstract(T entity) {
 		em.merge(entity);
 		return entity;
 	}
 	
-	T delete(Long id) {
-		T t = getOne(id);
+	public T deleteAbstract(Long id) {
+		T t = getOneAbstract(id);
 		em.remove(t);
 		return t;
 	}

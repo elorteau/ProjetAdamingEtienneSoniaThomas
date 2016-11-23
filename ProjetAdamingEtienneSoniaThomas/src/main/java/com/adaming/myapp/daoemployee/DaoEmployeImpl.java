@@ -16,34 +16,30 @@ public class DaoEmployeImpl extends AbstractDaoEmployeJPA implements IDaoEmploye
 	//=====================
 	//   Methodes CRUD
 	//=====================
+	
 	@Override
 	public Employe add(Employe entity) {
-		// TODO Auto-generated method stub
-		return add(entity);
+		return addAbstract(entity);
 	}
 
 	@Override
 	public Employe getOne(Long id) {
-		// TODO Auto-generated method stub
-		return getOne(id);
+		return getOneAbstract(id);
 	}
 
 	@Override
 	public List<Employe> getAll() {
-		// TODO Auto-generated method stub
-		return getAll();
+		return getAllAbstract();
 	}
 
 	@Override
 	public Employe update(Employe entity) {
-		// TODO Auto-generated method stub
-		return update(entity);
+		return updateAbstract(entity);
 	}
 
 	@Override
 	public Employe delete(Long id) {
-		// TODO Auto-generated method stub
-		return delete(id);
+		return deleteAbstract(id);
 	}
 
 }

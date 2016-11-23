@@ -16,34 +16,30 @@ public class DaoCompteImpl extends AbstractDaoCompteJPA implements IDaoCompte {
 	//=====================
 	//   Methodes CRUD
 	//=====================
+	
 	@Override
 	public Compte add(Compte entity) {
-		// TODO Auto-generated method stub
-		return add(entity);
+		return addAbstract(entity);
 	}
 
 	@Override
 	public Compte getOne(Long id) {
-		// TODO Auto-generated method stub
-		return getOne(id);
+		return getOneAbstract(id);
 	}
 
 	@Override
 	public List<Compte> getAll() {
-		// TODO Auto-generated method stub
-		return getAll();
+		return getAllAbstract();
 	}
 
 	@Override
 	public Compte update(Compte entity) {
-		// TODO Auto-generated method stub
-		return update(entity);
+		return updateAbstract(entity);
 	}
 
 	@Override
 	public Compte delete(Long id) {
-		// TODO Auto-generated method stub
-		return delete(id);
+		return deleteAbstract(id);
 	}
 
 }

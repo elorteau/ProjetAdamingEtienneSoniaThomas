@@ -17,34 +17,30 @@ public class DaoClientImpl extends AbstractDaoClientJPA implements IDaoClient {
 	//=====================
 	//   Methodes CRUD
 	//=====================
+	
 	@Override
 	public Client add(Client entity) {
-		// TODO Auto-generated method stub
-		return add(entity);
+		return addAbstract(entity);
 	}
 
 	@Override
 	public Client getOne(Long id) {
-		// TODO Auto-generated method stub
-		return getOne(id);
+		return getOneAbstract(id);
 	}
 
 	@Override
 	public List<Client> getAll() {
-		// TODO Auto-generated method stub
-		return getAll();
+		return getAllAbstract();
 	}
 
 	@Override
 	public Client update(Client entity) {
-		// TODO Auto-generated method stub
-		return update(entity);
+		return updateAbstract(entity);
 	}
 
 	@Override
 	public Client delete(Long id) {
-		// TODO Auto-generated method stub
-		return delete(id);
+		return deleteAbstract(id);
 	}
 
 }

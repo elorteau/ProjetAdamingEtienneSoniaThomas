@@ -37,7 +37,7 @@ public abstract class AbstractServiceGeneriqueJPA<T extends Serializable> {
 	//==========================
 	//  Methodes CRUD
 	//==========================
-	public T add(T entity) {
+	public T addAbstract(T entity) {
 		dao.add(entity);
 		return entity;
 	}

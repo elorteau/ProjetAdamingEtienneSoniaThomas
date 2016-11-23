@@ -13,35 +13,33 @@ import com.adaming.myapp.entities.Banque;
 
 public class DaoBanqueImpl extends AbstractDaoBanqueJPA implements IDaoBanque {
 	
-
+	//=====================
+	//   Methodes CRUD
+	//=====================
+	
 	@Override
 	public Banque add(Banque entity) {
-		// TODO Auto-generated method stub
-		return add(entity);
+		return addAbstract(entity);
 	}
 
 	@Override
 	public Banque getOne(Long id) {
-		// TODO Auto-generated method stub
-		return getOne(id);
+		return getOneAbstract(id);
 	}
 
 	@Override
 	public List<Banque> getAll() {
-		// TODO Auto-generated method stub
-		return getAll();
+		return getAllAbstract();
 	}
 
 	@Override
 	public Banque update(Banque entity) {
-		// TODO Auto-generated method stub
-		return update(entity);
+		return updateAbstract(entity);
 	}
 
 	@Override
 	public Banque delete(Long id) {
-		// TODO Auto-generated method stub
-		return delete(id);
+		return deleteAbstract(id);
 	}
 	
 	
