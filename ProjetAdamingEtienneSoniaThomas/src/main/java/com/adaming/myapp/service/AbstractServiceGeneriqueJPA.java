@@ -42,21 +42,21 @@ public abstract class AbstractServiceGeneriqueJPA<T extends Serializable> {
 		return entity;
 	}
 	
-	public T getOne(Long id) {
+	public T getOneAbstract(Long id) {
 		
 		return dao.getOne(id);
 	}
 	
-	public List<T> getAll() {
+	public List<T> getAllAbstract() {
 		return dao.getAll();
 	}
 	
-	public T update(T entity) {
+	public T updateAbstract(T entity) {
 		dao.update(entity);
 		return entity;
 	}
 	
-	public T delete(Long id) {
+	public T deleteAbstract(Long id) {
 		return dao.delete(id);
 	}
 
