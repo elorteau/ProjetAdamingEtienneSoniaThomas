@@ -10,6 +10,9 @@ package com.adaming.myapp.servicebanque;
 import java.util.List;
 
 import com.adaming.myapp.entities.Banque;
+import com.adaming.myapp.entities.Client;
+import com.adaming.myapp.entities.Compte;
+import com.adaming.myapp.entities.Employe;
 
 public class ServiceBanqueImpl extends AbstractServiceBanqueJPA implements IServiceBanque {
 
@@ -41,6 +44,29 @@ public class ServiceBanqueImpl extends AbstractServiceBanqueJPA implements IServ
 	public Banque delete(Long id) {
 		// TODO Auto-generated method stub
 		return deleteAbstract(id);
+	}
+
+	
+	//========================================
+	//	Methodes specifiques a la class Banque
+	//========================================
+	
+	@Override
+	public List<Employe> getEmployeByBanque(Long idBanque) {
+		
+		return getEmployeByBanqueAbstract(idBanque);
+	}
+
+	@Override
+	public List<Client> getClientByBanque(Long idBanque) {
+		
+		return getClientByBanqueAbstract(idBanque);
+	}
+
+	@Override
+	public List<Compte> getCompteByBanque(Long idBanque) {
+		
+		return getCompteByBanqueAbstract(idBanque);
 	}
 
 }

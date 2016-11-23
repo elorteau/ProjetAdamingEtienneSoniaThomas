@@ -9,6 +9,7 @@ package com.adaming.myapp.servicegroupe;
 
 import java.util.List;
 
+import com.adaming.myapp.entities.Employe;
 import com.adaming.myapp.entities.Groupe;
 
 public class ServiceGroupeImpl extends AbstractServiceGroupeJPA implements IServiceGroupe {
@@ -41,6 +42,23 @@ public class ServiceGroupeImpl extends AbstractServiceGroupeJPA implements IServ
 	public Groupe delete(Long id) {
 		// TODO Auto-generated method stub
 		return deleteAbstract(id);
+	}
+
+	
+	//========================================
+	//	Methodes specifiques a la class Groupe
+	//========================================
+	
+	@Override
+	public Groupe addEmToGr(Long idGroupe, Long idEmploye) {
+		
+		return addEmToGrAbstract(idGroupe, idEmploye);
+	}
+
+	@Override
+	public List<Employe> getEmployeByGroupe(Long idGroupe) {
+		
+		return getEmployeByGroupeAbstract(idGroupe);
 	}
 
 }

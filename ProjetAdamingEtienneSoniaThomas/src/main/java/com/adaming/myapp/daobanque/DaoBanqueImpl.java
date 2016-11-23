@@ -10,6 +10,9 @@ package com.adaming.myapp.daobanque;
 import java.util.List;
 
 import com.adaming.myapp.entities.Banque;
+import com.adaming.myapp.entities.Client;
+import com.adaming.myapp.entities.Compte;
+import com.adaming.myapp.entities.Employe;
 
 public class DaoBanqueImpl extends AbstractDaoBanqueJPA implements IDaoBanque {
 	
@@ -40,6 +43,29 @@ public class DaoBanqueImpl extends AbstractDaoBanqueJPA implements IDaoBanque {
 	@Override
 	public Banque delete(Long id) {
 		return deleteAbstract(id);
+	}
+
+	
+	//========================================
+	//	Methodes specifiques a la class Banque
+	//========================================
+	
+	@Override
+	public List<Employe> getEmployeByBanque(Long idBanque) {
+		// TODO Auto-generated method stub
+		return getEmployeByBanqueAbstract(idBanque);
+	}
+
+	@Override
+	public List<Client> getClientByBanque(Long idBanque) {
+		// TODO Auto-generated method stub
+		return getClientByBanqueAbstract(idBanque);
+	}
+
+	@Override
+	public List<Compte> getCompteByBanque(Long idBanque) {
+		// TODO Auto-generated method stub
+		return getCompteByBanqueAbstract(idBanque);
 	}
 	
 	
