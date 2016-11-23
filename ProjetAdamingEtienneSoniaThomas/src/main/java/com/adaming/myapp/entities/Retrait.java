@@ -8,6 +8,7 @@
 package com.adaming.myapp.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -24,6 +25,14 @@ public class Retrait extends Operation implements Serializable{
 	// Constructor
 	//=========================
 	
+	public Retrait() {
+		super();
+	}
+
+	public Retrait(Date dateOperatiion, double montantOperation) {
+		super(dateOperatiion, montantOperation);
+	}
+
 	//=========================
 	// Getter / Setter
 	//=========================

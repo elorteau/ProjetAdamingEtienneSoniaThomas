@@ -9,19 +9,14 @@ package com.adaming.myapp.servicegroupe;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import com.adaming.myapp.daogroupe.IDaoGroupe;
-import com.adaming.myapp.entities.Banque;
 import com.adaming.myapp.entities.Employe;
 import com.adaming.myapp.entities.Groupe;
 import com.adaming.myapp.service.AbstractServiceGeneriqueJPA;
 
 public class AbstractServiceGroupeJPA extends AbstractServiceGeneriqueJPA<Groupe> {
 
-	private IDaoGroupe daoGroupe;
-	private final Logger LOGGER = Logger.getLogger("AbstractServiceGroupeJPA");
-	
+	private IDaoGroupe daoGroupe;	
 	
 	//=============================
 	//    Setter
@@ -36,12 +31,11 @@ public class AbstractServiceGroupeJPA extends AbstractServiceGeneriqueJPA<Groupe
 	//======================================================
 	
 	public Groupe addEmToGrAbstract(Long idGroupe, Long idEmploye) {
-		
 		return daoGroupe.addEmToGr(idGroupe, idEmploye);
 	}
 	
 	public List <Employe> getEmployeByGroupeAbstract(Long idGroupe) {
-		
 		return daoGroupe.getEmployeByGroupe(idGroupe);
 	}
+	
 }

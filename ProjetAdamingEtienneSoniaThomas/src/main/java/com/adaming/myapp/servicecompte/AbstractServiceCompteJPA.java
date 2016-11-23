@@ -9,8 +9,6 @@ package com.adaming.myapp.servicecompte;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import com.adaming.myapp.daocompte.IDaoCompte;
 import com.adaming.myapp.entities.Compte;
 import com.adaming.myapp.service.AbstractServiceGeneriqueJPA;
@@ -18,7 +16,6 @@ import com.adaming.myapp.service.AbstractServiceGeneriqueJPA;
 public class AbstractServiceCompteJPA extends AbstractServiceGeneriqueJPA<Compte> {
 	
 	private IDaoCompte daoCompte;
-	private final Logger LOGGER = Logger.getLogger("AbstractServiceCompteJPA");
 		
 	//=============================
 	//    Setter

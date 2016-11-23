@@ -8,6 +8,7 @@
 package com.adaming.myapp.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -23,7 +24,15 @@ public class Versement extends Operation implements Serializable{
 	//=========================
 	// Constructor
 	//=========================
-		
+	
+	public Versement() {
+		super();
+	}
+
+	public Versement(Date dateOperatiion, double montantOperation) {
+		super(dateOperatiion, montantOperation);
+	}
+	
 	//=========================
 	// Getter / Setter
 	//=========================

@@ -53,21 +53,18 @@ public class DaoOperationImpl extends AbstractDaoOperationJPA implements IDaoOpe
 	//=====================
 	
 	@Override
-	public Versement doVersement(Long idCompte, double montantOperation,
-			Date dateOperation) {
-		return doVersementAbstract(idCompte, montantOperation, dateOperation);
+	public Versement doVersement(Versement versement, Long idCompte) {
+		return doVersementAbstract(versement, idCompte);
 	}
 
 	@Override
-	public Retrait doRetrait(Long idCompte, double montantOperation,
-			Date dateOperation) {
-		return doRetraitAbstract(idCompte, montantOperation, dateOperation);
+	public Retrait doRetrait(Retrait retrait, Long idCompte) {
+		return doRetraitAbstract(retrait, idCompte);
 	}
 
 	@Override
-	public Virement doVirement(Long idCompteEmi, Long idCompteCible,
-			double montantOperation, Date dateOperation) {
-		return doVirementAbstract(idCompteEmi, idCompteCible, montantOperation, dateOperation);
+	public Virement doVirement(Virement virement, Long idCompteDebite, Long idCompteCredite) {
+		return doVirementAbstract(virement, idCompteDebite, idCompteCredite);
 	}
 
 	

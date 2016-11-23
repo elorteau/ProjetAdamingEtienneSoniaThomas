@@ -23,22 +23,22 @@ public interface IDaoOperation extends IDaoGenerique<Operation> {
 	
 	/*
 	 * doVersement
-	 * @param (idCompte, montantOperation, dateOperation)
+	 * @param (versement, idCompte)
 	 * @return void
 	 */
-	public Versement doVersement(Long idCompte, double montantOperation, Date dateOperation);
+	public Versement doVersement(Versement versement, Long idCompte);
 	
 	/*
 	 * doRetrait
-	 * @param (idCompte, montantOpération, dateOperation)
+	 * @param (retrait, idCompte)
 	 * @return void
 	 */
-	public Retrait doRetrait(Long idCompte, double montantOperation, Date dateOperation);
+	public Retrait doRetrait(Retrait retrait, Long idCompte);
 	
 	/*
 	 * doVirement
-	 * @param (idCompteEmi, idCompteCible, montantOperation, dateOperation);
+	 * @param (virement, idCompteDebite, idCompteCredite);
 	 */
-	public Virement doVirement (Long idCompteEmi, Long idCompteCible, double montantOperation, Date dateOperation);
+	public Virement doVirement(Virement virement, Long idCompteDebite, Long idCompteCredite);
 	
 }
