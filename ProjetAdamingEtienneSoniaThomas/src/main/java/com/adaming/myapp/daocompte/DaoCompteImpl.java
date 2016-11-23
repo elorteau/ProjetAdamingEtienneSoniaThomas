@@ -10,6 +10,7 @@ package com.adaming.myapp.daocompte;
 import java.util.List;
 
 import com.adaming.myapp.entities.Compte;
+import com.adaming.myapp.entities.Employe;
 
 public class DaoCompteImpl extends AbstractDaoCompteJPA implements IDaoCompte {
 
@@ -40,6 +41,21 @@ public class DaoCompteImpl extends AbstractDaoCompteJPA implements IDaoCompte {
 	@Override
 	public Compte delete(Long id) {
 		return deleteAbstract(id);
+	}
+	
+	//=====================
+	//   Methodes spécifiques
+	//=====================
+	
+	/*
+	 * getCompteByEmploye
+	 * récupérer la liste de compte créé par un employé
+	 * @param (idEmploye)
+	 * @return comptesByEmploye
+	 */
+	@Override
+	public List<Compte> getCompteByEmploye(Employe e) {
+		return getCompteByEmployeAbstract(e);
 	}
 
 }

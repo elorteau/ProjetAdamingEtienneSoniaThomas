@@ -10,6 +10,7 @@ package com.adaming.myapp.daoclient;
 import java.util.List;
 
 import com.adaming.myapp.entities.Client;
+import com.adaming.myapp.entities.Compte;
 
 public class DaoClientImpl extends AbstractDaoClientJPA implements IDaoClient {
 
@@ -41,6 +42,21 @@ public class DaoClientImpl extends AbstractDaoClientJPA implements IDaoClient {
 	@Override
 	public Client delete(Long id) {
 		return deleteAbstract(id);
+	}
+
+	//=====================
+	//   Methodes spécifique
+	//=====================
+	
+	/*
+	 * getCompteClient
+	 * récupérer la liste de compte d'un client
+	 * @param (idClient)
+	 * @return List<Compte> comptesClient
+	 */	
+	@Override
+	public List<Compte> getCompteByClient(Long idClient) {
+		return getCompteByClientAbstract(idClient);
 	}
 
 }
