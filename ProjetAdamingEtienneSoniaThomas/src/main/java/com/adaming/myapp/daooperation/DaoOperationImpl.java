@@ -13,6 +13,10 @@ import com.adaming.myapp.entities.Operation;
 
 public class DaoOperationImpl extends AbstractDaoOperationJPA implements IDaoOperation {
 
+	
+	//=====================
+	//   Methodes CRUD
+	//=====================
 	@Override
 	public Operation add(Operation entity) {
 		// TODO Auto-generated method stub
