@@ -9,38 +9,36 @@ package com.adaming.myapp.serviceclient;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
 
+@Transactional
 public class ServiceClientImpl extends AbstractServiceClientJPA implements IServiceClient {
 
 	@Override
 	public Client add(Client entity) {
-		// TODO Auto-generated method stub
 		return addAbstract(entity);
 	}
 
 	@Override
 	public Client getOne(Long id) {
-		// TODO Auto-generated method stub
 		return getOneAbstract(id);
 	}
 
 	@Override
 	public List<Client> getAll() {
-		// TODO Auto-generated method stub
 		return getAllAbstract();
 	}
 
 	@Override
 	public Client update(Client entity) {
-		// TODO Auto-generated method stub
 		return updateAbstract(entity);
 	}
 
 	@Override
 	public Client delete(Long id) {
-		// TODO Auto-generated method stub
 		return deleteAbstract(id);
 	}
 

@@ -11,6 +11,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.adaming.myapp.entities.Operation;
+import com.adaming.myapp.entities.Retrait;
+import com.adaming.myapp.entities.Versement;
+import com.adaming.myapp.entities.Virement;
 
 public class DaoOperationImpl extends AbstractDaoOperationJPA implements IDaoOperation {
 
@@ -50,24 +53,21 @@ public class DaoOperationImpl extends AbstractDaoOperationJPA implements IDaoOpe
 	//=====================
 	
 	@Override
-	public void doVersement(Long idCompte, double montantOperation,
+	public Versement doVersement(Long idCompte, double montantOperation,
 			Date dateOperation) {
-		// TODO Auto-generated method stub
-		
+		return doVersementAbstract(idCompte, montantOperation, dateOperation);
 	}
 
 	@Override
-	public void doRetrait(Long idCompte, double montantOperation,
+	public Retrait doRetrait(Long idCompte, double montantOperation,
 			Date dateOperation) {
-		// TODO Auto-generated method stub
-		
+		return doRetraitAbstract(idCompte, montantOperation, dateOperation);
 	}
 
 	@Override
-	public void doVirement(Long idCompteEmi, Long idCompteCible,
+	public Virement doVirement(Long idCompteEmi, Long idCompteCible,
 			double montantOperation, Date dateOperation) {
-		// TODO Auto-generated method stub
-		
+		return doVirementAbstract(idCompteEmi, idCompteCible, montantOperation, dateOperation);
 	}
 
 	

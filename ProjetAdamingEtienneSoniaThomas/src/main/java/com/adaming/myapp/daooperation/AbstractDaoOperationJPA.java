@@ -7,13 +7,29 @@
 
 package com.adaming.myapp.daooperation;
 
+import java.util.Date;
+
 import com.adaming.myapp.dao.AbstractDaoGeneriqueJPA;
 import com.adaming.myapp.entities.Operation;
+import com.adaming.myapp.entities.Retrait;
+import com.adaming.myapp.entities.Versement;
+import com.adaming.myapp.entities.Virement;
 
 public class AbstractDaoOperationJPA extends AbstractDaoGeneriqueJPA<Operation> {
 
-	/*
-	 * rédéfir les méthode spécique de IDaoOperation (cachée) 
-	 */
+	public Versement doVersementAbstract(Long idCompte, double montantOperation,
+			Date dateOperation) {
+		return null;
+	}
 
+	public Retrait doRetraitAbstract(Long idCompte, double montantOperation,
+			Date dateOperation) {
+		return null;
+	}
+
+	public Virement doVirementAbstract(Long idCompteEmi, Long idCompteCible,
+			double montantOperation, Date dateOperation) {	
+		return null;
+	}
+	
 }
