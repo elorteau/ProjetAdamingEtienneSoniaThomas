@@ -25,7 +25,7 @@ public class AbstractDaoCompteJPA extends AbstractDaoGeneriqueJPA<Compte> {
 	/*
 	 * getCompteByEmploye
 	 * récupérer la liste de compte créé par un employé
-	 * @param (Employe e)
+	 * @param (idEmploye)
 	 * @return comptesByEmploye
 	 */
 	@SuppressWarnings("null")

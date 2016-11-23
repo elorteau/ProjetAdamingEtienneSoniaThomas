@@ -42,5 +42,14 @@ public class ServiceCompteImpl extends AbstractServiceCompteJPA implements IServ
 		// TODO Auto-generated method stub
 		return deleteAbstract(id);
 	}
+	
+	// =====================
+	// Methodes spécifiques
+	// =====================
+
+	@Override
+	public List<Compte> getCompteByEmploye(Long idEmploye) {
+		return getCompteByEmploye(idEmploye);
+	}
 
 }

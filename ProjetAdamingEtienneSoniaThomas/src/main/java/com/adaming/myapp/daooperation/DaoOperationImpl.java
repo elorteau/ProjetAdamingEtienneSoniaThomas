@@ -7,6 +7,7 @@
 
 package com.adaming.myapp.daooperation;
 
+import java.util.Date;
 import java.util.List;
 
 import com.adaming.myapp.entities.Operation;
@@ -41,6 +42,32 @@ public class DaoOperationImpl extends AbstractDaoOperationJPA implements IDaoOpe
 	@Override
 	public Operation delete(Long id) {
 		return deleteAbstract(id);
+	}
+
+	
+	//=====================
+	//   Methodes implémentées
+	//=====================
+	
+	@Override
+	public void doVersement(Long idCompte, double montantOperation,
+			Date dateOperation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doRetrait(Long idCompte, double montantOperation,
+			Date dateOperation) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void doVirement(Long idCompteEmi, Long idCompteCible,
+			double montantOperation, Date dateOperation) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

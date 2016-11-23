@@ -19,7 +19,7 @@ import com.adaming.myapp.service.AbstractServiceGeneriqueJPA;
 
 public class AbstractServiceGroupeJPA extends AbstractServiceGeneriqueJPA<Groupe> {
 
-	private IDaoGroupe daogroupe;
+	private IDaoGroupe daoGroupe;
 	private final Logger LOGGER = Logger.getLogger("AbstractServiceGroupeJPA");
 	
 	
@@ -27,8 +27,8 @@ public class AbstractServiceGroupeJPA extends AbstractServiceGeneriqueJPA<Groupe
 	//    Setter
 	//=============================
 	
-	public void setDaogroupe(IDaoGroupe daogroupe) {
-		this.daogroupe = daogroupe;
+	public void setDaogroupe(IDaoGroupe daoGroupe) {
+		this.daoGroupe = daoGroupe;
 	}
 	
 	//======================================================
@@ -37,11 +37,11 @@ public class AbstractServiceGroupeJPA extends AbstractServiceGeneriqueJPA<Groupe
 	
 	public Groupe addEmToGrAbstract(Long idGroupe, Long idEmploye) {
 		
-		return daogroupe.addEmToGr(idGroupe, idEmploye);
+		return daoGroupe.addEmToGr(idGroupe, idEmploye);
 	}
 	
 	public List <Employe> getEmployeByGroupeAbstract(Long idGroupe) {
 		
-		return daogroupe.getEmployeByGroupe(idGroupe);
+		return daoGroupe.getEmployeByGroupe(idGroupe);
 	}
 }
