@@ -9,12 +9,12 @@
 
     <!-- injcetion de dépendance -->
   <bean id="DaoBanqueImpl" class="com.adaming.myapp.daobanque.DaoBanqueImpl"></bean>
-    <bean id="ServiceBanqueImpl" class="com.adaming.myapp.servicebanque.ServiceBanqueImpl">
+  <bean id="ServiceBanqueImpl" class="com.adaming.myapp.servicebanque.ServiceBanqueImpl">
         <property name="dao" ref="DaoBanqueImpl"></property>
-    </bean>
+  </bean>
     
     
-     <bean id="DaoClientImpl" class="com.adaming.myapp.daoclient.DaoClientImpl"></bean>
+   <bean id="DaoClientImpl" class="com.adaming.myapp.daoclient.DaoClientImpl"></bean>
    <bean id="DaoCompteImpl" class="com.adaming.myapp.daocompte.DaoCompteImpl"></bean>
    <bean id="DaoGroupeImpl" class="com.adaming.myapp.daogroupe.DaoGroupeImpl"></bean>
    <bean id="DaoEmployeImpl" class="com.adaming.myapp.daoemployee.DaoEmployeImpl"></bean>

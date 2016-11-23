@@ -32,6 +32,7 @@ public class Employe implements Serializable {
 	//====================================
 	//   association avec la class Banque
 	//====================================
+	
 	@ManyToOne
 	@JoinColumn(name ="idBanque")
 	private Banque banque;
@@ -40,40 +41,52 @@ public class Employe implements Serializable {
 	// Constructor
 	//=========================
 	
+	public Employe() {
+	}
+
 	public Employe(Long idEmploye, Long code, String nom) {
 		super();
 		this.idEmploye = idEmploye;
 		this.code = code;
 		this.nom = nom;
 	}
-	public Employe() {
-		super();
-	}
 	
 	//=========================
 	// Getter / Setter
 	//=========================
+	
 	public Long getIdEmploye() {
 		return idEmploye;
 	}
+	
 	public void setIdEmploye(Long idEmploye) {
 		this.idEmploye = idEmploye;
 	}
+	
 	public Long getCode() {
 		return code;
 	}
+	
 	public void setCode(Long code) {
 		this.code = code;
 	}
+	
 	public String getNom() {
 		return nom;
 	}
+	
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 	
+	//==========================
+	//  Methode to string
+	//===========================
 	
-	
-	
+	@Override
+	public String toString() {
+		return "Employe [idEmploye=" + idEmploye + ", code="
+				+ code + ", nom=" + nom + "]";
+	}
 		
 }

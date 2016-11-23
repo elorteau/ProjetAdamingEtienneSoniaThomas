@@ -24,8 +24,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-
-
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_Compte")
@@ -37,7 +35,6 @@ public abstract class Compte implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
 	private Long idCompte;
 	private Long numeroCompte;
 	private Double solde;
@@ -46,12 +43,15 @@ public abstract class Compte implements Serializable {
 	//====================================
 	//   association avec la class Banque
 	//====================================
+	
 	@ManyToOne
 	@JoinColumn(name="idBanque")
 	private Banque banque;
+	
 	//====================================
 	//   association avec la class Employe
 	//====================================
+	
 	@ManyToOne
 	@JoinColumn(name = "idEmploye")
 	private Employe employe;
@@ -59,6 +59,7 @@ public abstract class Compte implements Serializable {
 	//====================================
 	//   association avec la class Operation
 	//====================================
+	
 	@ManyToMany
 	@JoinTable(name = "operation_to_compte")
 	private List<Operation> operations = new ArrayList <Operation> ();
@@ -67,17 +68,14 @@ public abstract class Compte implements Serializable {
 	// Constructor
 	//=========================
 	
-	public Compte(Long idCompte, Long numeroCompte, Double solde,
+	public Compte() {
+	}
+
+	public Compte(Long numeroCompte, Double solde,
 			Date dateCreation) {
-		super();
-		this.idCompte = idCompte;
 		this.numeroCompte = numeroCompte;
 		this.solde = solde;
 		this.dateCreation = dateCreation;
-	}
-	
-	public Compte() {
-		super();
 	}
 	
 	//=========================
@@ -132,8 +130,6 @@ public abstract class Compte implements Serializable {
 		this.operations = operations;
 	}
 
-
-
 	public Banque getBanque() {
 		return banque;
 	}
@@ -145,6 +141,7 @@ public abstract class Compte implements Serializable {
 	//==========================
 	//  Methode to string
 	//===========================
+	
 	@Override
 	public String toString() {
 		return "Compte [idCompte=" + idCompte + ", numeroCompte="

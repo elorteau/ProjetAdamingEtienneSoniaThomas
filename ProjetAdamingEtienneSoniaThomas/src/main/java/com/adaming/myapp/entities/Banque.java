@@ -14,12 +14,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-
-
 
 @Entity
 public class Banque implements Serializable{
@@ -33,26 +30,28 @@ public class Banque implements Serializable{
 	private String nom;
 	private String adresse;
 	private int codePostal;
-	@OneToMany(mappedBy="idBanque")
+	
+	@OneToMany(mappedBy="banque")
 	private List<Compte> comptes;
-	@OneToMany(mappedBy="idBanque")
+	
+	@OneToMany(mappedBy="banque")
 	private List<Employe> employes;	
+	
 	@ManyToMany
 	@JoinTable(name="TB_Client_Banque")
 	private List<Client> clients;
-	@OneToMany(mappedBy="idBanque")
+	
+	@OneToMany(mappedBy="banque")
 	private List<Groupe> groupes;
 	
 	//=========================
 	// Constructor
 	//=========================
+	
 	public Banque() {
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Banque(Long idBanque, String nom, String adresse, int codePostal) {
-		super();
-		this.idBanque = idBanque;
+	public Banque(String nom, String adresse, int codePostal) {
 		this.nom = nom;
 		this.adresse = adresse;
 		this.codePostal = codePostal;
@@ -129,18 +128,14 @@ public class Banque implements Serializable{
 	//=========================
 	// Methods
 	//=========================
-
 	
 	/*
 	 * toString
-	 * ce que je fais 
-	 * @param
-	 * @return
+	 * get a current entity's description
+	 * @return a description string
 	 */
 	public String toString() {
-		return "";
+		return "La Banque " + nom + " (" + idBanque + ") se situe au "  + adresse + " " + codePostal;
 	}
 
-	
-	
 }

@@ -11,9 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,7 +28,7 @@ public class Client implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long idCompte;
+	private Long idClient;
 	private Long code;
 	private String nom;
 	private String prenom;
@@ -38,8 +36,7 @@ public class Client implements Serializable{
 	private String adresse;
 	
 	@ManyToMany(mappedBy="clients")
-	private Long idBanque;
-	 
+	private List<Banque> banques;
 	
 	@OneToMany  // association avec le compte
 	@JoinColumn(name="idCompte")
@@ -50,13 +47,11 @@ public class Client implements Serializable{
 	//=========================
 	
 	public Client() {
-		// TODO Auto-generated constructor stub
 	}
 	
-	public Client(Long idCompte, Long code, String nom, String prenom,
+	public Client(Long code, String nom, String prenom,
 			Date dateEntree, String adresse) {
 		super();
-		this.idCompte = idCompte;
 		this.code = code;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -68,12 +63,12 @@ public class Client implements Serializable{
 	// Getter / Setter
 	//=========================
 	
-	public Long getIdCompte() {
-		return idCompte;
+	public Long getIdClient() {
+		return idClient;
 	}
 
-	public void setIdCompte(Long idCompte) {
-		this.idCompte = idCompte;
+	public void setIdClient(Long idClient) {
+		this.idClient = idClient;
 	}
 
 	public Long getCode() {
@@ -115,6 +110,14 @@ public class Client implements Serializable{
 	public void setAdresse(String adresse) {
 		this.adresse = adresse;
 	}
+	
+	public List<Banque> getBanques() {
+		return banques;
+	}
+
+	public void setBanques(List<Banque> banques) {
+		this.banques = banques;
+	}
 
 	public List<Compte> getComptes() {
 		return comptes;
@@ -123,9 +126,6 @@ public class Client implements Serializable{
 	public void setComptes(List<Compte> comptes) {
 		this.comptes = comptes;
 	}
-
-	
-
 
 	//=========================
 	// Methods
@@ -140,7 +140,7 @@ public class Client implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Client [idCompte=" + idCompte + ", code=" + code + ", nom="
+		return "Client [idCompte=" + idClient + ", code=" + code + ", nom="
 				+ nom + ", prenom=" + prenom + ", dateEntree=" + dateEntree
 				+ ", adresse=" + adresse + "]";
 	}

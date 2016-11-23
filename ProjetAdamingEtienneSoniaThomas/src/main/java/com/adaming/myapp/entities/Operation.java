@@ -10,12 +10,25 @@ package com.adaming.myapp.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_operation")
 public class Operation implements Serializable{
 	
 	//=========================
 	// Attributes
 	//=========================
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idOperation;
 	private Date dateOperatiion;
 	private double montantOperation;
@@ -25,13 +38,10 @@ public class Operation implements Serializable{
 	//=========================
 	
 	public Operation() {
-		// TODO Auto-generated constructor stub
 	}	
 	
-	public Operation(Long idOperation, Date dateOperatiion,
+	public Operation(Date dateOperatiion,
 			double montantOperation) {
-		super();
-		this.idOperation = idOperation;
 		this.dateOperatiion = dateOperatiion;
 		this.montantOperation = montantOperation;
 	}
@@ -64,8 +74,6 @@ public class Operation implements Serializable{
 		this.montantOperation = montantOperation;
 	}
 
-		
-
 	//=========================
 	// Methods
 	//=========================
@@ -76,18 +84,11 @@ public class Operation implements Serializable{
 	 * @param null
 	 * @return attribut client
 	 */
-	
 	@Override
 	public String toString() {
 		return "Operation [idOperation=" + idOperation + ", dateOperatiion="
 				+ dateOperatiion + ", montantOperation=" + montantOperation
 				+ "]";
 	}
-	
-
-
-	
-	
-	
 	
 }
