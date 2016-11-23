@@ -43,11 +43,7 @@ public class DaoOperationImpl extends AbstractDaoOperationJPA implements IDaoOpe
 		return delete(id);
 	}
 
-	@Override
-	public void effOperation(Long idCompte, double montantOperation) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 
 }

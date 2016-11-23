@@ -22,6 +22,11 @@ public interface IDaoOperation extends IDaoGenerique<Operation> {
 	 * @param montant / idCompte / montantOperation
 	 * @return null
 	 */
+	/*
+	 * méthode versement
+	 * retrait
+	 * virement
+	 */
 	
-	public abstract void effOperation(Long idCompte, double montantOperation);
+	
 }
