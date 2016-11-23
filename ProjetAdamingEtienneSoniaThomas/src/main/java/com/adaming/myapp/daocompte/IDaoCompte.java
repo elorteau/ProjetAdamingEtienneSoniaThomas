@@ -25,6 +25,6 @@ public interface IDaoCompte extends IDaoGenerique<Compte> {
 	 * @param (idEmploye)
 	 * @return comptesByEmploye
 	 */
-	List<Compte> getCompteByEmploye(Employe e);
+	List<Compte> getCompteByEmploye(Long idEmploye);
 
 }

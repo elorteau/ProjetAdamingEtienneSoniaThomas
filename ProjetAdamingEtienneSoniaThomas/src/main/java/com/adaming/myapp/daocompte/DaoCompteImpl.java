@@ -54,8 +54,8 @@ public class DaoCompteImpl extends AbstractDaoCompteJPA implements IDaoCompte {
 	 * @return comptesByEmploye
 	 */
 	@Override
-	public List<Compte> getCompteByEmploye(Employe e) {
-		return getCompteByEmployeAbstract(e);
+	public List<Compte> getCompteByEmploye(Long idEmploye) {
+		return getCompteByEmployeAbstract(idEmploye);
 	}
 
 }
