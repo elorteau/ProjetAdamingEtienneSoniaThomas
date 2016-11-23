@@ -10,6 +10,7 @@ package com.adaming.myapp.serviceclient;
 import java.util.List;
 
 import com.adaming.myapp.entities.Client;
+import com.adaming.myapp.entities.Compte;
 
 public class ServiceClientImpl extends AbstractServiceClientJPA implements IServiceClient {
 
@@ -41,6 +42,22 @@ public class ServiceClientImpl extends AbstractServiceClientJPA implements IServ
 	public Client delete(Long id) {
 		// TODO Auto-generated method stub
 		return deleteAbstract(id);
+	}
+
+	
+	//========================================
+	//	Methodes specifiques a la class Client
+	//========================================
+	@Override
+	public List<Client> getClientByMc(String MC) {
+		
+		return getClientByMcAbstract(MC);
+	}
+
+	@Override
+	public List<Compte> getCompteByClient(Long idClient) {
+		
+		return getCompteByClientAbstract(idClient);
 	}
 
 }

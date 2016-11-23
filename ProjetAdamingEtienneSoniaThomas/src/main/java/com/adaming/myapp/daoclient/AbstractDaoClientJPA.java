@@ -12,6 +12,8 @@ import java.util.logging.Logger;
 
 import javax.persistence.Query;
 
+import org.hibernate.cache.spi.QueryResultsRegion;
+
 import com.adaming.myapp.dao.AbstractDaoGeneriqueJPA;
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
@@ -36,6 +38,14 @@ public class AbstractDaoClientJPA extends AbstractDaoGeneriqueJPA<Client> {
 		List<Compte> comptesByClient = client.getComptes();		
 		LOGGER.info("<------------------List of Compte by Client generated ------------------->");
 		return comptesByClient;
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Client> getClientByMcAbstract(String MC){
+	Query query = em.createQuery("from Client c where c like :x");
+			query.setParameter("x", "%"+MC+"%");
+		return query.getResultList();
 		
 	}
 }

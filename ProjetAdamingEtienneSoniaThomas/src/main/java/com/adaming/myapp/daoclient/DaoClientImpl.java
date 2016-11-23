@@ -59,4 +59,10 @@ public class DaoClientImpl extends AbstractDaoClientJPA implements IDaoClient {
 		return getCompteByClientAbstract(idClient);
 	}
 
+	@Override
+	public List<Client> getClientByMc(String MC) {
+		
+		return getClientByMcAbstract(MC);
+	}
+
 }
