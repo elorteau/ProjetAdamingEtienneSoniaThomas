@@ -27,7 +27,7 @@ public class Client implements Serializable{
 	//=========================
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idClient;
 	private Long code;
 	private String nom;

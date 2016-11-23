@@ -8,6 +8,7 @@
 package com.adaming.myapp.dao;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -21,8 +22,28 @@ public abstract class AbstractDaoGeneriqueJPA<T extends Serializable> {
 	
 	@PersistenceContext
 	protected EntityManager em;
-	
 	private Class <T> clazz;
+	
+	//===========================
+	//	Constructor
+	//===========================
+	
+	@SuppressWarnings("unchecked")
+	public AbstractDaoGeneriqueJPA() {
+		this.clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	}
+	
+	//===========================
+	//	Setter
+	//===========================
+	
+	public void setClazz(Class<T> clazz) {
+		this.clazz = clazz;
+	}
+	
+	//==========================
+	//  Methods
+	//==========================
 	
 	public T addAbstract(T entity) {
 		em.persist(entity);
