@@ -15,14 +15,29 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("EPARGNE")
 public class CompteEpargne extends Compte {
+	
+	private double tauxInteret;
 
 	public CompteEpargne() {
 		super();
 	}
 
-	public CompteEpargne(Long numeroCompte, Double solde,
-			Date dateCreation) {
+	public CompteEpargne(Long numeroCompte, Double solde, Date dateCreation) {
 		super(numeroCompte, solde, dateCreation);
+		
 	}
 
+	public CompteEpargne(double tauxInteret) {
+		super();
+		this.tauxInteret = tauxInteret;
+	}
+
+	public double getTauxInteret() {
+		return tauxInteret;
+	}
+
+	public void setTauxInteret(double tauxInteret) {
+		this.tauxInteret = tauxInteret;
+	}
+	
 }
