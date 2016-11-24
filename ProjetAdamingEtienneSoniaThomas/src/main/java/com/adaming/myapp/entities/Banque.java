@@ -25,7 +25,7 @@ public class Banque implements Serializable{
 	// Attributes
 	//=========================
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idBanque;
 	private String nom;
 	private String adresse;

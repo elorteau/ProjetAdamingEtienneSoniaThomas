@@ -8,6 +8,7 @@
 package com.adaming.myapp.service;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -23,11 +24,24 @@ public abstract class AbstractServiceGeneriqueJPA<T extends Serializable> {
 
 	private IDaoGenerique<T> dao;
 	private final Logger LOGGER = Logger.getLogger("AbstractServiceGenerique");
+	private Class<T> clazz;
 	
+	//===========================
+	//	Constructor
+	//===========================
+	
+	@SuppressWarnings("unchecked")
+	public AbstractServiceGeneriqueJPA() {
+		this.clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	}
 	
 	//===========================
 	//	Setter
-	//============================
+	//===========================
+	
+	public void setClazz(Class<T> clazz) {
+		this.clazz = clazz;
+	}
 	
 	public void setDao(IDaoGenerique<T> dao) {
 		this.dao = dao;
