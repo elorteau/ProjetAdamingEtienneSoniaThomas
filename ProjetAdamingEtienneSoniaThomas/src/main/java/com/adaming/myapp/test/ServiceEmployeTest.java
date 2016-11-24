@@ -32,7 +32,7 @@ public class ServiceEmployeTest {
 
 	@Test
 	public void testAdd() {
-		Employe e = new Employe(1L, 54L, "Jean");
+		Employe e = new Employe(54L, "Jean");
 		serviceEmploye.add(e);
 		assertNotNull(e.getIdEmploye());
 	}

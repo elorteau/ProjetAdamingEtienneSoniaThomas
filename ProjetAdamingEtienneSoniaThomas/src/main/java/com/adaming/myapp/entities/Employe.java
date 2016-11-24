@@ -44,9 +44,7 @@ public class Employe implements Serializable {
 	public Employe() {
 	}
 
-	public Employe(Long idEmploye, Long code, String nom) {
-		super();
-		this.idEmploye = idEmploye;
+	public Employe(Long code, String nom) {
 		this.code = code;
 		this.nom = nom;
 	}
