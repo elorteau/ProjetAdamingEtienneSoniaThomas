@@ -30,10 +30,10 @@ public abstract class AbstractServiceGeneriqueJPA<T extends Serializable> {
 	//	Constructor
 	//===========================
 	
-	@SuppressWarnings("unchecked")
-	public AbstractServiceGeneriqueJPA() {
-		this.clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-	}
+//	@SuppressWarnings("unchecked")
+//	public AbstractServiceGeneriqueJPA() {
+//		this.clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+//	}
 	
 	//===========================
 	//	Setter

@@ -28,10 +28,10 @@ public abstract class AbstractDaoGeneriqueJPA<T extends Serializable> {
 	//	Constructor
 	//===========================
 	
-	@SuppressWarnings("unchecked")
-	public AbstractDaoGeneriqueJPA() {
-		this.clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-	}
+//	@SuppressWarnings("unchecked")
+//	public AbstractDaoGeneriqueJPA() {
+//		this.clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+//	}
 	
 	//===========================
 	//	Setter
