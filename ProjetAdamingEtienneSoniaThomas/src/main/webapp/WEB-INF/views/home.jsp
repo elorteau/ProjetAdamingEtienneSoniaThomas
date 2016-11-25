@@ -89,7 +89,7 @@
 							<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="toAddGroupe">Ajouter un groupe</a></li>
-							<li><a href="toGestionGroupe">Gestion groupe</li>
+							<li><a href="toGestionGroupe">Gestion groupe</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 					
 				</ul>
