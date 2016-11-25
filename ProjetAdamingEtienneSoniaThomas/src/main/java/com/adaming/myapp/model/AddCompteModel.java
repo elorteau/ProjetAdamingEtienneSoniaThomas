@@ -9,6 +9,9 @@ package com.adaming.myapp.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class AddCompteModel {
 	
 	//=========================
@@ -18,6 +21,7 @@ public class AddCompteModel {
 	private Long idCompte;
 	private Long numeroCompte;
 	private Double solde;
+	@DateTimeFormat(iso=ISO.DATE)
 	private Date dateCreation;
 	private Double tauxInteret;
 	private Double decouvert;
