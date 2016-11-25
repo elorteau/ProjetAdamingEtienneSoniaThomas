@@ -26,6 +26,7 @@ public class AbstractServiceBanqueJPA extends AbstractServiceGeneriqueJPA<Banque
 
 	public void setDaobanque(IDaoBanque daobanque) {
 		this.daobanque = daobanque;
+		this.clazz = Banque.class;
 	}
 	
 	//======================================================

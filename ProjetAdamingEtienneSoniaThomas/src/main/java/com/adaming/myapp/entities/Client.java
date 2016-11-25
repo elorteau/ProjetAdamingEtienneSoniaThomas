@@ -8,14 +8,18 @@
 package com.adaming.myapp.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
@@ -35,12 +39,12 @@ public class Client implements Serializable{
 	private Date dateEntree;
 	private String adresse;
 	
-	@ManyToMany(mappedBy="clients")
-	private List<Banque> banques;
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="clients")
+	private List<Banque> banques = new ArrayList<Banque>();
 	
-	@OneToMany  // association avec le compte
-	@JoinColumn(name="idCompte")
-	private List<Compte> comptes;
+	@OneToMany(fetch=FetchType.EAGER)  // association avec le compte
+	@JoinTable(name="TB_Compte_Client")
+	private List<Compte> comptes = new ArrayList<Compte>();
 	
 	//=========================
 	// Constructor

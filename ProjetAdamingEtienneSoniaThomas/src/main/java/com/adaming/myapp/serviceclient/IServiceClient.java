@@ -16,4 +16,6 @@ import com.adaming.myapp.service.IServiceGenerique;
 public interface IServiceClient extends IServiceGenerique<Client> {
 	 List<Compte> getCompteByClient(Long idClient);
 	 List<Client> getClientByMc(String MC);
+	 Client addClientToBanque(Long idClient, Long idBanque);
+	 
 }

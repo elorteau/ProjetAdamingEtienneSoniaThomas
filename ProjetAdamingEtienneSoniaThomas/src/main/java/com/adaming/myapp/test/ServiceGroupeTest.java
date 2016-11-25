@@ -47,6 +47,7 @@ public class ServiceGroupeTest {
 	}
 
 	@Test
+	@Ignore
 	public void testGetOne() {
 		List<Groupe> groupes = serviceGroupe.getAll();
 		Groupe groupe = serviceGroupe.getOne(groupes.get(0).getIdGroupe());
@@ -54,12 +55,14 @@ public class ServiceGroupeTest {
 	}
 
 	@Test
+	@Ignore
 	public void testGetAll() {
 		List<Groupe> groupes = serviceGroupe.getAll();
 		assertNotNull(groupes.size());
 	}
 
 	@Test
+	@Ignore
 	public void testUpdate() {
 		Groupe groupe = serviceGroupe.getAll().get(0);
 		String newName = "newName";
@@ -69,6 +72,7 @@ public class ServiceGroupeTest {
 	}
 
 	@Test
+	@Ignore
 	public void testDelete() {
 		List<Groupe> groupes = serviceGroupe.getAll();
 		serviceGroupe.delete(groupes.get(0).getIdGroupe());
@@ -76,6 +80,7 @@ public class ServiceGroupeTest {
 	}
 
 	@Test
+	@Ignore
 	public void testAddEmToGr() {
 		Groupe groupe = new Groupe(0L, "name");
 		serviceGroupe.add(groupe);
@@ -87,6 +92,7 @@ public class ServiceGroupeTest {
 	}
 
 	@Test
+	@Ignore
 	public void testGetEmployeByGroupe() {
 		List<Employe> employes = serviceGroupe.getEmployeByGroupe(serviceGroupe.getAll().get(0).getIdGroupe());
 		assertNotNull(employes.size());

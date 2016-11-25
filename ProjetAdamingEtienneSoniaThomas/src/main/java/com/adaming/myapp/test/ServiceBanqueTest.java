@@ -9,18 +9,25 @@ package com.adaming.myapp.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
 import java.util.List;
 
+import org.hamcrest.core.IsEqual;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.adaming.myapp.entities.Banque;
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
+import com.adaming.myapp.entities.CompteCourant;
 import com.adaming.myapp.entities.Employe;
 import com.adaming.myapp.servicebanque.IServiceBanque;
+import com.adaming.myapp.serviceclient.IServiceClient;
+import com.adaming.myapp.servicecompte.IServiceCompte;
+import com.adaming.myapp.serviceemployee.IServiceEmploye;
 
 public class ServiceBanqueTest {
 
@@ -37,12 +44,13 @@ public class ServiceBanqueTest {
     public static void tearDownAfterClass() throws Exception {
         context.close();
     }
-
     
     //=====================
     // les tests
     //=====================
+    
     @Test
+    @Ignore
     public void testAdd() {
         Banque banque1= new Banque("Bnp", "paris", 75001 );
         serviceBanque.add(banque1);
@@ -50,6 +58,7 @@ public class ServiceBanqueTest {
     }
 
     @Test
+    @Ignore
     public void testGetOne() {
         Banque b = serviceBanque.getOne(1L);
         assertNotNull(b);
@@ -57,6 +66,7 @@ public class ServiceBanqueTest {
     }
 
     @Test
+    @Ignore
     public void testGetAll() {
         List<Banque> banques = serviceBanque.getAll();
         assertNotNull(banques);
@@ -65,38 +75,56 @@ public class ServiceBanqueTest {
     }
 
     @Test
+    @Ignore
     public void testUpdate() {
-        Banque b = serviceBanque.getOne(1L);
-        Banque b1 = b;
+        Banque b = serviceBanque.getOne(2L);
+        b.setAdresse("newAdresse");
         serviceBanque.update(b);
-        assertNotSame("les deux objets sont differents", b1, b);
+        assertThat("newAdresse", IsEqual.equalTo(serviceBanque.getOne(b.getIdBanque()).getAdresse()));;
     }
 
     @Test
+    @Ignore
     public void testDelete() {
         List<Banque> banques = serviceBanque.getAll();
         int s1= banques.size();
-        serviceBanque.delete(1L);
-        int s2 = banques.size();
-        assert(s1-s2==1);
+        serviceBanque.delete(3L);
+        int s2 = serviceBanque.getAll().size();
+        assertTrue((s1-s2)==1);
         
     }
 
     @Test
+    @Ignore
     public void testGetEmployeByBanque() {
-        List<Employe> employes = serviceBanque.getEmployeByBanque(1L);
-        assertNotNull(employes);
+		Banque banque = new Banque("nom", "adresse", 12345);
+		serviceBanque.add(banque);
+		Employe employe = new Employe(123L, "nom");
+		IServiceEmploye serviceEmploye = (IServiceEmploye)context.getBean("ServiceEmployeImpl");
+		serviceEmploye.add(employe);
+		serviceEmploye.addEmployeToBanque(employe.getIdEmploye(), banque.getIdBanque());
+		assertNotNull(serviceBanque.getOne(banque.getIdBanque()).getEmployes().size());
     }
 
     @Test
+    @Ignore
     public void testGetClientByBanque() {
-        List<Client> clients = serviceBanque.getClientByBanque(1L);
-        assertNotNull(clients);
+		Banque banque = new Banque("nom", "adresse", 12345);
+		serviceBanque.add(banque);
+		Client client = new Client(0L, "nom", "prenom", new Date(), "adresse");
+		IServiceClient serviceClient = (IServiceClient)context.getBean("ServiceClientImpl");
+		serviceClient.add(client);
+		serviceClient.addClientToBanque(client.getIdClient(), banque.getIdBanque());
+		assertNotNull(serviceBanque.getOne(banque.getIdBanque()).getClients().size());
     }
 
     @Test
+    @Ignore
     public void testGetCompteByBanque() {
-        List<Compte> comptes = serviceBanque.getCompteByBanque(1L);
+    	IServiceCompte serviceCompte = (IServiceCompte)context.getBean("ServiceCompteImpl");
+    	serviceCompte.add(new CompteCourant());
+    	
+        List<Compte> comptes = serviceBanque.getCompteByBanque(4L);
         assertNotNull(comptes);
     }
 

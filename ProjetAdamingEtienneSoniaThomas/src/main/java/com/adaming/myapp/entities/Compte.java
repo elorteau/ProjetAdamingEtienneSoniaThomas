@@ -13,7 +13,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +28,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_Compte")
+@DiscriminatorColumn(name="type_Compte", discriminatorType = DiscriminatorType.STRING)
 public abstract class Compte implements Serializable {
 	
 	//=========================
@@ -44,7 +46,7 @@ public abstract class Compte implements Serializable {
 	//   association avec la class Banque
 	//====================================
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idBanque")
 	private Banque banque;
 	
@@ -52,7 +54,7 @@ public abstract class Compte implements Serializable {
 	//   association avec la class Employe
 	//====================================
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "idEmploye")
 	private Employe employe;
 	

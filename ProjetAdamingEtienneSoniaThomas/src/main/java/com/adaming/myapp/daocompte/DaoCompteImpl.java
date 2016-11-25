@@ -14,6 +14,11 @@ import com.adaming.myapp.entities.Employe;
 
 public class DaoCompteImpl extends AbstractDaoCompteJPA implements IDaoCompte {
 
+	public DaoCompteImpl() {
+		super();
+		clazz = Compte.class;
+	}
+
 	//=====================
 	//   Methodes CRUD
 	//=====================
@@ -56,6 +61,18 @@ public class DaoCompteImpl extends AbstractDaoCompteJPA implements IDaoCompte {
 	@Override
 	public List<Compte> getCompteByEmploye(Long idEmploye) {
 		return getCompteByEmployeAbstract(idEmploye);
+	}
+	
+	public Compte addCompteToBanque(Long idCompte, Long idBanque) {
+		return addCompteToBanqueAbstract(idCompte, idBanque);
+	}
+
+	public Compte addCompteToClient(Long idCompte, Long idClient) {
+		return addCompteToClientAbstract(idCompte, idClient);
+	}
+
+	public Compte addCompteToEmploye(Long idCompte, Long idEmploye) {
+		return addCompteToEmployeAbstract(idCompte, idEmploye);
 	}
 
 }

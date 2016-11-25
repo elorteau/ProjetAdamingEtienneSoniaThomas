@@ -40,5 +40,10 @@ public class ServiceEmployeImpl extends AbstractServiceEmployeJPA implements ISe
 	public Employe delete(Long id) {
 		return deleteAbstract(id);
 	}
+	
+	@Override
+	public Employe addEmployeToBanque(Long idEmploye, Long idBanque) {
+		return addEmployeToBanqueAbstract(idEmploye, idBanque);
+	}
 
 }

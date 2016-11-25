@@ -8,10 +8,13 @@ import org.hamcrest.core.IsEqual;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.adaming.myapp.entities.Banque;
 import com.adaming.myapp.entities.Employe;
+import com.adaming.myapp.servicebanque.IServiceBanque;
 import com.adaming.myapp.serviceemployee.IServiceEmploye;
 
 public class ServiceEmployeTest {
@@ -31,6 +34,7 @@ public class ServiceEmployeTest {
 	}
 
 	@Test
+	@Ignore
 	public void testAdd() {
 		Employe e = new Employe(54L, "Jean");
 		serviceEmploye.add(e);
@@ -38,18 +42,21 @@ public class ServiceEmployeTest {
 	}
 
 	@Test
+	@Ignore
 	public void testGetOne() {
 		Employe e = serviceEmploye.getOne(1L);
-		assertTrue(e != null);
+		assertNotNull(e.getIdEmploye());
 	}
 
 	@Test
+	@Ignore
 	public void testGetAll() {
 		List<Employe> employes =serviceEmploye.getAll();
 		assertTrue(employes.size()>0);
 	}
 
 	@Test
+	@Ignore
 	public void testUpdate() {
 		Employe e1 = serviceEmploye.getOne(1L);
 		e1.setNom("nommodif");
@@ -59,6 +66,7 @@ public class ServiceEmployeTest {
 	}
 
 	@Test
+	@Ignore
 	public void testDelete() {
 		List<Employe> employes = serviceEmploye.getAll();
 		serviceEmploye.delete(1L);
@@ -66,4 +74,15 @@ public class ServiceEmployeTest {
 		assertTrue(employes.size()-1 == employes2.size());
 	}
 
+	@Test
+	public void testAddEmployeToBanque() {
+		Banque banque = new Banque("nom", "adresse", 12345);
+		IServiceBanque serviceBanque = (IServiceBanque)context.getBean("ServiceBanqueImpl");
+		serviceBanque.add(banque);
+		Employe employe = new Employe(123L, "nom");
+		serviceEmploye.add(employe);
+		serviceEmploye.addEmployeToBanque(employe.getIdEmploye(), banque.getIdBanque());
+		assertNotNull(serviceBanque.getOne(banque.getIdBanque()).getEmployes().size());
+	}
+	
 }

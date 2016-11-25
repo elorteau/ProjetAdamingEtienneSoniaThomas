@@ -9,6 +9,9 @@ package com.adaming.myapp.daobanque;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+import com.adaming.myapp.dao.AbstractDaoGeneriqueJPA;
 import com.adaming.myapp.entities.Banque;
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
@@ -16,6 +19,11 @@ import com.adaming.myapp.entities.Employe;
 
 public class DaoBanqueImpl extends AbstractDaoBanqueJPA implements IDaoBanque {
 	
+	public DaoBanqueImpl() {
+		super();
+		clazz = Banque.class;
+	}
+
 	//=====================
 	//   Methodes CRUD
 	//=====================
@@ -67,7 +75,5 @@ public class DaoBanqueImpl extends AbstractDaoBanqueJPA implements IDaoBanque {
 		// TODO Auto-generated method stub
 		return getCompteByBanqueAbstract(idBanque);
 	}
-	
-	
 
 }

@@ -8,9 +8,11 @@
 package com.adaming.myapp.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,18 +33,18 @@ public class Banque implements Serializable{
 	private String adresse;
 	private int codePostal;
 	
-	@OneToMany(mappedBy="banque")
-	private List<Compte> comptes;
+	@OneToMany(mappedBy="banque", fetch=FetchType.EAGER)
+	private List<Compte> comptes = new ArrayList<Compte>();
 	
-	@OneToMany(mappedBy="banque")
-	private List<Employe> employes;	
+	@OneToMany(mappedBy="banque", fetch=FetchType.EAGER)
+	private List<Employe> employes = new ArrayList<Employe>();	
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="TB_Client_Banque")
-	private List<Client> clients;
+	private List<Client> clients = new ArrayList<Client>();
 	
-	@OneToMany(mappedBy="banque")
-	private List<Groupe> groupes;
+	@OneToMany(mappedBy="banque", fetch=FetchType.EAGER)
+	private List<Groupe> groupes = new ArrayList<Groupe>();
 	
 	//=========================
 	// Constructor

@@ -10,6 +10,7 @@ package com.adaming.myapp.entities;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,7 @@ public class Employe implements Serializable {
 	//   association avec la class Banque
 	//====================================
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name ="idBanque")
 	private Banque banque;
 	
@@ -77,6 +78,14 @@ public class Employe implements Serializable {
 		this.nom = nom;
 	}
 	
+	public Banque getBanque() {
+		return banque;
+	}
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
+	}
+
 	//==========================
 	//  Methode to string
 	//===========================

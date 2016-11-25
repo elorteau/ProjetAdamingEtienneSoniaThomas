@@ -48,7 +48,6 @@ public class ServiceClientImpl extends AbstractServiceClientJPA implements IServ
 	//========================================
 	@Override
 	public List<Client> getClientByMc(String MC) {
-		
 		return getClientByMcAbstract(MC);
 	}
 
@@ -56,6 +55,10 @@ public class ServiceClientImpl extends AbstractServiceClientJPA implements IServ
 	public List<Compte> getCompteByClient(Long idClient) {
 		
 		return getCompteByClientAbstract(idClient);
+	}
+	
+	public Client addClientToBanque(Long idClient, Long idBanque) {
+		return addClientToBanqueAbstract(idClient, idBanque);
 	}
 
 }

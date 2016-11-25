@@ -17,6 +17,10 @@ import com.adaming.myapp.entities.Virement;
 
 public class DaoOperationImpl extends AbstractDaoOperationJPA implements IDaoOperation {
 
+	public DaoOperationImpl() {
+		super();
+		clazz = Operation.class;
+	}
 	
 	//=====================
 	//   Methodes CRUD

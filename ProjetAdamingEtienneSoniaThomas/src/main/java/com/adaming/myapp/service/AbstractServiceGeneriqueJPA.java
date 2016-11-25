@@ -22,18 +22,9 @@ public abstract class AbstractServiceGeneriqueJPA<T extends Serializable> {
 	// Attributes
 	//=========================
 
-	private IDaoGenerique<T> dao;
+	protected IDaoGenerique<T> dao;
 	private final Logger LOGGER = Logger.getLogger("AbstractServiceGenerique");
-	private Class<T> clazz;
-	
-	//===========================
-	//	Constructor
-	//===========================
-	
-//	@SuppressWarnings("unchecked")
-//	public AbstractServiceGeneriqueJPA() {
-//		this.clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-//	}
+	protected Class<T> clazz;
 	
 	//===========================
 	//	Setter

@@ -26,13 +26,8 @@ public class CompteCourant extends Compte {
 		super();
 	}
 
-	public CompteCourant(Long numeroCompte, Double solde, Date dateCreation) {
+	public CompteCourant(Long numeroCompte, Double solde, Date dateCreation, double decouvert) {
 		super(numeroCompte, solde, dateCreation);
-		// TODO Auto-generated constructor stub
-	}
-
-	public CompteCourant(double decouvert) {
-		super();
 		this.decouvert = decouvert;
 	}
 

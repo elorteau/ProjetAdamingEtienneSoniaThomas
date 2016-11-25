@@ -47,7 +47,19 @@ public class ServiceCompteImpl extends AbstractServiceCompteJPA implements IServ
 
 	@Override
 	public List<Compte> getCompteByEmploye(Long idEmploye) {
-		return getCompteByEmploye(idEmploye);
+		return getCompteByEmployeAbstract(idEmploye);
+	}
+	
+	public Compte addCompteToBanque(Long idCompte, Long idBanque) {
+		return addCompteToBanqueAbstract(idCompte, idBanque);
+	}
+
+	public Compte addCompteToClient(Long idCompte, Long idClient) {
+		return addCompteToClientAbstract(idCompte, idClient);
+	}
+
+	public Compte addCompteToEmploye(Long idCompte, Long idEmploye) {
+		return addCompteToEmployeAbstract(idCompte, idEmploye);
 	}
 
 }

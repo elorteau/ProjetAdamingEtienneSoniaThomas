@@ -25,9 +25,9 @@ public interface IDaoClient extends IDaoGenerique<Client> {
 	 * @param (idClient)
 	 * @return comptesByClient
 	 */
-	 List<Compte> getCompteByClient(Long idClient);
-	 List<Client> getClientByMc(String MC);
-	
+	List<Compte> getCompteByClient(Long idClient);
+	List<Client> getClientByMc(String MC);
+	Client addClientToBanque(Long idClient, Long idBanque);
 	
 
 }

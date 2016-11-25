@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_operation")
+@DiscriminatorColumn(name="type_operation", discriminatorType = DiscriminatorType.STRING)
 public class Operation implements Serializable{
 	
 	//=========================

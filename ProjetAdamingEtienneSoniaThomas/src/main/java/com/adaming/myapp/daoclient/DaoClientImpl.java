@@ -14,6 +14,10 @@ import com.adaming.myapp.entities.Compte;
 
 public class DaoClientImpl extends AbstractDaoClientJPA implements IDaoClient {
 
+	public DaoClientImpl() {
+		super();
+		clazz = Client.class;
+	}
 
 	//=====================
 	//   Methodes CRUD
@@ -61,8 +65,11 @@ public class DaoClientImpl extends AbstractDaoClientJPA implements IDaoClient {
 
 	@Override
 	public List<Client> getClientByMc(String MC) {
-		
 		return getClientByMcAbstract(MC);
+	}
+	
+	public Client addClientToBanque(Long idClient, Long idBanque) {
+		return addClientToBanqueAbstract(idClient, idBanque);
 	}
 
 }

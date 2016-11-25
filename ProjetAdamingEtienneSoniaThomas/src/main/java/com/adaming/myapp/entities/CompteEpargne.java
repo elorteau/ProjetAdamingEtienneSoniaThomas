@@ -22,13 +22,8 @@ public class CompteEpargne extends Compte {
 		super();
 	}
 
-	public CompteEpargne(Long numeroCompte, Double solde, Date dateCreation) {
+	public CompteEpargne(Long numeroCompte, Double solde, Date dateCreation, double tauxInteret) {
 		super(numeroCompte, solde, dateCreation);
-		
-	}
-
-	public CompteEpargne(double tauxInteret) {
-		super();
 		this.tauxInteret = tauxInteret;
 	}
 

@@ -24,5 +24,12 @@ public interface IServiceCompte extends IServiceGenerique<Compte> {
 	 * @return comptesByEmploye
 	 */
 	List<Compte> getCompteByEmploye(Long idEmploye);
+	
+	Compte addCompteToBanque(Long idCompte, Long idBanque);
+
+	Compte addCompteToClient(Long idCompte, Long idClient);
+
+	Compte addCompteToEmploye(Long idCompte, Long idEmploye);
+
 
 }

@@ -22,16 +22,7 @@ public abstract class AbstractDaoGeneriqueJPA<T extends Serializable> {
 	
 	@PersistenceContext
 	protected EntityManager em;
-	private Class <T> clazz;
-	
-	//===========================
-	//	Constructor
-	//===========================
-	
-//	@SuppressWarnings("unchecked")
-//	public AbstractDaoGeneriqueJPA() {
-//		this.clazz = (Class<T>)((ParameterizedType)getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-//	}
+	protected Class <T> clazz;
 	
 	//===========================
 	//	Setter

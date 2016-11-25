@@ -7,6 +7,7 @@
 
 package com.adaming.myapp.daobanque;
 
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -24,7 +25,7 @@ public class AbstractDaoBanqueJPA extends AbstractDaoGeneriqueJPA<Banque> {
 	/*
 	 * rédéfinition des méthodes spéciques de IDaoBanque 
 	 */
-	
+
 	public List <Employe> getEmployeByBanqueAbstract(Long idBanque){
 		Banque banque = em.find(Banque.class, idBanque);
 		List <Employe> employes = banque.getEmployes();

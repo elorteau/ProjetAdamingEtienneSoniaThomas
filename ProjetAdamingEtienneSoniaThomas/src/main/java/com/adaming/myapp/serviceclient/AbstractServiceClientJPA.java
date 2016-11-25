@@ -16,14 +16,14 @@ import com.adaming.myapp.service.AbstractServiceGeneriqueJPA;
 
 public class AbstractServiceClientJPA extends AbstractServiceGeneriqueJPA<Client> {
 	
-	private IDaoClient daoClient;	
+	private IDaoClient daoclient;	
 	
 	//===========================
 	// Setter
 	//===========================
 	
-	public void setDaoClient(IDaoClient daoClient) {
-		this.daoClient = daoClient;
+	public void setDaoclient(IDaoClient daoclient) {
+		this.daoclient = daoclient;
 	}
 	
 	//======================================================
@@ -32,10 +32,15 @@ public class AbstractServiceClientJPA extends AbstractServiceGeneriqueJPA<Client
 
 	
 	public List<Compte> getCompteByClientAbstract(Long idClient){
-		return daoClient.getCompteByClient(idClient);	
+		return daoclient.getCompteByClient(idClient);	
 	}
+	
 	public List<Client> getClientByMcAbstract(String MC){
-		return daoClient.getClientByMc(MC);	
+		return daoclient.getClientByMc(MC);	
+	}
+	
+	public Client addClientToBanqueAbstract(Long idClient, Long idBanque) {
+		return daoclient.addClientToBanque(idClient, idBanque);
 	}
 	
 }

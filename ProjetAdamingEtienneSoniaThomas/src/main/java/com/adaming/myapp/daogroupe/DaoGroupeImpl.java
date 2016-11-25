@@ -14,6 +14,11 @@ import com.adaming.myapp.entities.Groupe;
 
 public class DaoGroupeImpl extends AbstractDaoGroupeJPA implements IDaoGroupe {
 
+	public DaoGroupeImpl() {
+		super();
+		clazz = Groupe.class;
+	}
+
 	//=====================
 	//   Methodes CRUD
 	//=====================

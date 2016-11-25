@@ -32,4 +32,17 @@ public class AbstractServiceCompteJPA extends AbstractServiceGeneriqueJPA<Compte
 	protected List<Compte> getCompteByEmployeAbstract(Long idEmploye){
 		return daoCompte.getCompteByEmploye(idEmploye);
 	}
+	
+	public Compte addCompteToBanqueAbstract(Long idCompte, Long idBanque) {
+		return daoCompte.addCompteToBanque(idCompte, idBanque);
+	}
+
+	public Compte addCompteToClientAbstract(Long idCompte, Long idClient) {
+		return daoCompte.addCompteToClient(idCompte, idClient);
+	}
+
+	public Compte addCompteToEmployeAbstract(Long idCompte, Long idEmploye) {
+		return daoCompte.addCompteToEmploye(idCompte, idEmploye);
+	}
+
 }

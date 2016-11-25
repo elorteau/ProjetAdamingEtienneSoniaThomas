@@ -13,6 +13,11 @@ import com.adaming.myapp.entities.Employe;
 
 public class DaoEmployeImpl extends AbstractDaoEmployeJPA implements IDaoEmploye {
 
+	public DaoEmployeImpl() {
+		super();
+		clazz = Employe.class;
+	}
+
 	//=====================
 	//   Methodes CRUD
 	//=====================
@@ -40,6 +45,10 @@ public class DaoEmployeImpl extends AbstractDaoEmployeJPA implements IDaoEmploye
 	@Override
 	public Employe delete(Long id) {
 		return deleteAbstract(id);
+	}
+	
+	public Employe addEmployeToBanque(Long idEmploye, Long idBanque) {
+		return addEmployeToBanqueAbstract(idEmploye, idBanque);
 	}
 
 }

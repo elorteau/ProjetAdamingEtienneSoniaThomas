@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,7 +38,7 @@ public class Groupe implements Serializable {
 	//   association avec la class Banque
 	//====================================
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="idBanque")
 	private Banque banque;
 	
@@ -45,7 +46,7 @@ public class Groupe implements Serializable {
 	//   association avec la class Employe
 	//====================================
 	
-	@ManyToMany
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name="Employe_to_groupe")
 	private List<Employe> employes = new ArrayList <Employe> ();
 	

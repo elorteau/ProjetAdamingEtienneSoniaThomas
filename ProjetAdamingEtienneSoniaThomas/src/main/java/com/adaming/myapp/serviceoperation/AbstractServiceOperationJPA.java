@@ -20,14 +20,14 @@ public class AbstractServiceOperationJPA extends AbstractServiceGeneriqueJPA<Ope
 	// Attributes
 	//=========================
 
-	private IDaoOperation dao;
+	private IDaoOperation daoOperation;
 	
 	//=============================
 	//    Setter
 	//=============================
 	
-	public void setDaogroupe(IDaoOperation dao) {
-		this.dao = dao;
+	public void setDaoOperation(IDaoOperation daoOperation) {
+		this.daoOperation = daoOperation;
 	}
 	
 	//=========================
@@ -35,15 +35,15 @@ public class AbstractServiceOperationJPA extends AbstractServiceGeneriqueJPA<Ope
 	//=========================
 
 	public Versement doVersementAbstract(Versement versement, Long idCompte) {
-		return dao.doVersement(versement, idCompte);
+		return daoOperation.doVersement(versement, idCompte);
 	}
 
 	public Retrait doRetraitAbstract(Retrait retrait, Long idCompte) {
-		return dao.doRetrait(retrait, idCompte);
+		return daoOperation.doRetrait(retrait, idCompte);
 	}
 
 	public Virement doVirementAbstract(Virement virement, Long idCompteDebite, Long idCompteCredite) {
-		return dao.doVirement(virement, idCompteDebite, idCompteCredite);
+		return daoOperation.doVirement(virement, idCompteDebite, idCompteCredite);
 	}
 	
 }
