@@ -25,6 +25,7 @@ public class GestionBanqueModel {
 	private List<Client> clients;
 	private List<Compte> comptes;
 	private Banque selectedBanque;
+	private String action;
 
 	//=========================
 	// Getter / Setter
@@ -68,6 +69,14 @@ public class GestionBanqueModel {
 
 	public void setSelectedBanque(Banque selectedBanque) {
 		this.selectedBanque = selectedBanque;
+	}
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
 	}
 
 }

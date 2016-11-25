@@ -35,27 +35,28 @@ public class GestionBanqueController {
 	//=========================
 	
 	@RequestMapping(value = "/printBanqueEmploye", method = RequestMethod.GET)
-	public String printBanqueEmploye(Model model, GestionBanqueModel gestionBanqueModel) {
-		gestionBanqueModel.setEmployes(serviceBanque.getEmployeByBanque(gestionBanqueModel.getSelectedBanque().getIdBanque()));
-		model.addAttribute("gestionBanqueModel", gestionBanqueModel);
-		LOGGER.info("<-------------------- Print Employe list by Banque -------------------->");
-		return "getionBanque";
-	}
-
-	@RequestMapping(value = "/printBanqueClient", method = RequestMethod.GET)
-	public String printBanqueClient(Model model, GestionBanqueModel gestionBanqueModel) {
-		gestionBanqueModel.setClients(serviceBanque.getClientByBanque(gestionBanqueModel.getSelectedBanque().getIdBanque()));
-		model.addAttribute("gestionBanqueModel", gestionBanqueModel);
-		LOGGER.info("<-------------------- Print Client list by Banque -------------------->");
-		return "getionBanque";
-	}
-
-	@RequestMapping(value = "/printBanqueCompte", method = RequestMethod.GET)
-	public String printBanqueCompte(Model model, GestionBanqueModel gestionBanqueModel) {
-		gestionBanqueModel.setComptes(serviceBanque.getCompteByBanque(gestionBanqueModel.getSelectedBanque().getIdBanque()));
-		model.addAttribute("gestionBanqueModel", gestionBanqueModel);
-		LOGGER.info("<-------------------- Print Compte list by Banque -------------------->");
-		return "getionBanque";
+	public String printBanque(Model model, GestionBanqueModel gestionBanqueModel) {
+		String action = gestionBanqueModel.getAction();
+		
+		if (action.equals("employes")) {
+			gestionBanqueModel.setEmployes(serviceBanque.getEmployeByBanque(gestionBanqueModel.getSelectedBanque().getIdBanque()));
+			model.addAttribute("gestionBanqueModel", gestionBanqueModel);
+			LOGGER.info("<-------------------- Print Employe list by Banque -------------------->");
+			return "printBanqueEmploye";
+		}
+		else if (action.equals("clients")) {
+			gestionBanqueModel.setClients(serviceBanque.getClientByBanque(gestionBanqueModel.getSelectedBanque().getIdBanque()));
+			model.addAttribute("gestionBanqueModel", gestionBanqueModel);
+			LOGGER.info("<-------------------- Print Client list by Banque -------------------->");
+			return "printBanqueClients";
+		}
+		else if (action.equals("comptes")) {
+			gestionBanqueModel.setComptes(serviceBanque.getCompteByBanque(gestionBanqueModel.getSelectedBanque().getIdBanque()));
+			model.addAttribute("gestionBanqueModel", gestionBanqueModel);
+			LOGGER.info("<-------------------- Print Compte list by Banque -------------------->");
+			return "printBanqueComptes";
+		}
+		return "redirect:/";
 	}
 
 }

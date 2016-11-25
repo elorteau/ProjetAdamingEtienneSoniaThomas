@@ -105,36 +105,30 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                    <form role="form" action="printBanque" method="get">
+                                    
                                     <div class="form-group">
-                                            <label>Banque :</label>
-                                            <select class="form-control" name="selectedBanque">
-                                            	<c:forEach items="${gestionBanqueModel.banques}" var="banque">
-                                            		<option value="${banque.idBanque}">${banque.nom}</option>
-                                            	</c:forEach>
-                                            </select>
-                                        </div>
+                                        <label>Banque :</label>
+                                        <select class="form-control" name="selectedBanque">
+                                          	<c:forEach items="${gestionBanqueModel.banques}" var="banque">
+                                           		<option value="${banque}">${banque.nom}</option>
+                                           	</c:forEach>
+                                        </select>
+									</div>
+									
+                                    <div class="form-group">
+                                        <label>Action :</label>
+                                        <select class="form-control" name="action">
+                                          	<option value="employes">Employés</option>
+                                          	<option value="clients">Clients</option>
+                                          	<option value="comptes">Comptes</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div>
+                                    	<input type="submit" class="btn btn-info" value="Afficher">
+                                    </div>
                                      
-                                    		<div class="radio">
-                                    			
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Liste des employés de la banque
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Liste des clients de la banque
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Liste des groupes de la banque
-                                                </label>
-                                        <div class="form-group">
-                                            
-                                            <button type="button" class="btn btn-info">Afficher</button>
-                                           
-                                        </div>
                                     </form>   
                     </div>
                     <!-- /.panel -->
