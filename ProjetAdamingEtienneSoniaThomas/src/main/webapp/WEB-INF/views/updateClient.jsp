@@ -11,7 +11,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Modifier un Client</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -90,7 +90,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Formulaire</h1>
+                    <h1 class="page-header">Modifications</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -104,35 +104,40 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action="addClient" method="get">
+                                    <form role="form" action="updateClient" method="get">
                                     
                                         <div class="form-group">
                                             <label>Code</label>
-                                            <input class="form-control" placeholder="Enter le code du client" name="code">
+                                            <input class="form-control" placeholder="Enter le code du client" name="code" value="${updateClientModel.code}">
                                             <p class="help-block">Example : 1254L</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Nom</label>
-                                            <input class="form-control" placeholder="Enter le nom du client" name="nom">
+                                            <input class="form-control" placeholder="Enter le nom du client" name="nom" value="${updateClientModel.nom}">
                                         </div>
                                         <div class="form-group">
                                             <label>Prenom</label>
-                                            <input class="form-control" placeholder="Enter le prenom du client" name="prenom">
+                                            <input class="form-control" placeholder="Enter le prenom du client" name="prenom" value="${updateClientModel.prenom}">
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Adresse</label>
-                                            <input class="form-control" placeholder="Enter l'adresse du client" name="adresse">
+                                            <input class="form-control" placeholder="Enter l'adresse du client" name="adresse" value="${updateClientModel.adresse}">
                                         </div>
                                         
 										
 										<div class="form-group">
 										<label>date d'entrée</label>
-										<input class="form-control" placeholder="Entrer la date" type="date" name="dateEntree">
+										<input class="form-control" placeholder="Entrer la date" type="date" name="dateEntree" value="${updateClientModel.dateEntree}" disabled="disabled">
 										<p class="help-block">Example : jj/MM/yyyy</p>
 										</div>
+										
+										<div>
+											<input class="form-control" type="hidden" value="${updateClientModel.idClient}">
+										</div>
+										
 										<div class="form-group">
-                                            <input type="submit" class="btn btn-info" value="Enregistrer">
+                                            <input type="submit" class="btn btn-info" value="Modifier">
                                         </div>
                                         
                                     </form>
