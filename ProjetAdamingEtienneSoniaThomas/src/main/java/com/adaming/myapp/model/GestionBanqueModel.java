@@ -7,7 +7,6 @@
 
 package com.adaming.myapp.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.adaming.myapp.entities.Banque;
@@ -25,6 +24,7 @@ public class GestionBanqueModel {
 	private List<Employe> employes;
 	private List<Client> clients;
 	private List<Compte> comptes;
+	private Banque selectedBanque;
 
 	//=========================
 	// Getter / Setter
@@ -60,6 +60,14 @@ public class GestionBanqueModel {
 	
 	public void setComptes(List<Compte> comptes) {
 		this.comptes = comptes;
+	}
+
+	public Banque getSelectedBanque() {
+		return selectedBanque;
+	}
+
+	public void setSelectedBanque(Banque selectedBanque) {
+		this.selectedBanque = selectedBanque;
 	}
 
 }
