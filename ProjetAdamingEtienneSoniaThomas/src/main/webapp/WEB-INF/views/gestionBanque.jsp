@@ -35,79 +35,47 @@
 </head>
 
 <body>
-
-<div id="wrapper">
+	<div id="wrapper">
 
 
 		<!-- /.navbar-top-links -->
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-		<div class="navbar-default sidebar" role="navigation">
+
+		<div class="navbar-default sidebar">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
 					
-					<li><a href="index.html"><i class="fa fa-dashboard fa-fw"></i>
-							Home</a></li>
+				
 					<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
 							Banque <span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="flot.html">Ajouter une banque</a></li>
-							<li><a href="morris.html">Recuperer la liste des
-									employes </a></li>
-							<li><a href="morris.html">Recuperer la liste des clients
-							</a></li>
-							<li><a href="morris.html">Recuperer la liste des comptes
+							<li><a href="morris.html">Gestion banque </a></li>
 							</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 					<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>Client<span
 							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li><a href="flot.html">Ajouter un Client</a></li>
-							<li><a href="morris.html">Supprmier un Client</a></li>
-							<li><a href="morris.html">Modifier les coordonnees d'un
-									Client</a></li>
-							<li><a href="morris.html">Recuperer la liste des comptes</a>
-							</li>
-							<li><a href="morris.html">Chercher ClientParMc</a></li>
+							<li><a href="flot.html">Ajouter un client</a></li>
+							<li><a href="morris.html">Gestion clients</a></li>
+							
 						</ul> <!-- /.nav-second-level --></li>
 
-					<li><a href="forms.html"><i class="fa fa-edit fa-fw"></i>
-							Compte<span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-							<li><a href="flot.html">Ajouter un Compte</a></li>
-							<li><a href="flot.html">Supprimer un Compte</a></li>
-							<li><a href="flot.html">Consulter un Compte</a></li>
-							<li><a href="flot.html">Afficher la liste des comptes
-									par employé</a></li>
-						</ul></li>
+					
 
 					<li><a href="#"><i class="fa fa-wrench fa-fw"></i> Employe
 							<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="panels-wells.html">Ajouter un employe</a></li>
-							<li><a href="panels-wells.html">Associer un employe à un
-									groupe</a></li>
-							<li><a href="panels-wells.html">Recuperer la liste des
-									employes</a></li>
-							<li><a href="panels-wells.html">Recuperer la liste des
-									employes par groupe</a></li>
+							<li><a href="panels-wells.html">Gestion d'employes</a></li>
 
 						</ul> <!-- /.nav-second-level --></li>
 					<li><a href="#"><i class="fa fa-sitemap fa-fw"></i> Groupe
 							<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="panels-wells.html">Ajouter un groupe</a></li>
-							<li><a href="panels-wells.html">Recuperer la liste des
-									groupes</a></li>
+							<li><a href="panels-wells.html">Gestion groupe></li>
 						</ul> <!-- /.nav-second-level --></li>
-					<li class="active"><a href="#"><i
-							class="fa fa-files-o fa-fw"></i> Operations <span
-							class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-
-							<li><a href="panels-wells.html">Versement</a></li>
-							<li><a href="panels-wells.html">Retrait</a></li>
-							<li><a href="panels-wells.html">Virement</a></li>
-						</ul> <!-- /.nav-second-level --></li>
+					
 				</ul>
 			</div>
 			<!-- /.sidebar-collapse -->
@@ -161,7 +129,7 @@
                                                 </label>
                                         <div class="form-group">
                                             
-                                            <button type="button" class="btn btn-info">Submit</button>
+                                            <button type="button" class="btn btn-info">Afficher</button>
                                            
                                         </div>
                                     </form>   
