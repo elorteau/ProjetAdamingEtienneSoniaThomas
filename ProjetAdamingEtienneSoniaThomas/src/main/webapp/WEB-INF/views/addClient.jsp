@@ -107,27 +107,27 @@
                                     <form role="form" action="addClient" method="get">
                                         <div class="form-group">
                                             <label>Code</label>
-                                            <input class="form-control" placeholder="Enter le code du client">
+                                            <input class="form-control" placeholder="Enter le code du client" name="code">
                                             <p class="help-block">Example : 1254L</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Nom</label>
-                                            <input class="form-control" placeholder="Enter le nom du client">
+                                            <input class="form-control" placeholder="Enter le nom du client" name="nom">
                                         </div>
                                         <div class="form-group">
                                             <label>Prenom</label>
-                                            <input class="form-control" placeholder="Enter le prenom du client">
+                                            <input class="form-control" placeholder="Enter le prenom du client" name="prenom">
                                         </div>
                                         
                                         <div class="form-group">
                                             <label>Adresse</label>
-                                            <input class="form-control" placeholder="Enter l'adresse du client">
+                                            <input class="form-control" placeholder="Enter l'adresse du client" name="adresse">
                                         </div>
                                         
 										
 										<div class="form-group">
 										<label>date d'entrée</label>
-										<input class="form-control" placeholder="Entrer la date" type="date">
+										<input class="form-control" placeholder="Entrer la date" type="date" name="dateEntree">
 										<p class="help-block">Example : jj/MM/yyyy</p>
 										</div>
 										<div class="form-group">
