@@ -77,7 +77,7 @@
 							<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="toAddGroupe">Ajouter un groupe</a></li>
-							<li><a href="toGestionGroupe">Gestion groupe></li>
+							<li><a href="toGestionGroupe">Gestion groupe></a></li>
 						</ul> <!-- /.nav-second-level --></li>
 					
 				</ul>
@@ -104,22 +104,22 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                    <form role="form" action="addBanque" method="get">
                                         <div class="form-group">
                                             <label>Nom</label>
-                                            <input class="form-control">
+                                            <input class="form-control" name="nom">
                                             <p class="help-block">Example : BNP</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Adresse</label>
-                                            <input class="form-control" placeholder="Enter l'adresse">
+                                            <input class="form-control" placeholder="Enter l'adresse" name="adresse">
                                         </div>
                                         <div class="form-group">
                                             <label>Code postal</label>
-                                            <input class="form-control" placeholder="Enter le code postal">
+                                            <input class="form-control" placeholder="Enter le code postal" name="codePostal">
                                         </div>
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-info">Enregistrer</button>
+                                            <input type="submit" class="btn btn-info" value="addBanque">
                                         </div>
                                         
                                     </form>
