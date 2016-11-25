@@ -36,7 +36,7 @@
 
 <body>
 
-	<div id="wrapper">
+		<div id="wrapper">
 
 
 		<!-- /.navbar-top-links -->
@@ -44,20 +44,23 @@
 		<div class="navbar-default sidebar">
 			<div class="sidebar-nav navbar-collapse">
 				<ul class="nav" id="side-menu">
+				
+				<li><a href="toHome"><i class="fa fa-bar-chart-o fa-fw"></i>
+							Home <span class="fa arrow"></span></a></li>
 					
 				
 					<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
 							Banque <span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li><a href="flot.html">Ajouter une banque</a></li>
-							<li><a href="morris.html">Gestion banque </a></li>
+							<li><a href="toAddBanque">Ajouter une banque</a></li>
+							<li><a href="toGestionBanque">Gestion banque </a></li>
 							</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 					<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>Client<span
 							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li><a href="flot.html">Ajouter un client</a></li>
-							<li><a href="morris.html">Gestion clients</a></li>
+							<li><a href="toAddClient">Ajouter un client</a></li>
+							<li><a href="toGestionClient">Gestion clients</a></li>
 							
 						</ul> <!-- /.nav-second-level --></li>
 
@@ -66,15 +69,15 @@
 					<li><a href="#"><i class="fa fa-wrench fa-fw"></i> Employe
 							<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li><a href="panels-wells.html">Ajouter un employe</a></li>
-							<li><a href="panels-wells.html">Gestion d'employes</a></li>
+							<li><a href="toAddEmploye">Ajouter un employe</a></li>
+							<li><a href="toGestionEmploye">Gestion d'employes</a></li>
 
 						</ul> <!-- /.nav-second-level --></li>
 					<li><a href="#"><i class="fa fa-sitemap fa-fw"></i> Groupe
 							<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
-							<li><a href="panels-wells.html">Ajouter un groupe</a></li>
-							<li><a href="panels-wells.html">Gestion groupe></li>
+							<li><a href="toAddGroupe">Ajouter un groupe</a></li>
+							<li><a href="toGestionGroupe">Gestion groupe></li>
 						</ul> <!-- /.nav-second-level --></li>
 					
 				</ul>
