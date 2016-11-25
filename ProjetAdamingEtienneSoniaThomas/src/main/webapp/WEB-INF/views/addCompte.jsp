@@ -104,27 +104,24 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                    <form role="form" action="addCompte" methode="get">
                                         <div class="form-group">
                                             <label>Numero du compte</label>
-                                            <input class="form-control" placeholder="Enter le numero du compte bancaire">
+                                            <input class="form-control" placeholder="Enter le numero du compte bancaire" name="numeroCompte">
                                             <p class="help-block">Example : 1254L</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Solde</label>
-                                            <input class="form-control" placeholder="Enter le solde initial du compte">
+                                            <input class="form-control" placeholder="Enter le solde initial du compte" name ="solde">
                                         </div>
                                         <div class="form-group">
                                             <label>Date de creation</label>
-                                            <input class="form-control" placeholder="Enter la date de creation du compte">
+                                            <input class="form-control" placeholder="Enter la date de creation du compte" name="dateCreation">
                                         </div>
                                         
+                           
                                         <div class="form-group">
-                                            <label>Adresse</label>
-                                            <input class="form-control" placeholder="Enter l'adresse du client">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="button" class="btn btn-info">Submit</button>
+                                            <button type="button" class="btn btn-info">Enregistrer</button>
                                         </div>
                                         
                                     </form>
