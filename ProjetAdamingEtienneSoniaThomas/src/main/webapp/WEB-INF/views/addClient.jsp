@@ -128,6 +128,7 @@
 										<div class="form-group">
 										<label>date d'entrée</label>
 										<input class="form-control" placeholder="Entrer la date" type="date">
+										<p class="help-block">Example : jj/MM/yyyy</p>
 										</div>
 										<div class="form-group">
                                             <input type="submit" class="btn btn-info" value="Enregistrer">

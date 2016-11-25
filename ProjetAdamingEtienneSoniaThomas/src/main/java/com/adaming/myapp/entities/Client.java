@@ -23,6 +23,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @Entity
 public class Client implements Serializable{
 	
@@ -34,8 +37,9 @@ public class Client implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long idClient;
 	private Long code;
-	private String nom;
+	private String nom;	
 	private String prenom;
+	@DateTimeFormat(iso=ISO.DATE)
 	private Date dateEntree;
 	private String adresse;
 	
