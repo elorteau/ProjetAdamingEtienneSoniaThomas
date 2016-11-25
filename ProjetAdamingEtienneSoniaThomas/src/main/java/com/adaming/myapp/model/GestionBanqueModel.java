@@ -24,7 +24,7 @@ public class GestionBanqueModel {
 	private List<Employe> employes;
 	private List<Client> clients;
 	private List<Compte> comptes;
-	private Banque selectedBanque;
+	private Long selectedBanque;
 	private String action;
 
 	//=========================
@@ -63,11 +63,11 @@ public class GestionBanqueModel {
 		this.comptes = comptes;
 	}
 
-	public Banque getSelectedBanque() {
+	public Long getSelectedBanque() {
 		return selectedBanque;
 	}
 
-	public void setSelectedBanque(Banque selectedBanque) {
+	public void setSelectedBanque(Long selectedBanque) {
 		this.selectedBanque = selectedBanque;
 	}
 

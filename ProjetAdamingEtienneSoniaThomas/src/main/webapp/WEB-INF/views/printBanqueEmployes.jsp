@@ -88,6 +88,7 @@
 		</nav>
 
 
+
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -105,32 +106,29 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action="gestionBanque/printBanque" method="get">
+
                                     
-                                    <div class="form-group">
-                                        <label>Banque :</label>
-                                        <select class="form-control" name="selectedBanque">
-                                          	<c:forEach items="${gestionBanqueModel.banques}" var="banque">
-                                           		<option value="${banque.idBanque}">${banque.nom}</option>
-                                           	</c:forEach>
-                                        </select>
-									</div>
-									
-                                    <div class="form-group">
-                                        <label>Action :</label>
-                                        <select class="form-control" name="action">
-                                          	<option value="employes">Employés</option>
-                                          	<option value="clients">Clients</option>
-                                          	<option value="comptes">Comptes</option>
-                                        </select>
-                                    </div>
                                     
-                                    <div>
-                                    	<input type="submit" class="btn btn-info" value="Afficher">
-                                    </div>
-                                     
-                                    </form>   
-                    </div>
+                                    <table>
+                                    
+	                                    <tr>
+	                                    	<th>Code</th>
+	                                    	<th>Nom</th>
+	                                    </tr>
+	                                    
+	                                    <c:forEach items="${gestionBanqueModel.employes}" var="employe">
+		                                    <tr>
+		                                    	<td>${employe.code}</td>
+		                                    	<td>${employe.nom}</td>
+		                                    </tr>
+	                                    </c:forEach>
+                                    
+                                    </table> 
+                                    
+                                    
+ 
+		
+		                    </div>
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->

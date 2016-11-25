@@ -20,6 +20,7 @@ import com.adaming.myapp.model.GestionBanqueModel;
 import com.adaming.myapp.servicebanque.IServiceBanque;
 
 @Controller
+@RequestMapping(value="/gestionBanque")
 public class GestionBanqueController {
 
 	//=========================
@@ -34,24 +35,24 @@ public class GestionBanqueController {
 	// Methods
 	//=========================
 	
-	@RequestMapping(value = "/printBanqueEmploye", method = RequestMethod.GET)
+	@RequestMapping(value = "/printBanque", method = RequestMethod.GET)
 	public String printBanque(Model model, GestionBanqueModel gestionBanqueModel) {
 		String action = gestionBanqueModel.getAction();
-		
+
 		if (action.equals("employes")) {
-			gestionBanqueModel.setEmployes(serviceBanque.getEmployeByBanque(gestionBanqueModel.getSelectedBanque().getIdBanque()));
+			gestionBanqueModel.setEmployes(serviceBanque.getEmployeByBanque(gestionBanqueModel.getSelectedBanque()));
 			model.addAttribute("gestionBanqueModel", gestionBanqueModel);
 			LOGGER.info("<-------------------- Print Employe list by Banque -------------------->");
-			return "printBanqueEmploye";
+			return "printBanqueEmployes";
 		}
 		else if (action.equals("clients")) {
-			gestionBanqueModel.setClients(serviceBanque.getClientByBanque(gestionBanqueModel.getSelectedBanque().getIdBanque()));
+			gestionBanqueModel.setClients(serviceBanque.getClientByBanque(gestionBanqueModel.getSelectedBanque()));
 			model.addAttribute("gestionBanqueModel", gestionBanqueModel);
 			LOGGER.info("<-------------------- Print Client list by Banque -------------------->");
 			return "printBanqueClients";
 		}
 		else if (action.equals("comptes")) {
-			gestionBanqueModel.setComptes(serviceBanque.getCompteByBanque(gestionBanqueModel.getSelectedBanque().getIdBanque()));
+			gestionBanqueModel.setComptes(serviceBanque.getCompteByBanque(gestionBanqueModel.getSelectedBanque()));
 			model.addAttribute("gestionBanqueModel", gestionBanqueModel);
 			LOGGER.info("<-------------------- Print Compte list by Banque -------------------->");
 			return "printBanqueComptes";
