@@ -105,7 +105,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action="gestionBanque/printBanque" method="get">
+                                    <form role="form" action="printBanque" method="get">
                                     
                                     <div class="form-group">
                                         <label>Banque :</label>

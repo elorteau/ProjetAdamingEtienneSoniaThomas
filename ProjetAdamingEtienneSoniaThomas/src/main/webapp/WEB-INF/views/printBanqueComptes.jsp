@@ -108,7 +108,7 @@
                                 <div class="col-lg-6">
                                     
                                     
-                                    <table>
+                                    <table class="table table-striped">
                                     
 	                                    <tr>
 	                                    	<th>Numéro de Compte</th>

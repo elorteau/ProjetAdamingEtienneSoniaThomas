@@ -109,7 +109,7 @@
 
                                     
                                     
-                                    <table>
+                                    <table class="table table-striped">
                                     
 	                                    <tr>
 	                                    	<th>Code</th>

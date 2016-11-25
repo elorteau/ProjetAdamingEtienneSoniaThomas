@@ -20,7 +20,6 @@ import com.adaming.myapp.model.GestionBanqueModel;
 import com.adaming.myapp.servicebanque.IServiceBanque;
 
 @Controller
-@RequestMapping(value="/gestionBanque")
 public class GestionBanqueController {
 
 	//=========================
