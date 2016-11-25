@@ -33,7 +33,7 @@ public class HomeController {
 		// comments
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "page1";
+		return "consulteBanque";
 	}
 	
 }

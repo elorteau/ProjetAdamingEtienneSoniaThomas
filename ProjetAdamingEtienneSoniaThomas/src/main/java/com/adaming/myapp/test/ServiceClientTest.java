@@ -79,6 +79,7 @@ public class ServiceClientTest {
 
     @Test
     public void testGetClientByMc() {
+    	
         List<Client> clients = serviceClient.getClientByMc("f");
         for(int i =0; i<clients.size(); i++){
             if(clients.get(i).getNom().contains("f")){
