@@ -38,7 +38,6 @@ public class AddBanqueController {
 	 public String addBanque(AddBanqueModel banqueModel){
 		 Banque banque = new Banque(banqueModel.getNom(), banqueModel.getAdresse(), banqueModel.getCodePostal());
 		 serviceBanque.add(banque);
-		 System.out.println("<--------------------new Banque added-------------------->");
 		 LOGGER.info("<--------------------new Banque added-------------------->");
 		 return "redirect:/";
 		 

@@ -119,7 +119,7 @@
                                             <input class="form-control" placeholder="Enter le code postal" name="codePostal">
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit" class="btn btn-info" value="addBanque">
+                                            <input type="submit" class="btn btn-info" value="Enregister">
                                         </div>
                                         
                                     </form>

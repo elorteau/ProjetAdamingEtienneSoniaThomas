@@ -104,7 +104,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                    <form role="form" action="addClient" method="get">
                                         <div class="form-group">
                                             <label>Code</label>
                                             <input class="form-control" placeholder="Enter le code du client">
@@ -130,7 +130,7 @@
 										<input class="form-control" placeholder="Entrer la date" type="date">
 										</div>
 										<div class="form-group">
-                                            <button type="button" class="btn btn-info">Submit</button>
+                                            <input type="submit" class="btn btn-info" value="Enregistrer">
                                         </div>
                                         
                                     </form>
