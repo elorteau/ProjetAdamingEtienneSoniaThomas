@@ -12,6 +12,9 @@ import java.util.Date;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.adaming.myapp.entities.Client;
+import com.adaming.myapp.entities.Employe;
+
 public class AddCompteModel {
 	
 	//=========================
@@ -24,15 +27,37 @@ public class AddCompteModel {
 	@DateTimeFormat(iso=ISO.DATE)
 	private Date dateCreation;
 	private Double tauxInteret;
-	private Double decouvert;
+	private double decouvert;
+	private Client client;
+	private String action;
+	//private String selectedEmploye;
+	private Employe employe;
 	//=========================
 	// Getter / Setter
 	//=========================
 	
-	public Double getDecouvert() {
+	public String getAction() {
+		return action;
+	}
+	/*public String getSelectedEmploye() {
+		return selectedEmploye;
+	}
+	public void setSelectedEmploye(String selectedEmploye) {
+		this.selectedEmploye = selectedEmploye;
+	}*/
+	public Employe getEmploye() {
+		return employe;
+	}
+	public void setEmploye(Employe employe) {
+		this.employe = employe;
+	}
+	public void setAction(String action) {
+		this.action = action;
+	}
+	public double getDecouvert() {
 		return decouvert;
 	}
-	public void setDecouvert(Double decouvert) {
+	public void setDecouvert(double decouvert) {
 		this.decouvert = decouvert;
 	}
 	public Double getTauxInteret() {
@@ -64,6 +89,12 @@ public class AddCompteModel {
 	}
 	public void setDateCreation(Date dateCreation) {
 		this.dateCreation = dateCreation;
+	}
+	public Client getClient() {
+		return client;
+	}
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 

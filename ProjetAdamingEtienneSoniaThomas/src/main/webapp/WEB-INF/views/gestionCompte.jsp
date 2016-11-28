@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modifier un Client</title>
+    <title>Compte</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +36,6 @@
 </head>
 
 <body>
-
 		<div id="wrapper">
 
 
@@ -87,10 +87,12 @@
 		<!-- /.navbar-static-side -->
 		</nav>
 
+
+
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Modifications</h1>
+                    <h1 class="page-header"></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -99,50 +101,80 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Coordonnées client
+                            <h2>Compte</h2>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action="updateClient/${updateClientModel.idClient}" method="get">
                                     
-                                        <div class="form-group">
-                                            <label>Code</label>
-                                            <input class="form-control" placeholder="Enter le code du client" name="code" value="${updateClientModel.code}">
-                                            <p class="help-block">Example : 1254L</p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nom</label>
-                                            <input class="form-control" placeholder="Enter le nom du client" name="nom" value="${updateClientModel.nom}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Prenom</label>
-                                            <input class="form-control" placeholder="Enter le prenom du client" name="prenom" value="${updateClientModel.prenom}">
-                                        </div>
+                                    
+                                    <table class="table table-striped">
+                                    
+	                                    <tr>
+	                                    	<th>Numéro de Compte</th>
+	                                    	<th>Solde</th>
+	                                    	<th>Date de création</th>
+	                                    	<th>Banque</th>
+	                                    	<th>Créé par</th>
+	                                    	<th></th>
+	                                    </tr>
+	                                    
+	                                    <tr>
+	                                    	<td>${gestionCompteModel.compte.numeroCompte}</td>
+	                                    	<td>${gestionCompteModel.compte.solde}</td>
+	                                    	<td>${gestionCompteModel.compte.dateCreation}</td>
+	                                    	<td>${gestionCompteModel.compte.banque}</td>
+	                                    	<td>${gestionCompteModel.compte.employe}</td>
+	                                    	<td><a href="deleteCompte/${compte.idCompte}" class="btn btn-secondary">Supprimer</a></td>
+		                                </tr>
+                                    
+                                    </table>
+                                    
+                                    <h3>Effectuer une opération : </h2>
+                                    
+                                    <form action="addOperation/${gestionCompteModel.compte.idCompte}" method="get">
+                                    
+                                    	<div class="form-group">
+                                    		<input type="text" class="form-control" name="montant">
+                                    	</div>
+                                    
+                                    	<div class="form-group">
+                	                        <select name="action" class="form-control action" id="action">
+            	                            	<option value="versement">Versement<% request.setAttribute("action", 0); %></option>
+        	                                	<option value="retrait">Retrait<% request.setAttribute("action", 0); %></option>
+    	                                    	<option value="Virement">Virement<% request.setAttribute("action", 1); %></option>
+	                                        </select>
+                                    	</div>
                                         
+                                        <c:if test="${action eq 1}">
                                         <div class="form-group">
-                                            <label>Adresse</label>
-                                            <input class="form-control" placeholder="Enter l'adresse du client" name="adresse" value="${updateClientModel.adresse}">
+                                        	<input type="submit" class="btn btn-info" value="Effectuer une opération">
                                         </div>
-                                        
-										
-										<div class="form-group">
-										<label>date d'entrée</label>
-										<input class="form-control" placeholder="Entrer la date" type="date" name="dateEntree" value="${updateClientModel.dateEntree}" disabled="disabled">
-										<p class="help-block">Example : jj/MM/yyyy</p>
-										</div>
-										
-										<div class="form-group">
-                                            <input type="submit" class="btn btn-info" value="Modifier">
-                                        </div>
+                                        </c:if>
                                         
                                     </form>
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                            </div>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
+                                    
+                                    <h3>Liste des opérations</h3>
+                                    
+                                    <table class="table table-striped">
+                                    
+                                    <tr>
+                                    	<td>Opération</td>
+                                    	<td>Montant</td>
+                                    	<td>Date</td>
+                                    </tr>
+                                    
+                                    <c:forEach items="${gestionCompteModel.compte.operations}" var="operation">
+                                    	<tr>
+                                    		<td>${operation.class}</td>
+                                    		<td>${operation.montantOperation}</td>
+                                    		<td>${operation.dateOperation}</td>
+                                    	</tr>
+                                    </c:forEach>
+                                    
+                                    </table>
+                                    
+
                     </div>
                     <!-- /.panel -->
                 </div>

@@ -104,7 +104,23 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action="addCompte" methode="get">
+                                    <form role="form" action="addCompte" method="get">
+                                    	
+                                    	 <%-- <div class="form-group">
+                                        	<label>Employes :</label>
+                                        	<select class="form-control" name="selectedEmploye">
+                                        	<c: forEach items="${employeModel.employes}" var="employe"></c:>
+                                          		<option value="employe.idEmploye">${employe.nom}</option>
+                                        	</select>
+                                   		 </div> --%>
+                                    	 <div class="form-group">
+                                        	<label>Type compte :</label>
+                                        	<select class="form-control" name="action">
+                                          		<option value="courant">Compte courant</option>
+                                          		<option value="epargne">Compte epargne</option>
+                                        	</select>
+                                   		 </div>
+                                    	
                                         <div class="form-group">
                                             <label>Numero du compte</label>
                                             <input class="form-control" placeholder="Enter le numero du compte bancaire" name="numeroCompte">
@@ -121,7 +137,7 @@
                                         
                            
                                         <div class="form-group">
-                                            <button type="button" class="btn btn-info">Enregistrer</button>
+                                            <input type="submit" class="btn btn-info" value="Enregistrer">
                                         </div>
                                         
                                     </form>

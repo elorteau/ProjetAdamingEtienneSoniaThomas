@@ -105,37 +105,43 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                    <form role="form" action="printEmployeByGroupe" method ="get">
                                     <div class="form-group">
-                                            <label>Banque :</label>
-                                            <select class="form-control" name="selectedBanque">
-                                            	<c:forEach items="${gestionBanqueModel.banques}" var="banque">
-                                            		<option value="${banque.idBanque}">${banque.nom}</option>
+                                            <label>Groupe :</label>
+                                            <select class="form-control" name="selectedGroupe">
+                                            	<c:forEach items="${gestionGroupeModel.groupes}" var="groupe">
+                                            		<option value="${groupe.idGroupe}">${groupe.nom}</option>
                                             	</c:forEach>
                                             </select>
-                                        </div>
-                                     
-                                    		<div class="radio">
-                                    			
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Liste des employés de la banque
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Liste des clients de la banque
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Liste des groupes de la banque
-                                                </label>
+                                        </div>                               
+                      
+                                          
                                         <div class="form-group">
                                             
-                                            <button type="button" class="btn btn-info">Afficher</button>
+                                            <input type="submit" class="btn btn-info" value="Afficher la liste des employés">
                                            
                                         </div>
                                     </form>   
+                                    
+                                    
+                                   <table class="table table-striped">
+                                    
+	                                    <tr>
+	                                    	<th>Code</th>
+	                                    	<th>Nom</th>
+	                                    </tr>
+	                                    
+	                                    <c:forEach items="${gestionGroupeModel.employes}" var="employe">
+		                                    <tr>
+		                                    	<td>${employe.code}</td>
+		                                    	<td>${employe.nom}</td>
+		                                    </tr>
+	                                    </c:forEach>
+                                    
+                                    </table> 
+                                    
+                                    
+                                    
                     </div>
                     <!-- /.panel -->
                 </div>

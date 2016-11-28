@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modifier un Client</title>
+    <title>Comptes</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -35,7 +36,6 @@
 </head>
 
 <body>
-
 		<div id="wrapper">
 
 
@@ -87,10 +87,11 @@
 		<!-- /.navbar-static-side -->
 		</nav>
 
+
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Modifications</h1>
+                    <h1 class="page-header"></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -99,50 +100,73 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Coordonnées client
+                            <h2>Client</h2>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action="updateClient/${updateClientModel.idClient}" method="get">
+                                
+                                
+                                
+                                <div class="form-group">
+                                    <table class="table table-striped">
                                     
-                                        <div class="form-group">
-                                            <label>Code</label>
-                                            <input class="form-control" placeholder="Enter le code du client" name="code" value="${updateClientModel.code}">
-                                            <p class="help-block">Example : 1254L</p>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Nom</label>
-                                            <input class="form-control" placeholder="Enter le nom du client" name="nom" value="${updateClientModel.nom}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Prenom</label>
-                                            <input class="form-control" placeholder="Enter le prenom du client" name="prenom" value="${updateClientModel.prenom}">
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <label>Adresse</label>
-                                            <input class="form-control" placeholder="Enter l'adresse du client" name="adresse" value="${updateClientModel.adresse}">
-                                        </div>
-                                        
-										
-										<div class="form-group">
-										<label>date d'entrée</label>
-										<input class="form-control" placeholder="Entrer la date" type="date" name="dateEntree" value="${updateClientModel.dateEntree}" disabled="disabled">
-										<p class="help-block">Example : jj/MM/yyyy</p>
-										</div>
-										
-										<div class="form-group">
-                                            <input type="submit" class="btn btn-info" value="Modifier">
-                                        </div>
-                                        
-                                    </form>
+	                                    <tr>
+	                                    	<th>Code</th>
+	                                    	<th>Nom</th>
+	                                    	<th>Prénom</th>
+	                                    	<th>Adresse</th>
+	                                    	<th>Date d'adhésion</th>
+	                                    </tr>
+	                                    
+	                                    <tr>
+	                                    	<td>${comptesClientModel.client.code}</td>
+	                                    	<td>${comptesClientModel.client.nom}</td>
+	                                    	<td>${comptesClientModel.client.prenom}</td>
+	                                    	<td>${comptesClientModel.client.adresse}</td>
+	                                    	<td>${comptesClientModel.client.dateEntree}</td>
+	                                    </tr>
+                                    
+                                    </table>
                                 </div>
-                                <!-- /.col-lg-6 (nested) -->
-                            </div>
-                            <!-- /.row (nested) -->
-                        </div>
-                        <!-- /.panel-body -->
+                                    
+                                
+                                <div class="form-group">
+                                	<h3>Comptes : </h3>
+                                </div>
+                                    
+                                <div class="form-group">
+                                    <table class="table table-striped">
+                                    
+	                                    <tr>
+	                                    	<th>Numéro de Compte</th>
+	                                    	<th>Solde</th>
+	                                    	<th>Date de création</th>
+	                                    	<th>Banque</th>
+	                                    	<th>Créé par</th>
+	                                    </tr>
+	                                    
+	                                    <c:forEach items="${comptesClientModel.comptes}" var="compte">
+		                                    <tr>
+		                                    	<td><a href="toCompte/${compte.idCompte}">${compte.numeroCompte}</a></td>
+		                                    	<td>${compte.solde}</td>
+		                                    	<td>${compte.dateCreation}</td>
+		                                    	<td>${compte.banque}</td>
+		                                    	<td>${compte.employe}</td>
+		                                    </tr>
+	                                    </c:forEach>
+                                    
+                                    </table> 
+                                </div>
+                                
+                                <form action="toAddCompte" method="get">
+                                	<div class="form-group">
+                                		<input type="submit" value="Créer un nouveau compte" class="btn btn-info">	                                	
+                                	</div>
+                                </form>
+                                    
+                                    
+                                    
                     </div>
                     <!-- /.panel -->
                 </div>

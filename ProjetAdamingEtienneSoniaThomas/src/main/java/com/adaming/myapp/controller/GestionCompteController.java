@@ -17,11 +17,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.adaming.myapp.model.GestionCompteModel;
 import com.adaming.myapp.servicecompte.IServiceCompte;
 
 @Controller
-public class ComptesClientController {
+public class GestionCompteController {
 
 	//=========================
 	// Attributes
@@ -35,19 +34,16 @@ public class ComptesClientController {
 	// Methods
 	//=========================
 	
-	@RequestMapping(value = "/toCompte/{idCompte}", method = RequestMethod.GET)
-	public String toCompte(Model model, @PathVariable Long idCompte) {
-		GestionCompteModel gestionCompteModel = new GestionCompteModel();
-		gestionCompteModel.setCompte(serviceCompte.getOne(idCompte));
-		model.addAttribute("gestionCompteModel", gestionCompteModel);
-		LOGGER.info("<-------------------- toCompte --------------------->");
-		return "gestionCompte";
+	@RequestMapping(value = "/deleteCompte/{idCompte}", method = RequestMethod.GET)
+	public String deleteCompte(Model model, @PathVariable Long idCompte) {
+		serviceCompte.delete(idCompte);
+		LOGGER.info("<---------------------- delete Compte ------------------------>");
+		return "home";
 	}
 	
-	@RequestMapping(value = "/toAddCompte", method = RequestMethod.GET)
-	public String toAddCompte(Model model) {
-		LOGGER.info("<-------------------- to addCompte ------------------------->");
-		return "addCompte";
+	@RequestMapping(value = "addOperation/{idCompte}", method = RequestMethod.GET)
+	public String addOperation(Model model) {
+		return "home";
 	}
-
+	
 }

@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.myapp.model.GestionBanqueModel;
+import com.adaming.myapp.model.GestionClientModel;
+import com.adaming.myapp.model.GestionGroupeModel;
 import com.adaming.myapp.servicebanque.IServiceBanque;
+import com.adaming.myapp.serviceclient.IServiceClient;
+import com.adaming.myapp.serviceclient.ServiceClientImpl;
+import com.adaming.myapp.servicegroupe.IServiceGroupe;
 
 /**
  * Handles requests for the application home page.
@@ -26,6 +31,10 @@ public class HomeController {
 			.getLogger(HomeController.class);
 	@Inject
 	private IServiceBanque serviceBanque;
+	@Inject
+	private IServiceClient serviceClient;
+	@Inject
+	private IServiceGroupe serviceGroupe;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -86,7 +95,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/toGestionClient", method = RequestMethod.GET)
-	public String toGestionClient() {
+	public String toGestionClient(Model model) {
+		GestionClientModel gestionClientModel = new GestionClientModel();
+		gestionClientModel.setClients(serviceClient.getAll());
+		model.addAttribute("gestionClientModel", gestionClientModel);
 		LOGGER.info("<-----------toGestionClient-------------->");
 		return "gestionClient";
 	}
@@ -118,7 +130,10 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/toGestionGroupe", method = RequestMethod.GET)
-	public String toGestionGroupe() {
+	public String toGestionGroupe(Model model) {
+		GestionGroupeModel gestionGroupeModel = new GestionGroupeModel();
+		gestionGroupeModel.setGroupes(serviceGroupe.getAll());
+		model.addAttribute("gestionGroupeModel", gestionGroupeModel);
 		LOGGER.info("<-----------toGestionGroupe-------------->");
 		return "gestionGroupe";
 	}

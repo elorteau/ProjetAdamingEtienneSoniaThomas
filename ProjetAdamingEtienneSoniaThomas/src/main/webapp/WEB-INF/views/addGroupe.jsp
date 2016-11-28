@@ -104,22 +104,19 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                    <form role="form" action="addGroupe">
                                         <div class="form-group">
                                             <label>Nom</label>
-                                            <input class="form-control">
+                                            <input class="form-control" name="nom">
                                             <p class="help-block">Example : BNP</p>
                                         </div>
-                                        <div class="form-group">
-                                            <label>Adresse</label>
-                                            <input class="form-control" placeholder="Enter l'adresse">
+                             <div class="form-group">
+                                            <label>Code</label>
+                                            <input class="form-control" name="code">
+                                            <p class="help-block">Example : 1235L</p>
                                         </div>
                                         <div class="form-group">
-                                            <label>Code postal</label>
-                                            <input class="form-control" placeholder="Enter le code postal">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="button" class="btn btn-info">Enregistrer</button>
+                                            <input type="submit" class="btn btn-info" value="Enregistrer">
                                         </div>
                                         
                                     </form>

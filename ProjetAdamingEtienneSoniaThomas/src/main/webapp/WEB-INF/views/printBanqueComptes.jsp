@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Comptes banquaires</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -114,6 +114,7 @@
 	                                    	<th>Numéro de Compte</th>
 	                                    	<th>Solde</th>
 	                                    	<th>Date de création</th>
+	                                    	<th>Créé par</th>
 	                                    </tr>
 	                                    
 	                                    <c:forEach items="${gestionBanqueModel.comptes}" var="compte">
@@ -121,6 +122,7 @@
 		                                    	<td>${compte.numeroCompte}</td>
 		                                    	<td>${compte.solde}</td>
 		                                    	<td>${compte.dateCreation}</td>
+		                                    	<td>${compte.employe}</td>
 		                                    </tr>
 	                                    </c:forEach>
                                     

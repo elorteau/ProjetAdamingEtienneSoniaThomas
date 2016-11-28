@@ -38,13 +38,22 @@ private final Logger LOGGER = Logger.getLogger("CompteController");
 	//=========================
 @RequestMapping(value= "/addCompte", method = RequestMethod.GET)
 public String addCompte(AddCompteModel compteModel){
-	Compte compteEpargne = new CompteEpargne(compteModel.getNumeroCompte(), compteModel.getSolde(), compteModel.getDateCreation(), compteModel.getTauxInteret());
-	serviceCompte.add(compteEpargne);
-	LOGGER.info("<--------new compteEpargne added-------------->");
-	
-	Compte compteCourant = new CompteCourant(compteModel.getNumeroCompte(), compteModel.getSolde(), compteModel.getDateCreation(), compteModel.getDecouvert());
-	serviceCompte.add(compteCourant);
-	LOGGER.info("<--------new compteCourant added-------------->");
+	String action = compteModel.getAction();
+	if(action.equals("courant")){
+		
+		Compte compteCourant = new CompteCourant(compteModel.getNumeroCompte(), compteModel.getSolde(), compteModel.getDateCreation(), compteModel.getDecouvert());
+		serviceCompte.add(compteCourant);
+		LOGGER.info("<--------new compteCourant added-------------->");
+		//serviceCompte.addCompteToClient(compteModel.getIdCompte(), compteModel.getClient().getIdClient());
+		return "home";
+	}
+	if(action.equals("epargne")){
+		Compte compteEpargne = new CompteEpargne(compteModel.getNumeroCompte(), compteModel.getSolde(), compteModel.getDateCreation(), compteModel.getTauxInteret());
+		serviceCompte.add(compteEpargne);
+		LOGGER.info("<--------new compteEpargne added-------------->");
+		//serviceCompte.addCompteToClient(compteModel.getIdCompte(), compteModel.getClient().getIdClient());
+		return "home";
+	}
 	return "redirect:/";
 }
 }
