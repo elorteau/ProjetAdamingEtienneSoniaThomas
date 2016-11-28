@@ -43,7 +43,7 @@ public class Banque implements Serializable{
 	@JoinTable(name="TB_Client_Banque")
 	private List<Client> clients = new ArrayList<Client>();
 	
-	@OneToMany(mappedBy="banque", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="banque")
 	private List<Groupe> groupes = new ArrayList<Groupe>();
 	
 	//=========================

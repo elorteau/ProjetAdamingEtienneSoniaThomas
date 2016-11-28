@@ -34,7 +34,7 @@ public class Employe implements Serializable {
 	//   association avec la class Banque
 	//====================================
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name ="idBanque")
 	private Banque banque;
 	

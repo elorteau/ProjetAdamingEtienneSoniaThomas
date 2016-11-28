@@ -52,7 +52,7 @@ public abstract class Compte implements Serializable {
 	//   association avec la class Banque
 	//====================================
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name="idBanque")
 	private Banque banque;
 	
@@ -60,7 +60,7 @@ public abstract class Compte implements Serializable {
 	//   association avec la class Employe
 	//====================================
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "idEmploye")
 	private Employe employe;
 	
