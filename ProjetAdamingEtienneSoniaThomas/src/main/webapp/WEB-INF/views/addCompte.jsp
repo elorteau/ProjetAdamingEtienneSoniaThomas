@@ -104,7 +104,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form" action="addCompte" method="get">
+                                    <form role="form" action="addCompte/${addCompteModel.client.idClient}" method="get">
                                     	
                                     	 <%-- <div class="form-group">
                                         	<label>Employes :</label>

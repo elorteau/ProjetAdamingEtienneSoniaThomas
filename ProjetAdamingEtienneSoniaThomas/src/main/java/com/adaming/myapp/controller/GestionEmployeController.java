@@ -32,6 +32,7 @@ public class GestionEmployeController {
 	
 	@Inject
 	private IServiceEmploye serviceGestionEmploye;
+	@Inject
 	private IServiceCompte serviceCompte;
 	private final Logger LOGGER = Logger.getLogger("GestionEmploye");
 

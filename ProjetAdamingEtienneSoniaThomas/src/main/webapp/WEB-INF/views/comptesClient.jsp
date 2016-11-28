@@ -159,7 +159,7 @@
                                     </table> 
                                 </div>
                                 
-                                <form action="toAddCompte" method="get">
+                                <form action="toAddCompte/${comptesClientModel.client.idClient}" method="get">
                                 	<div class="form-group">
                                 		<input type="submit" value="Créer un nouveau compte" class="btn btn-info">	                                	
                                 	</div>

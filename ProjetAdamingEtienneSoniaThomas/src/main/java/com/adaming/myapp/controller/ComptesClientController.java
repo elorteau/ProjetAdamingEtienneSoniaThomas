@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.adaming.myapp.model.AddCompteModel;
 import com.adaming.myapp.model.GestionCompteModel;
+import com.adaming.myapp.serviceclient.IServiceClient;
 import com.adaming.myapp.servicecompte.IServiceCompte;
 
 @Controller
@@ -27,6 +29,8 @@ public class ComptesClientController {
 	// Attributes
 	//=========================
 	
+	@Inject
+	private IServiceClient serviceClient;
 	@Inject
 	private IServiceCompte serviceCompte;
 	private final Logger LOGGER = Logger.getLogger("ComptesClientController");
@@ -44,8 +48,11 @@ public class ComptesClientController {
 		return "gestionCompte";
 	}
 	
-	@RequestMapping(value = "/toAddCompte", method = RequestMethod.GET)
-	public String toAddCompte(Model model) {
+	@RequestMapping(value = "/toAddCompte/{idClient}", method = RequestMethod.GET)
+	public String toAddCompte(Model model, @PathVariable Long idClient) {
+		AddCompteModel addCompteModel = new AddCompteModel();
+		addCompteModel.setClient(serviceClient.getOne(idClient));
+		model.addAttribute("addCompteModel", addCompteModel);
 		LOGGER.info("<-------------------- to addCompte ------------------------->");
 		return "addCompte";
 	}
