@@ -117,7 +117,26 @@
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-info" value="Afficher les comptes associés">                                           
                                         </div>
-                                    </form>   
+                                    </form> 
+                                    <table class="table table-striped">
+                                    
+	                                    <tr>
+	                                    	<th>Numéro de Compte</th>
+	                                    	<th>Solde</th>
+	                                    	<th>Date de création</th>
+	                                    	
+	                                    </tr>
+	                                    
+	                                    <c:forEach items="${gestionEmployeModel.comptes}" var="compte">
+		                                    <tr>
+		                                    	<td>${compte.numeroCompte}</td>
+		                                    	<td>${compte.solde}</td>
+		                                    	<td>${compte.dateCreation}</td>
+		                                    	
+		                                    </tr>
+	                                    </c:forEach>
+                                    
+                                    </table>    
                     </div>
                     <!-- /.panel -->
                 </div>

@@ -62,6 +62,7 @@ public class GestionEmployeController {
 	public String getComptesByEmploye(Model model, GestionEmployeModel gestionEmployeModel){
 		gestionEmployeModel.setComptes(serviceCompte.getCompteByEmploye(gestionEmployeModel.getSelectedEmploye()));
 		model.addAttribute("gestionEmployeModel", gestionEmployeModel);
+		gestionEmployeModel.setEmployes(serviceGestionEmploye.getAll());
 		return "gestionEmploye";
 	}
 
