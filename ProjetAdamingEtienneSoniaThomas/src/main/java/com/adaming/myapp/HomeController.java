@@ -125,9 +125,10 @@ public class HomeController {
     }
 
 	@RequestMapping(value = "/toGestionEmploye", method = RequestMethod.GET)
-	public String toGestionEmploye() {
+	public String toGestionEmploye(Model model) {
 		GestionEmployeModel gestionEmployeModel = new GestionEmployeModel();
 		gestionEmployeModel.setEmployes(serviceEmploye.getAll());
+		model.addAttribute("gestionEmployeModel", gestionEmployeModel);
 		LOGGER.info("<-----------toGestionEmploye-------------->");
 		return "gestionEmploye";
 	}
