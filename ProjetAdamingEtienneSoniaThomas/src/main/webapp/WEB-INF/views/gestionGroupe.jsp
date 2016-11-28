@@ -186,7 +186,7 @@
 	                                    	<th>Nom</th>
 	                                    </tr>
 	                                    
-	                                    <c:forEach items="${gestionGroupeModel.employes}" var="employe">
+	                                    <c:forEach items="${gestionGroupeModel.employesByGroupe}" var="employe">
 		                                    <tr>
 		                                    	<td>${employe.code}</td>
 		                                    	<td>${employe.nom}</td>

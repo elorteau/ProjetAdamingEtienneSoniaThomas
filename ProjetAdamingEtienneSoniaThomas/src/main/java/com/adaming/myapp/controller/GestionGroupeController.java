@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.myapp.entities.Employe;
 import com.adaming.myapp.model.GestionGroupeModel;
+import com.adaming.myapp.serviceemployee.IServiceEmploye;
 import com.adaming.myapp.servicegroupe.IServiceGroupe;
 
 @Controller
@@ -30,6 +31,8 @@ public class GestionGroupeController {
 	
 	@Inject
 	private IServiceGroupe serviceGroupe;
+	@Inject
+	private IServiceEmploye serviceEmploye;
 	private final Logger LOGGER = Logger.getLogger("groupeController");
 
 	//=========================
@@ -40,7 +43,8 @@ public class GestionGroupeController {
 	public String getEmployeByGroupe(Model model, GestionGroupeModel groupeModel){
 		Long idGroupe = groupeModel.getSelectedGroupe();
 		List<Employe> employes =  serviceGroupe.getEmployeByGroupe(idGroupe);
-		groupeModel.setEmployes(employes);
+		groupeModel.setEmployesByGroupe(employes);
+		groupeModel.setEmployes(serviceEmploye.getAll());
 		groupeModel.setGroupes(serviceGroupe.getAll());
 		LOGGER.info("<-----------------List of employes generated----------------->");
 		model.addAttribute("gestionGroupeModel", groupeModel);
@@ -52,7 +56,7 @@ public class GestionGroupeController {
 		serviceGroupe.addEmToGr(gestionGroupeModel.getSelectedGroupe1(), gestionGroupeModel.getSelectedEmploye());
 		LOGGER.info("<-----------------List of employes generated----------------->");
 		model.addAttribute("gestionGroupeModel", gestionGroupeModel);
-		return "gestionGroupe";
+		return "home";
 	}
 
 }

@@ -27,6 +27,7 @@ public class GestionGroupeModel {
 	private List<Employe> employes;
 	private Long selectedGroupe1;
 	private Long selectedEmploye;
+	private List<Employe> employesByGroupe;
 
 	//=========================
 	// Getter / Setter
@@ -34,6 +35,12 @@ public class GestionGroupeModel {
 	
 	public List<Employe> getEmployes() {
 		return employes;
+	}
+	public List<Employe> getEmployesByGroupe() {
+		return employesByGroupe;
+	}
+	public void setEmployesByGroupe(List<Employe> employesByGroupe) {
+		this.employesByGroupe = employesByGroupe;
 	}
 	public Long getSelectedGroupe1() {
 		return selectedGroupe1;
