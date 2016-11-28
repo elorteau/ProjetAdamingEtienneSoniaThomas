@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.adaming.myapp.model.AddEmployeModel;
 import com.adaming.myapp.model.GestionBanqueModel;
 import com.adaming.myapp.model.GestionClientModel;
+import com.adaming.myapp.model.GestionEmployeModel;
 import com.adaming.myapp.model.GestionGroupeModel;
 import com.adaming.myapp.servicebanque.IServiceBanque;
 import com.adaming.myapp.serviceclient.IServiceClient;
 import com.adaming.myapp.serviceclient.ServiceClientImpl;
+import com.adaming.myapp.servicecompte.IServiceCompte;
+import com.adaming.myapp.serviceemployee.IServiceEmploye;
+import com.adaming.myapp.serviceemployee.ServiceEmployeImpl;
 import com.adaming.myapp.servicegroupe.IServiceGroupe;
 
 /**
@@ -36,6 +40,8 @@ public class HomeController {
 	private IServiceClient serviceClient;
 	@Inject
 	private IServiceGroupe serviceGroupe;
+	@Inject
+	private IServiceEmploye serviceEmploye;
 
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -120,6 +126,8 @@ public class HomeController {
 
 	@RequestMapping(value = "/toGestionEmploye", method = RequestMethod.GET)
 	public String toGestionEmploye() {
+		GestionEmployeModel gestionEmployeModel = new GestionEmployeModel();
+		gestionEmployeModel.setEmployes(serviceEmploye.getAll());
 		LOGGER.info("<-----------toGestionEmploye-------------->");
 		return "gestionEmploye";
 	}

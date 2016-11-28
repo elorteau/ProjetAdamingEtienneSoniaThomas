@@ -42,6 +42,7 @@ public class GestionGroupeController {
 		List<Employe> employes =  serviceGroupe.getEmployeByGroupe(idGroupe);
 		groupeModel.setEmployes(employes);
 		groupeModel.setGroupes(serviceGroupe.getAll());
+		LOGGER.info("<-----------------List of employes generated----------------->");
 		model.addAttribute("gestionGroupeModel", groupeModel);
 		return "gestionGroupe";
 	}

@@ -100,40 +100,22 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Consultation
+                            Gestion employés
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                    <form role="form" action="getComptesByEmploye" method="get">
                                     <div class="form-group">
-                                            <label>Banque :</label>
-                                            <select class="form-control" name="selectedBanque">
-                                            	<c:forEach items="${gestionBanqueModel.banques}" var="banque">
-                                            		<option value="${banque.idBanque}">${banque.nom}</option>
+                                            <label>Selection de l'employé :</label>
+                                            <select class="form-control" name="selectedEmploye">
+                                            	<c:forEach items="${gestionEmployeModel.employes}" var="employe">
+                                            		<option value="${employe.idEmploye}">${employe.nom}</option>
                                             	</c:forEach>
                                             </select>
                                         </div>
-                                     
-                                    		<div class="radio">
-                                    			
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Liste des employés de la banque
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Liste des clients de la banque
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Liste des groupes de la banque
-                                                </label>
                                         <div class="form-group">
-                                            
-                                            <button type="button" class="btn btn-info">Afficher</button>
-                                           
+                                            <input type="submit" class="btn btn-info" value="Afficher les comptes associés">                                           
                                         </div>
                                     </form>   
                     </div>
