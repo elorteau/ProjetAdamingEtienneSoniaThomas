@@ -49,6 +49,7 @@ public class ComptesClientController {
 	public String toCompte(Model model, @PathVariable Long idCompte) {
 		GestionCompteModel gestionCompteModel = new GestionCompteModel();
 		gestionCompteModel.setCompte(serviceCompte.getOne(idCompte));
+		gestionCompteModel.setClients(serviceClient.getAll());
 		model.addAttribute("gestionCompteModel", gestionCompteModel);
 		LOGGER.info("<-------------------- toCompte --------------------->");
 		return "gestionCompte";

@@ -7,6 +7,7 @@
 
 package com.adaming.myapp.controller;
 
+import java.util.Date;
 import java.util.logging.Logger;
 
 import javax.inject.Inject;
@@ -21,6 +22,7 @@ import com.adaming.myapp.entities.Retrait;
 import com.adaming.myapp.entities.Versement;
 import com.adaming.myapp.entities.Virement;
 import com.adaming.myapp.model.GestionCompteModel;
+import com.adaming.myapp.serviceclient.IServiceClient;
 import com.adaming.myapp.servicecompte.IServiceCompte;
 import com.adaming.myapp.serviceoperation.IServiceOperation;
 
@@ -36,6 +38,8 @@ public class GestionCompteController {
 	private IServiceCompte serviceCompte;
 	@Inject
 	private IServiceOperation serviceOperation;
+	@Inject
+	private IServiceClient serviceClient;
 	private final Logger LOGGER = Logger.getLogger("ComptesClientController");
 	
 	//=========================
@@ -51,7 +55,7 @@ public class GestionCompteController {
 	
 	@RequestMapping(value = "doVersement/{idCompte}", method = RequestMethod.GET)
 	public String doVersement(Model model, GestionCompteModel gestionCompteModel, @PathVariable Long idCompte) {
-		Versement versement = new Versement(gestionCompteModel.getDateOperation(), gestionCompteModel.getMontantOperation());
+		Versement versement = new Versement(new Date(), gestionCompteModel.getMontantOperation());
 		serviceOperation.doVersement(versement, idCompte);
 		model.addAttribute("gestionCompteModel", gestionCompteModel);
 		LOGGER.info("<----------------Versement added---------------->");
@@ -60,7 +64,7 @@ public class GestionCompteController {
 	
 	@RequestMapping(value ="doRetrait/{idCompte}", method = RequestMethod.GET)
 	public String doRetrait(Model model, GestionCompteModel gestionCompteModel, @PathVariable Long idCompte){
-		Retrait retrait = new Retrait(gestionCompteModel.getDateOperation(), gestionCompteModel.getMontantOperation());
+		Retrait retrait = new Retrait(new Date(), gestionCompteModel.getMontantOperation());
 		serviceOperation.doRetrait(retrait, idCompte);
 		model.addAttribute("gestionCompteModel", gestionCompteModel);
 		LOGGER.info("<-----------------Retrait added-------------->");
@@ -69,13 +73,21 @@ public class GestionCompteController {
 	
 	@RequestMapping(value ="doVirement/{idCompte}", method = RequestMethod.GET)
 	public String doVirement(Model model, GestionCompteModel gestionCompteModel, @PathVariable Long idCompte){
-		Virement virement = new Virement(gestionCompteModel.getDateOperation(), gestionCompteModel.getMontantOperation());
-		Long idCompteCredite = gestionCompteModel.getCompteCible().getIdCompte();
-		serviceOperation.doVirement(virement, idCompte, idCompteCredite);
+		gestionCompteModel.setMontantOperation(gestionCompteModel.getMontantOperation());
+		gestionCompteModel.setCompte(serviceCompte.getOne(idCompte));
+		gestionCompteModel.setClient(serviceClient.getOne(gestionCompteModel.getSelectedClient()));
+		gestionCompteModel.setComptes(serviceClient.getCompteByClient(gestionCompteModel.getSelectedClient()));
 		model.addAttribute("gestionCompteModel", gestionCompteModel);
-		LOGGER.info("<------------------Virement added----------------->");		
-		return "gestionCompte";
+		LOGGER.info("<------------------ to virement ----------------->");		
+		return "virement";
 	}
 	
+	@RequestMapping(value = "doVirement/virement/{idCompte}/{montantOperation}", method = RequestMethod.GET)
+	public String virement(GestionCompteModel gestionCompteModel, @PathVariable Long idCompte, @PathVariable double montantOperation) {
+		Virement virement = new Virement(new Date(), montantOperation);
+		serviceOperation.doVirement(virement, idCompte, gestionCompteModel.getIdCompteCible());
+		LOGGER.info("<---------------- Virement added ----------------->");
+		return "home";
+	}
 	
 }

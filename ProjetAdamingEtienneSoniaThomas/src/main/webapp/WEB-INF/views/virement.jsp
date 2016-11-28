@@ -1,15 +1,18 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
+
 <head>
-<meta charset="utf-8">
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Sélectionner un Compte pour ce client</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,10 +32,12 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
+
 <body>
 
-	<div id="wrapper">
+		<div id="wrapper">
 
 
 		<!-- /.navbar-top-links -->
@@ -82,32 +87,56 @@
 		</div>
 		<!-- /.navbar-static-side -->
 		</nav>
-	<h1>Effectuer un virement</h1>
-	<div class="form-group">
-		<label>Nom du client du compte à ponctionner</label> 
-		<input class="form-control"><br/>
-		
-		<label>Selectionnez le compte à ponctionner</label> 
-		<select class="form-control">
-			<option>Compte courant</option>
-			<option>Compte Epargne</option>	
-		</select><br/>
-		
-		<label>Nom du client du compte à créditer</label> 
-		<input class="form-control"><br/>
-		
-		<label>Selectionnez le compte à créditer</label> 
-		<select class="form-control">
-			<option>Compte courant</option>
-			<option>Compte Epargne</option>	
-		</select><br/>
-		
-		<label>Montant à virer</label> 
-		<input class="form-control"><br/>
-		
-		<button type="submit" class="btn btn-default">Effectuer le virement</button>
-		
-</div>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Modifications</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Coordonnées client
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <form role="form" action="virement/${gestionCompteModel.compte.idCompte}/${gestionCompteModel.montantOperation}" method="get">
+                                    
+                                        <div class="form-group">
+                                            <label>Compte débité</label>
+                                            <input class="form-control" name="idCompteDebite" value="${gestionCompteModel.compte.numeroCompte}" disabled="disabled">
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Client à créditer</label>
+                                            <input class="form-control" name="nomClient" value="${gestionCompteModel.client.nom}" disabled="disabled">
+                                        </div>
+                                        
+                                       <div class="form-group">
+                                       		<label>Compte à créditer</label>
+                                       		<select class="form-control" name="idCompteCible">
+                                       			<c:forEach items="${gestionCompteModel.comptes}" var="compte">
+                                       				<option value="${compte.idCompte}">${compte.numeroCompte}</option>
+                                       			</c:forEach>
+                                       		</select>
+                                       </div>
+										
+                                        <div class="form-group">
+                                            <label>Montant de l'opération</label>
+                                            <input class="form-control" name="montantOperation" value="${gestionCompteModel.montantOperation}" disabled="disabled">
+                                        </div>
+                                        
+										<div class="form-group">
+                                            <input type="submit" class="btn btn-info" value="Effectuer le virement">
+                                        </div>
+                                        
+                                    </form>
+                                </div>
                                 <!-- /.col-lg-6 (nested) -->
                             </div>
                             <!-- /.row (nested) -->
@@ -136,6 +165,8 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="<%=request.getContextPath()%>/resources/dist/js/sb-admin-2.js"></script>
-	
+
+
+
 </body>
 </html>

@@ -43,11 +43,11 @@ public class AbstractDaoOperationJPA extends AbstractDaoGeneriqueJPA<Operation> 
 		Compte compteDebite = em.find(Compte.class, idCompteCredite);
 		Compte compteCredite = em.find(Compte.class, idCompteDebite);
 		compteCredite.getOperations().add(virement);
-		compteCredite.setSolde(compteCredite.getSolde() + virement.getMontantOperation());
+		compteCredite.setSolde(compteCredite.getSolde() - virement.getMontantOperation());
 		Virement virement2 = new Virement(virement.getDateOperatiion(), 0.0 - virement.getMontantOperation());
 		em.persist(virement2);
 		compteDebite.getOperations().add(virement2);
-		compteDebite.setSolde(compteDebite.getSolde() + virement2.getMontantOperation());
+		compteDebite.setSolde(compteDebite.getSolde() - virement2.getMontantOperation());
 		LOGGER.info(virement + " a bien ete ajoute a " + compteDebite + " et a " + compteCredite);
 		return virement;
 	}

@@ -135,7 +135,7 @@
 											<td>${gestionCompteModel.compte.dateCreation}</td>
 											<td>${gestionCompteModel.compte.banque}</td>
 											<td>${gestionCompteModel.compte.employe}</td>
-											<td><a href="deleteCompte/${compte.idCompte}"
+											<td><a href="deleteCompte/${gestionCompteModel.compte.idCompte}"
 												class="btn btn-secondary">Supprimer</a></td>
 										</tr>
 
@@ -167,47 +167,29 @@
 											</div>
 										</form>
 										
-										<h2>Effectuer un virement</h2>
-												<form action="rechercheMc" method="get">
-                                    <div>
-                                    	 <label>Mot clé :</label>
-                                    	<input class="form-control" placeholder="Enter un mot clé" name="Mc"><br>
-                                    </div>
-                                    <div>
-                                    	<input type="submit" class="btn btn-info" value="Afficher"><br>
-                                   	</div>
-                                   	</form>
 										
-										<form action="doVirement/${gestionCompteModel.compte.idCompte}" method="get">
-									
+									<h2>Effectuer un virement</h2>
+									<form action="doVirement/${gestionCompteModel.compte.idCompte}" method="get">
+																			
+                                    <div class="form-group">
+										<label>Montant du virement</label> <input type="text" class="form-control" name="montantOperation">
+										<p class="help-block">Exemple : 150.0</p>
+									</div>
+											
+									<div class="form-group">
+										<label>Client cible :</label> 
+										<select class="form-control" name="selectedClient">
+											<c:forEach items="${gestionCompteModel.clients}" var="client">
+												<option value="${client.idClient}">${client.nom}</option>
+											</c:forEach>
+										</select><br> 
+									</div>
+		
+                                    <div>
+                                    	<input type="submit" class="btn btn-info" value="Sélectionner un compte"><br>
+                                   	</div>
+										
                                    	</form>
-                                   	
-                                    <form role="form" action="actionClient" method="get">
-                                    
-  											<div class="form-group">
-												<label>Client cible :</label> 
-												<select class="form-control" name="selectedClient">
-													<c:forEach items="${gestionClientModel.clients}"
-														var="client2">
-														<option value="${client.idClient}">${client.nom}</option>
-													</c:forEach>
-												</select><br> 
-												<label>Compte client cible :</label> 
-												<select class="form-control" name="compteCible">
-													<c:forEach items="${client2.idCompte}"
-														var="client">
-														<option value="${client2.idCompte}">${client2.idCompte}</option>
-													</c:forEach>
-												</select>
-											</div>
-											
-											
-											<div class="form-group">
-												<input type="submit" class="btn btn-info" value="Effectuer un virement">
-											</div>
-											
-											
-										</form>
 										
 										<h3>Liste des opérations</h3>
 

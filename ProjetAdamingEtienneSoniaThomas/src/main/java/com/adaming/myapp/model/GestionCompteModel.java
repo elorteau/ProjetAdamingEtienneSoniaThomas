@@ -8,10 +8,13 @@
 package com.adaming.myapp.model;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
 
 public class GestionCompteModel {
@@ -21,13 +24,15 @@ public class GestionCompteModel {
 	//=========================
 	
 	private Compte compte;
-	private double montant;
-	private String action;
 	
 	private double montantOperation;
-	private Compte compteCible;
+	private Long idCompteCible;
 	@DateTimeFormat (iso=ISO.DATE)
 	private Date dateOperation;
+	private List<Client> clients;
+	private Set<Compte> comptes;
+	private Long selectedClient;
+	private Client client;
 
 	//=========================
 	// Getter / Setter
@@ -41,22 +46,6 @@ public class GestionCompteModel {
 		this.compte = compte;
 	}
 
-	public double getMontant() {
-		return montant;
-	}
-
-	public void setMontant(double montant) {
-		this.montant = montant;
-	}
-
-	public String getAction() {
-		return action;
-	}
-
-	public void setAction(String action) {
-		this.action = action;
-	}
-
 	public double getMontantOperation() {
 		return montantOperation;
 	}
@@ -65,12 +54,12 @@ public class GestionCompteModel {
 		this.montantOperation = montantOperation;
 	}
 
-	public Compte getCompteCible() {
-		return compteCible;
+	public Long getIdCompteCible() {
+		return idCompteCible;
 	}
 
-	public void setCompteCible(Compte compteCible) {
-		this.compteCible = compteCible;
+	public void setIdCompteCible(Long idCompteCible) {
+		this.idCompteCible = idCompteCible;
 	}
 
 	public Date getDateOperation() {
@@ -80,7 +69,37 @@ public class GestionCompteModel {
 	public void setDateOperation(Date dateOperation) {
 		this.dateOperation = dateOperation;
 	}
-	
-	
+
+	public List<Client> getClients() {
+		return clients;
+	}
+
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
+	}
+
+	public Set<Compte> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(Set<Compte> comptes) {
+		this.comptes = comptes;
+	}
+
+	public Long getSelectedClient() {
+		return selectedClient;
+	}
+
+	public void setSelectedClient(Long selectedClient) {
+		this.selectedClient = selectedClient;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 	
 }
