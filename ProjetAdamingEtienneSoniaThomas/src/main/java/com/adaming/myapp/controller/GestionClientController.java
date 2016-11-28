@@ -39,8 +39,14 @@ public class GestionClientController {
 	// Methods
 	//=========================
 
-	@RequestMapping(value = "/gestionClient", method = RequestMethod.GET)
-	public String gestionClient(Model model, GestionClientModel gestionClientModel){
+	@RequestMapping(value = "/rechercheMc", method = RequestMethod.GET)
+	public String rechercheMc(Model model, GestionClientModel gestionClientModel){
+		gestionClientModel.setClients(serviceClient.getClientByMc(gestionClientModel.getMc()));
+		model.addAttribute("gestionClientModel", gestionClientModel);
+		return "gestionClient";
+	}
+	@RequestMapping(value = "/actionClient", method = RequestMethod.GET)
+	public String actionClient(Model model, GestionClientModel gestionClientModel){
 		String action = gestionClientModel.getAction();
 			LOGGER.info("----------------action---------------------------------" + action);
 		if(action.equals("Afficher")){

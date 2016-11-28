@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -99,27 +100,32 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Coordonnées de la banque
+                            Coordonnées de l'employe
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <form role="form">
+                                    <form role="form" action="addEmploye", method= "get">
+                                       
+                                        <div class="form-group">
+                                        	<label>Banque :</label>
+                                        	<select class="form-control" name="selectedBanque">
+                                          		<c:forEach items="${employeModel.banques}" var="banque">
+                                           			<option value="${banque.idBanque}">${banque.nom}</option>
+                                           		</c:forEach>
+                                        	</select>
+										</div>
+										 <div class="form-group">
+                                            <label>Code</label>
+                                            <input class="form-control" name="code">
+                                            <p class="help-block">Example : 123</p>
+                                        </div>
                                         <div class="form-group">
                                             <label>Nom</label>
-                                            <input class="form-control">
-                                            <p class="help-block">Example : BNP</p>
+                                            <input class="form-control" placeholder="Enter le nom" name="nom">
                                         </div>
                                         <div class="form-group">
-                                            <label>Adresse</label>
-                                            <input class="form-control" placeholder="Enter l'adresse">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Code postal</label>
-                                            <input class="form-control" placeholder="Enter le code postal">
-                                        </div>
-                                        <div class="form-group">
-                                            <button type="button" class="btn btn-info">Enregistrer</button>
+                                            <input type="submit" class="btn btn-info" value="Enregister">
                                         </div>
                                         
                                     </form>

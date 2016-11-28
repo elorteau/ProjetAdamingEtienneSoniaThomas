@@ -105,7 +105,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    
+                                    <form action="rechercheMc" method="get">
                                     <div>
                                     	 <label>Mot clé :</label>
                                     	<input class="form-control" placeholder="Enter un mot clé" name="Mc"><br>
@@ -113,8 +113,9 @@
                                     <div>
                                     	<input type="submit" class="btn btn-info" value="Afficher"><br>
                                    	</div>
+                                   	</form>
                                    	
-                                    <form role="form" action="gestionClient" method="get">
+                                    <form role="form" action="actionClient" method="get">
                                     
                                     <div class="form-group">
                                         <label>Clients :</label>

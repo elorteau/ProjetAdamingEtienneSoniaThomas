@@ -1,4 +1,4 @@
-package com.adaming.myapp;
+	package com.adaming.myapp;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.adaming.myapp.model.AddEmployeModel;
 import com.adaming.myapp.model.GestionBanqueModel;
 import com.adaming.myapp.model.GestionClientModel;
 import com.adaming.myapp.model.GestionGroupeModel;
@@ -108,10 +109,14 @@ public class HomeController {
 	// ============================
 
 	@RequestMapping(value = "/toAddEmploye", method = RequestMethod.GET)
-	public String toAddEmploye() {
-		LOGGER.info("<-----------toAddEmploye-------------->");
-		return "addEmploye";
-	}
+    public String toAddEmploye(Model model) {
+        AddEmployeModel employeModel =new AddEmployeModel();
+        employeModel.setBanques(serviceBanque.getAll());
+        model.addAttribute("employeModel", employeModel);
+        System.out.println("------------------------ " + employeModel.getBanques());
+        LOGGER.info("<-----------toAddEmploye-------------->");
+        return "addEmploye";
+    }
 
 	@RequestMapping(value = "/toGestionEmploye", method = RequestMethod.GET)
 	public String toGestionEmploye() {
