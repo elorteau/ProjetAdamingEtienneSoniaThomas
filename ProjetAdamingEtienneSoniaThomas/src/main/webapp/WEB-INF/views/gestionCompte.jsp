@@ -184,24 +184,16 @@
                                    	
                                     <form role="form" action="actionClient" method="get">
                                     
-                                    <div class="form-group">
-                                        <label>Clients :</label>
-                                        <select class="form-control" name="selectedClient">
-                                          	<c:forEach items="${gestionClientModel.clients}" var="client">
-                                           		<option value="${client.idClient}">${client.nom}</option>
-                                           	</c:forEach>
-                                        </select>
-									</div>
-											<div class="form-group">
-												<label>Client compte n°2 :</label> 
+  											<div class="form-group">
+												<label>Client cible :</label> 
 												<select class="form-control" name="selectedClient">
 													<c:forEach items="${gestionClientModel.clients}"
 														var="client2">
 														<option value="${client.idClient}">${client.nom}</option>
 													</c:forEach>
 												</select><br> 
-												<label>Compte client n°2 :</label> 
-												<select class="form-control" name="selectedClient">
+												<label>Compte client cible :</label> 
+												<select class="form-control" name="compteCible">
 													<c:forEach items="${client2.idCompte}"
 														var="client">
 														<option value="${client2.idCompte}">${client2.idCompte}</option>

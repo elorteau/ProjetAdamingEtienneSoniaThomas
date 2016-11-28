@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.myapp.entities.Retrait;
 import com.adaming.myapp.entities.Versement;
+import com.adaming.myapp.entities.Virement;
 import com.adaming.myapp.model.GestionCompteModel;
 import com.adaming.myapp.servicecompte.IServiceCompte;
 import com.adaming.myapp.serviceoperation.IServiceOperation;
@@ -64,6 +65,16 @@ public class GestionCompteController {
 		model.addAttribute("gestionCompteModel", gestionCompteModel);
 		LOGGER.info("<-----------------Retrait added-------------->");
 		return"gestionCompte";
+	}
+	
+	@RequestMapping(value ="doVirement/{idCompte}", method = RequestMethod.GET)
+	public String doVirement(Model model, GestionCompteModel gestionCompteModel, @PathVariable Long idCompte){
+		Virement virement = new Virement(gestionCompteModel.getDateOperation(), gestionCompteModel.getMontantOperation());
+		Long idCompteCredite = gestionCompteModel.getCompteCible().getIdCompte();
+		serviceOperation.doVirement(virement, idCompte, idCompteCredite);
+		model.addAttribute("gestionCompteModel", gestionCompteModel);
+		LOGGER.info("<------------------Virement added----------------->");		
+		return "gestionCompte";
 	}
 	
 	
