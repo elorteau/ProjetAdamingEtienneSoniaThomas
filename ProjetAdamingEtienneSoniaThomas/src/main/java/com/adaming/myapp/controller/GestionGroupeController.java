@@ -46,5 +46,13 @@ public class GestionGroupeController {
 		model.addAttribute("gestionGroupeModel", groupeModel);
 		return "gestionGroupe";
 	}
+	
+	@RequestMapping(value="/addEmToGr", method = RequestMethod.GET)
+	public String addEmToGre(Model model, GestionGroupeModel gestionGroupeModel){
+		serviceGroupe.addEmToGr(gestionGroupeModel.getSelectedGroupe1(), gestionGroupeModel.getSelectedEmploye());
+		LOGGER.info("<-----------------List of employes generated----------------->");
+		model.addAttribute("gestionGroupeModel", gestionGroupeModel);
+		return "gestionGroupe";
+	}
 
 }

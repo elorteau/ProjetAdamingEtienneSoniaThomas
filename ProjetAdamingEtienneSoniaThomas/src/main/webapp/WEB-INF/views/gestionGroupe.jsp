@@ -87,15 +87,67 @@
 		<!-- /.navbar-static-side -->
 		</nav>
 
-
         <div id="page-wrapper">
             <div class="row">
+           		
                 <div class="col-lg-12">
                     <h1 class="page-header"></h1>
                 </div>
                 <!-- /.col-lg-12 -->
+               
             </div>
             <!-- /.row -->
+  
+  				<div>
+					<label>Gestion groupe</label>
+				</div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Ajouter un employé a un groupe
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">           
+            
+           				 <form role="form" action="addEmToGr" method ="get">
+                                    <div class="form-group">
+                                            <label>Groupe :</label>
+                                            <select class="form-control" name="selectedGroupe1">
+                                            	<c:forEach items="${gestionGroupeModel.groupes}" var="groupe">
+                                            		<option value="${groupe.idGroupe}">${groupe.nom}</option>
+                                            	</c:forEach>
+                                            </select>
+                                        </div>                               
+                      					<div class="form-group">
+                                            <label>Employe :</label>
+                                            <select class="form-control" name="selectedEmploye">
+                                            	<c:forEach items="${gestionGroupeModel.employes}" var="employe">
+                                            		<option value="${employe.idEmploye}">${employe.nom}</option>
+                                            	</c:forEach>
+                                            </select>
+                                        </div>  
+                                          
+                                        <div class="form-group">
+                                            
+                                            <input type="submit" class="btn btn-info" value="Enregistrer">
+                                           
+                                        </div>
+                                    </form>   
+                         </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->      
+    </div>      
+            
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
@@ -105,6 +157,9 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
+                                
+                                
+                                    
                                     <form role="form" action="printEmployeByGroupe" method ="get">
                                     <div class="form-group">
                                             <label>Groupe :</label>

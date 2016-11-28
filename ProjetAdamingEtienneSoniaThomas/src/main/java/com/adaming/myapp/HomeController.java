@@ -147,9 +147,12 @@ public class HomeController {
 	public String toGestionGroupe(Model model) {
 		GestionGroupeModel gestionGroupeModel = new GestionGroupeModel();
 		gestionGroupeModel.setGroupes(serviceGroupe.getAll());
+		gestionGroupeModel.setEmployes(serviceEmploye.getAll());
 		model.addAttribute("gestionGroupeModel", gestionGroupeModel);
 		LOGGER.info("<-----------toGestionGroupe-------------->");
 		return "gestionGroupe";
 	}
+	
+	
 
 }

@@ -67,4 +67,5 @@ public class DaoGroupeImpl extends AbstractDaoGroupeJPA implements IDaoGroupe {
 
 
 
+
 }
