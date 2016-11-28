@@ -21,6 +21,7 @@ import com.adaming.myapp.entities.Compte;
 import com.adaming.myapp.entities.CompteCourant;
 import com.adaming.myapp.entities.CompteEpargne;
 import com.adaming.myapp.model.AddCompteModel;
+import com.adaming.myapp.serviceclient.IServiceClient;
 import com.adaming.myapp.servicecompte.IServiceCompte;
 
 @Controller
@@ -29,34 +30,39 @@ public class AddCompteController {
 	//=========================
 	// Attributes
 	//=========================
-@Inject
-private IServiceCompte serviceCompte;
-private final Logger LOGGER = Logger.getLogger("CompteController");
+	@Inject
+	private IServiceCompte serviceCompte;
+	@Inject
+	private IServiceClient serviceClient;
+	private final Logger LOGGER = Logger.getLogger("CompteController");
 	
 
 	//=========================
 	// Methods
 	//=========================
-@RequestMapping(value= "toAddCompte/addCompte/{idClient}", method = RequestMethod.GET)
-public String addCompte(AddCompteModel compteModel, @PathVariable Long idClient){
-	String action = compteModel.getAction();
-	if(action.equals("courant")){
-		
-		Compte compteCourant = new CompteCourant(compteModel.getNumeroCompte(), compteModel.getSolde(), compteModel.getDateCreation(), compteModel.getDecouvert());
-		serviceCompte.add(compteCourant);
-		serviceCompte.addCompteToClient(compteCourant.getIdCompte(), idClient);
-		LOGGER.info("<--------new compteCourant added-------------->");
-		//serviceCompte.addCompteToClient(compteModel.getIdCompte(), compteModel.getClient().getIdClient());
-		return "home";
+	@RequestMapping(value= "toAddCompte/addCompte/{idClient}", method = RequestMethod.GET)
+	public String addCompte(AddCompteModel compteModel, @PathVariable Long idClient){
+		String action = compteModel.getAction();
+		serviceClient.addClientToBanque(idClient, compteModel.getIdBanque());
+		if(action.equals("courant")){
+			
+			Compte compteCourant = new CompteCourant(compteModel.getNumeroCompte(), compteModel.getSolde(), compteModel.getDateCreation(), compteModel.getDecouvert());
+			serviceCompte.add(compteCourant);
+			serviceCompte.addCompteToClient(compteCourant.getIdCompte(), idClient);
+			serviceCompte.addCompteToBanque(compteCourant.getIdCompte(), compteModel.getIdBanque());
+			serviceCompte.addCompteToEmploye(compteCourant.getIdCompte(), compteModel.getIdEmploye());
+			LOGGER.info("<--------new compteCourant added-------------->");
+			return "home";
+		}
+		if(action.equals("epargne")){
+			Compte compteEpargne = new CompteEpargne(compteModel.getNumeroCompte(), compteModel.getSolde(), compteModel.getDateCreation(), compteModel.getTauxInteret());
+			serviceCompte.add(compteEpargne);
+			serviceCompte.addCompteToClient(compteEpargne.getIdCompte(), idClient);
+			serviceCompte.addCompteToBanque(compteEpargne.getIdCompte(), compteModel.getIdBanque());
+			serviceCompte.addCompteToEmploye(compteEpargne.getIdCompte(), compteModel.getIdEmploye());
+			LOGGER.info("<--------new compteEpargne added-------------->");
+			return "home";
+		}
+		return "redirect:/";
 	}
-	if(action.equals("epargne")){
-		Compte compteEpargne = new CompteEpargne(compteModel.getNumeroCompte(), compteModel.getSolde(), compteModel.getDateCreation(), compteModel.getTauxInteret());
-		serviceCompte.add(compteEpargne);
-		serviceCompte.addCompteToClient(compteEpargne.getIdCompte(), idClient);
-		LOGGER.info("<--------new compteEpargne added-------------->");
-		//serviceCompte.addCompteToClient(compteModel.getIdCompte(), compteModel.getClient().getIdClient());
-		return "home";
-	}
-	return "redirect:/";
-}
 }

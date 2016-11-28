@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.myapp.model.AddCompteModel;
 import com.adaming.myapp.model.GestionCompteModel;
+import com.adaming.myapp.servicebanque.IServiceBanque;
 import com.adaming.myapp.serviceclient.IServiceClient;
 import com.adaming.myapp.servicecompte.IServiceCompte;
+import com.adaming.myapp.serviceemployee.IServiceEmploye;
 
 @Controller
 public class ComptesClientController {
@@ -33,6 +35,10 @@ public class ComptesClientController {
 	private IServiceClient serviceClient;
 	@Inject
 	private IServiceCompte serviceCompte;
+	@Inject
+	private IServiceBanque serviceBanque;
+	@Inject
+	private IServiceEmploye serviceEmploye;
 	private final Logger LOGGER = Logger.getLogger("ComptesClientController");
 	
 	//=========================
@@ -52,6 +58,8 @@ public class ComptesClientController {
 	public String toAddCompte(Model model, @PathVariable Long idClient) {
 		AddCompteModel addCompteModel = new AddCompteModel();
 		addCompteModel.setClient(serviceClient.getOne(idClient));
+		addCompteModel.setBanques(serviceBanque.getAll());
+		addCompteModel.setEmployes(serviceEmploye.getAll());
 		model.addAttribute("addCompteModel", addCompteModel);
 		LOGGER.info("<-------------------- to addCompte ------------------------->");
 		return "addCompte";

@@ -125,7 +125,7 @@
 	                                    	<td>${gestionCompteModel.compte.dateCreation}</td>
 	                                    	<td>${gestionCompteModel.compte.banque}</td>
 	                                    	<td>${gestionCompteModel.compte.employe}</td>
-	                                    	<td><a href="deleteCompte/${compte.idCompte}" class="btn btn-secondary">Supprimer</a></td>
+	                                    	<td><a href="deleteCompte/${gestionCompteModel.compte.idCompte}" class="btn btn-secondary">Supprimer</a></td>
 		                                </tr>
                                     
                                     </table>

@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -106,13 +107,24 @@
                                 <div class="col-lg-6">
                                     <form role="form" action="addCompte/${addCompteModel.client.idClient}" method="get">
                                     	
-                                    	 <%-- <div class="form-group">
-                                        	<label>Employes :</label>
-                                        	<select class="form-control" name="selectedEmploye">
-                                        	<c: forEach items="${employeModel.employes}" var="employe"></c:>
-                                          		<option value="employe.idEmploye">${employe.nom}</option>
+                                    	 <div class="form-group">
+                                        	<label>Banque :</label>
+                                        	<select class="form-control" name="idBanque">
+                                        		<c:forEach items="${addCompteModel.banques}" var="banque">
+                                          			<option value="${banque.idBanque}">${banque.nom}</option>
+                                          		</c:forEach>
                                         	</select>
-                                   		 </div> --%>
+                                   		 </div>
+                                   		 
+                                    	 <div class="form-group">
+                                        	<label>Employe :</label>
+                                        	<select class="form-control" name="idEmploye">
+                                        		<c:forEach items="${addCompteModel.employes}" var="employe">
+                                          			<option value="${employe.idEmploye}">${employe.nom}</option>
+                                          		</c:forEach>
+                                        	</select>
+                                   		 </div>
+
                                     	 <div class="form-group">
                                         	<label>Type compte :</label>
                                         	<select class="form-control" name="action">

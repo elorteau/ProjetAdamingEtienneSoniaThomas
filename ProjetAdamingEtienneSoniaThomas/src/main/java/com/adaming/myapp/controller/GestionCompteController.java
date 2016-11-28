@@ -34,7 +34,7 @@ public class GestionCompteController {
 	// Methods
 	//=========================
 	
-	@RequestMapping(value = "/deleteCompte/{idCompte}", method = RequestMethod.GET)
+	@RequestMapping(value = "toCompte/deleteCompte/{idCompte}", method = RequestMethod.GET)
 	public String deleteCompte(Model model, @PathVariable Long idCompte) {
 		serviceCompte.delete(idCompte);
 		LOGGER.info("<---------------------- delete Compte ------------------------>");

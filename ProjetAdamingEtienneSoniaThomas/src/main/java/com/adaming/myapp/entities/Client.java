@@ -43,7 +43,7 @@ public class Client implements Serializable{
 	private Date dateEntree;
 	private String adresse;
 	
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy="clients")
+	@ManyToMany(mappedBy="clients")
 	private List<Banque> banques = new ArrayList<Banque>();
 	
 	@OneToMany(fetch=FetchType.EAGER)  // association avec le compte
