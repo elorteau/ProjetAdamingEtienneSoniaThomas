@@ -8,6 +8,7 @@
 package com.adaming.myapp.serviceclient;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -52,7 +53,7 @@ public class ServiceClientImpl extends AbstractServiceClientJPA implements IServ
 	}
 
 	@Override
-	public List<Compte> getCompteByClient(Long idClient) {
+	public Set<Compte> getCompteByClient(Long idClient) {
 		
 		return getCompteByClientAbstract(idClient);
 	}

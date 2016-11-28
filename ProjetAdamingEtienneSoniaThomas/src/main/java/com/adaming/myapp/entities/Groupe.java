@@ -46,7 +46,7 @@ public class Groupe implements Serializable {
 	//   association avec la class Employe
 	//====================================
 	
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name="Employe_to_groupe")
 	private List<Employe> employes = new ArrayList <Employe> ();
 	

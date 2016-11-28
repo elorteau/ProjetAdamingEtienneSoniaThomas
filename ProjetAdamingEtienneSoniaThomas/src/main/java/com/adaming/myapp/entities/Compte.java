@@ -25,6 +25,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -68,7 +69,7 @@ public abstract class Compte implements Serializable {
 	//   association avec la class Operation
 	//====================================
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER)
 	@JoinTable(name = "operation_to_compte")
 	private List<Operation> operations = new ArrayList <Operation> ();
 	

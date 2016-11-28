@@ -8,6 +8,7 @@
 package com.adaming.myapp.daoclient;
 
 import java.util.List;
+import java.util.Set;
 
 import com.adaming.myapp.dao.IDaoGenerique;
 import com.adaming.myapp.entities.Client;
@@ -25,7 +26,7 @@ public interface IDaoClient extends IDaoGenerique<Client> {
 	 * @param (idClient)
 	 * @return comptesByClient
 	 */
-	List<Compte> getCompteByClient(Long idClient);
+	Set<Compte> getCompteByClient(Long idClient);
 	List<Client> getClientByMc(String MC);
 	Client addClientToBanque(Long idClient, Long idBanque);
 	

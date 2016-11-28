@@ -33,13 +33,13 @@ public class Banque implements Serializable{
 	private String adresse;
 	private int codePostal;
 	
-	@OneToMany(mappedBy="banque", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="banque")
 	private List<Compte> comptes = new ArrayList<Compte>();
 	
-	@OneToMany(mappedBy="banque", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="banque")
 	private List<Employe> employes = new ArrayList<Employe>();	
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany
 	@JoinTable(name="TB_Client_Banque")
 	private List<Client> clients = new ArrayList<Client>();
 	

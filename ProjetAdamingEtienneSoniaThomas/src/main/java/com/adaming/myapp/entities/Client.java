@@ -10,7 +10,9 @@ package com.adaming.myapp.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -46,9 +48,9 @@ public class Client implements Serializable{
 	@ManyToMany(mappedBy="clients")
 	private List<Banque> banques = new ArrayList<Banque>();
 	
-	@OneToMany(fetch=FetchType.EAGER)  // association avec le compte
+	@OneToMany(fetch=FetchType.EAGER) // association avec le compte
 	@JoinTable(name="TB_Compte_Client")
-	private List<Compte> comptes = new ArrayList<Compte>();
+	private Set<Compte> comptes = new HashSet<Compte>();
 	
 	//=========================
 	// Constructor
@@ -126,14 +128,14 @@ public class Client implements Serializable{
 	public void setBanques(List<Banque> banques) {
 		this.banques = banques;
 	}
-
-	public List<Compte> getComptes() {
+	public Set<Compte> getComptes() {
 		return comptes;
 	}
 
-	public void setComptes(List<Compte> comptes) {
+	public void setComptes(Set<Compte> comptes) {
 		this.comptes = comptes;
 	}
+	
 
 	//=========================
 	// Methods
@@ -146,6 +148,8 @@ public class Client implements Serializable{
 	 * @return attribut client
 	 */
 	
+	
+
 	@Override
 	public String toString() {
 		return "Client [idCompte=" + idClient + ", code=" + code + ", nom="

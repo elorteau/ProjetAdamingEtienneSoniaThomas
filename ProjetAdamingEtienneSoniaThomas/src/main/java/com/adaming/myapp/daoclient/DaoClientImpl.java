@@ -8,6 +8,7 @@
 package com.adaming.myapp.daoclient;
 
 import java.util.List;
+import java.util.Set;
 
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
@@ -59,7 +60,7 @@ public class DaoClientImpl extends AbstractDaoClientJPA implements IDaoClient {
 	 * @return List<Compte> comptesClient
 	 */	
 	@Override
-	public List<Compte> getCompteByClient(Long idClient) {
+	public Set<Compte> getCompteByClient(Long idClient) {
 		return getCompteByClientAbstract(idClient);
 	}
 

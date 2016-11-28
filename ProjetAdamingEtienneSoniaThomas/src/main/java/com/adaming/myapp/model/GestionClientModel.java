@@ -8,6 +8,7 @@
 package com.adaming.myapp.model;
 
 import java.util.List;
+import java.util.Set;
 
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
@@ -18,7 +19,7 @@ public class GestionClientModel {
 	// Attributes
 	//=========================
 	
-	private List<Compte> comptes;
+	private Set<Compte> comptes;
 	private List<Client> clients;
 	private String action;
 	private Long selectedClient;
@@ -36,11 +37,11 @@ public class GestionClientModel {
 		Mc = mc;
 	}
 
-	public List<Compte> getComptes() {
+	public Set<Compte> getComptes() {
 		return comptes;
 	}
 
-	public void setComptes(List<Compte> comptes) {
+	public void setComptes(Set<Compte> comptes) {
 		this.comptes = comptes;
 	}
 

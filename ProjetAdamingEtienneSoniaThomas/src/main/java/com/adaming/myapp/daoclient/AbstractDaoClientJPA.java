@@ -8,6 +8,7 @@
 package com.adaming.myapp.daoclient;
 
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 
 import javax.persistence.Query;
@@ -33,10 +34,10 @@ public class AbstractDaoClientJPA extends AbstractDaoGeneriqueJPA<Client> {
 	 * @param (idClient)
 	 * @return List<Compte> comptesClient
 	 */
-	protected List<Compte> getCompteByClientAbstract(Long idClient){
+	protected Set<Compte> getCompteByClientAbstract(Long idClient){
 		
 		Client client = em.find(Client.class, idClient);
-		List<Compte> comptesByClient = client.getComptes();		
+		Set<Compte> comptesByClient = client.getComptes();		
 		LOGGER.info("<------------------List of Compte by Client generated ------------------->");
 		return comptesByClient;
 		

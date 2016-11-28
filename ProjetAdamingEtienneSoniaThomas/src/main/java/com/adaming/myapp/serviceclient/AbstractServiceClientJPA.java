@@ -8,6 +8,7 @@
 package com.adaming.myapp.serviceclient;
 
 import java.util.List;
+import java.util.Set;
 
 import com.adaming.myapp.daoclient.IDaoClient;
 import com.adaming.myapp.entities.Client;
@@ -31,7 +32,7 @@ public class AbstractServiceClientJPA extends AbstractServiceGeneriqueJPA<Client
 	//======================================================
 
 	
-	public List<Compte> getCompteByClientAbstract(Long idClient){
+	public Set<Compte> getCompteByClientAbstract(Long idClient){
 		return daoclient.getCompteByClient(idClient);	
 	}
 	
