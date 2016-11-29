@@ -43,7 +43,7 @@ public class UpdateClientController {
 		client.setAdresse(updateClientModel.getAdresse());
 		serviceClient.update(client);
 		LOGGER.info("<--------------------- client updated ------------------->");
-		return "home";
+		return "redirect:/toHome";
 	}
 
 }

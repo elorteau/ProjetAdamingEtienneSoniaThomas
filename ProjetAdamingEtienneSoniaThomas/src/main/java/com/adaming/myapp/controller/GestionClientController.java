@@ -62,7 +62,7 @@ public class GestionClientController {
 			serviceClient.delete(gestionClientModel.getSelectedClient());
 			LOGGER.info("<---------le client selectionné a été supprimé--------------->");
 			
-			return "home";
+			return "../home";
 		}
 		
 		else if (action.equals("Modifier")){

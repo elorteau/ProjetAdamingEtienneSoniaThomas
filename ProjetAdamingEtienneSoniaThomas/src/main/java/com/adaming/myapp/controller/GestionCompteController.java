@@ -50,7 +50,7 @@ public class GestionCompteController {
 	public String deleteCompte(Model model, @PathVariable Long idCompte) {
 		serviceCompte.delete(idCompte);
 		LOGGER.info("<---------------------- delete Compte ------------------------>");
-		return "home";
+		return "../home";
 	}
 	
 	@RequestMapping(value = "doVersement/{idCompte}", method = RequestMethod.GET)
@@ -59,7 +59,7 @@ public class GestionCompteController {
 		serviceOperation.doVersement(versement, idCompte);
 		model.addAttribute("gestionCompteModel", gestionCompteModel);
 		LOGGER.info("<----------------Versement added---------------->");
-		return "gestionCompte";
+		return "redirect:/toHome";
 	}
 	
 	@RequestMapping(value ="doRetrait/{idCompte}", method = RequestMethod.GET)
@@ -68,7 +68,7 @@ public class GestionCompteController {
 		serviceOperation.doRetrait(retrait, idCompte);
 		model.addAttribute("gestionCompteModel", gestionCompteModel);
 		LOGGER.info("<-----------------Retrait added-------------->");
-		return"gestionCompte";
+		return"redirect:/toHome"; //redirect:/toHome"
 	}
 	
 	@RequestMapping(value ="doVirement/{idCompte}", method = RequestMethod.GET)
@@ -87,7 +87,7 @@ public class GestionCompteController {
 		Virement virement = new Virement(new Date(), Math.abs(montantOperation));
 		serviceOperation.doVirement(virement, idCompte, gestionCompteModel.getIdCompteCible());
 		LOGGER.info("<---------------- Virement added ----------------->");
-		return "home";
+		return "redirect:/toHome";
 	}
 	
 }
