@@ -84,7 +84,7 @@ public class GestionCompteController {
 	
 	@RequestMapping(value = "doVirement/virement/{idCompte}/{montantOperation}", method = RequestMethod.GET)
 	public String virement(GestionCompteModel gestionCompteModel, @PathVariable Long idCompte, @PathVariable double montantOperation) {
-		Virement virement = new Virement(new Date(), montantOperation);
+		Virement virement = new Virement(new Date(), -Math.abs(montantOperation));
 		serviceOperation.doVirement(virement, idCompte, gestionCompteModel.getIdCompteCible());
 		LOGGER.info("<---------------- Virement added ----------------->");
 		return "home";

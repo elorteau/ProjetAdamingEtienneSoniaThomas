@@ -30,7 +30,7 @@ public class Retrait extends Operation implements Serializable{
 	}
 
 	public Retrait(Date dateOperatiion, double montantOperation) {
-		super(dateOperatiion, montantOperation);
+		super(dateOperatiion, -Math.abs(montantOperation));
 	}
 
 	//=========================

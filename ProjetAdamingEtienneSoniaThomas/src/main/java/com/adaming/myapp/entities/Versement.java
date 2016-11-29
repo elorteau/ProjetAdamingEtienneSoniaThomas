@@ -30,7 +30,7 @@ public class Versement extends Operation implements Serializable{
 	}
 
 	public Versement(Date dateOperatiion, double montantOperation) {
-		super(dateOperatiion, montantOperation);
+		super(dateOperatiion, Math.abs(montantOperation));
 	}
 	
 	//=========================
