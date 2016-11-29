@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -178,7 +179,7 @@
                                         </div>
                                     </form>   
                                     
-                                    
+                                   <c:if test="${fn:length(gestionGroupeModel.employesByGroupe) > 0}">
                                    <table class="table table-striped">
                                     
 	                                    <tr>
@@ -194,6 +195,12 @@
 	                                    </c:forEach>
                                     
                                     </table> 
+                                    </c:if>
+                                    <c:if test="${not empty message}">
+                                    	<div class="alert alert-danger">
+                                    		<p>${message}</p>
+                                    	</div>
+                                    </c:if>
                                     
                                     
                                     

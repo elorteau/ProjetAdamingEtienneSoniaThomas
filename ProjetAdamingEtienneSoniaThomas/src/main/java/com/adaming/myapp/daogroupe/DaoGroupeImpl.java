@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.adaming.myapp.entities.Employe;
 import com.adaming.myapp.entities.Groupe;
+import com.adaming.myapp.exception.NullListException;
 
 public class DaoGroupeImpl extends AbstractDaoGroupeJPA implements IDaoGroupe {
 
@@ -55,13 +56,11 @@ public class DaoGroupeImpl extends AbstractDaoGroupeJPA implements IDaoGroupe {
 	
 	@Override
 	public Groupe addEmToGr(Long idGroupe, Long idEmploye) {
-		// TODO Auto-generated method stub
 		return addEmToGrAbstract(idGroupe, idEmploye);
 	}
 
 	@Override
 	public List<Employe> getEmployeByGroupe(Long idGroupe) {
-		// TODO Auto-generated method stub
 		return getEmployeByGroupeAbstract(idGroupe);
 	}
 

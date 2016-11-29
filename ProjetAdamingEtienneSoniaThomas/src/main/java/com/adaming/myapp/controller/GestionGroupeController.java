@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.myapp.entities.Employe;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.model.GestionGroupeModel;
 import com.adaming.myapp.serviceemployee.IServiceEmploye;
 import com.adaming.myapp.servicegroupe.IServiceGroupe;
@@ -41,14 +42,28 @@ public class GestionGroupeController {
 	
 	@RequestMapping(value="/printEmployeByGroupe", method = RequestMethod.GET)
 	public String getEmployeByGroupe(Model model, GestionGroupeModel groupeModel){
-		Long idGroupe = groupeModel.getSelectedGroupe();
-		List<Employe> employes =  serviceGroupe.getEmployeByGroupe(idGroupe);
-		groupeModel.setEmployesByGroupe(employes);
-		groupeModel.setEmployes(serviceEmploye.getAll());
-		groupeModel.setGroupes(serviceGroupe.getAll());
-		LOGGER.info("<-----------------List of employes generated----------------->");
-		model.addAttribute("gestionGroupeModel", groupeModel);
-		return "gestionGroupe";
+		try {
+			Long idGroupe = groupeModel.getSelectedGroupe();
+			List<Employe> employes =  serviceGroupe.getEmployeByGroupe(idGroupe);
+			groupeModel.setEmployesByGroupe(employes);
+			groupeModel.setEmployes(serviceEmploye.getAll());
+			groupeModel.setGroupes(serviceGroupe.getAll());
+			LOGGER.info("<-----------------List of employes generated----------------->");
+			model.addAttribute("gestionGroupeModel", groupeModel);
+			return "gestionGroupe";
+		} catch (NullListException e) {
+			e.printStackTrace();
+			try {
+				groupeModel.setEmployes(serviceEmploye.getAll());
+				groupeModel.setGroupes(serviceGroupe.getAll());
+				model.addAttribute("gestionGroupeModel", groupeModel);
+			} catch (NullListException e1) {
+				e1.printStackTrace();
+			}
+			LOGGER.warn("<-------------- No Employe in this group in DataBase ---------------------->");
+			model.addAttribute("message", "Il n'y a aucun employé le groupe " + serviceGroupe.getOne(groupeModel.getSelectedGroupe()).getNom());
+			return "gestionGroupe";
+		}
 	}
 	
 	@RequestMapping(value="/addEmToGr", method = RequestMethod.GET)

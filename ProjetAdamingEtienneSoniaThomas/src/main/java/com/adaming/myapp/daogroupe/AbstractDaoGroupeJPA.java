@@ -12,6 +12,7 @@ import java.util.List;
 
 
 
+
 import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
@@ -19,6 +20,7 @@ import org.apache.log4j.Logger;
 import com.adaming.myapp.dao.AbstractDaoGeneriqueJPA;
 import com.adaming.myapp.entities.Employe;
 import com.adaming.myapp.entities.Groupe;
+import com.adaming.myapp.exception.NullListException;
 
 public class AbstractDaoGroupeJPA extends AbstractDaoGeneriqueJPA<Groupe> {
 
@@ -42,7 +44,6 @@ public class AbstractDaoGroupeJPA extends AbstractDaoGeneriqueJPA<Groupe> {
 	public List <Employe> getEmployeByGroupeAbstract(Long idGroupe) {
 		Groupe groupe = em.find(Groupe.class, idGroupe);
 		List<Employe> employes = groupe.getEmployes();
-		
 		LOGGER.info("la liste des employes par groupe" + employes );
 		return employes;
 	}

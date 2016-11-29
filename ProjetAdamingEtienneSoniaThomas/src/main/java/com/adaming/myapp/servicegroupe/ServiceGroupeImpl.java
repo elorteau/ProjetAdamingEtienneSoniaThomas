@@ -55,7 +55,7 @@ public class ServiceGroupeImpl extends AbstractServiceGroupeJPA implements IServ
 	}
 
 	@Override
-	public List<Employe> getEmployeByGroupe(Long idGroupe) {
+	public List<Employe> getEmployeByGroupe(Long idGroupe) throws NullListException {
 		
 		return getEmployeByGroupeAbstract(idGroupe);
 	}
