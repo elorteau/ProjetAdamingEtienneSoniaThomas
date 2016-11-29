@@ -14,6 +14,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.adaming.myapp.dao.IDaoGenerique;
+import com.adaming.myapp.exception.NullListException;
 
 
 public abstract class AbstractServiceGeneriqueJPA<T extends Serializable> {
@@ -52,8 +53,12 @@ public abstract class AbstractServiceGeneriqueJPA<T extends Serializable> {
 		return dao.getOne(id);
 	}
 	
-	public List<T> getAllAbstract() {
-		return dao.getAll();
+	public List<T> getAllAbstract() throws NullListException {
+		List<T> listAll = dao.getAll();
+		if (listAll.size() <= 0) {
+			throw new NullListException("The " + clazz.getSimpleName() + " list is empty.");
+		}
+		return listAll;
 	}
 	
 	public T updateAbstract(T entity) {

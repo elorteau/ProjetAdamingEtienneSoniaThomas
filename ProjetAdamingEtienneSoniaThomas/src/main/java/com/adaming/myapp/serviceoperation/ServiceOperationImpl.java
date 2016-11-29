@@ -15,6 +15,7 @@ import com.adaming.myapp.entities.Operation;
 import com.adaming.myapp.entities.Retrait;
 import com.adaming.myapp.entities.Versement;
 import com.adaming.myapp.entities.Virement;
+import com.adaming.myapp.exception.NullListException;
 
 @Transactional
 public class ServiceOperationImpl extends AbstractServiceOperationJPA implements IServiceOperation {
@@ -34,7 +35,7 @@ public class ServiceOperationImpl extends AbstractServiceOperationJPA implements
 	}
 
 	@Override
-	public List<Operation> getAll() {
+	public List<Operation> getAll() throws NullListException {
 		return getAllAbstract();
 	}
 

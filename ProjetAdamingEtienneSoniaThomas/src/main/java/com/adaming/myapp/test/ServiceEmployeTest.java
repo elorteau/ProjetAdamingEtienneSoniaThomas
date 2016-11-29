@@ -2,6 +2,7 @@ package com.adaming.myapp.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hamcrest.core.IsEqual;
@@ -14,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.adaming.myapp.entities.Banque;
 import com.adaming.myapp.entities.Employe;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.servicebanque.IServiceBanque;
 import com.adaming.myapp.serviceemployee.IServiceEmploye;
 
@@ -51,7 +53,12 @@ public class ServiceEmployeTest {
 	@Test
 	@Ignore
 	public void testGetAll() {
-		List<Employe> employes =serviceEmploye.getAll();
+		List<Employe> employes = new ArrayList<Employe>();
+		try {
+			employes = serviceEmploye.getAll();
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 		assertTrue(employes.size()>0);
 	}
 
@@ -68,10 +75,14 @@ public class ServiceEmployeTest {
 	@Test
 	@Ignore
 	public void testDelete() {
-		List<Employe> employes = serviceEmploye.getAll();
-		serviceEmploye.delete(1L);
-		List<Employe> employes2 = serviceEmploye.getAll();
-		assertTrue(employes.size()-1 == employes2.size());
+		try {
+			List<Employe> employes = serviceEmploye.getAll();
+			serviceEmploye.delete(1L);
+			List<Employe> employes2 = serviceEmploye.getAll();
+			assertTrue(employes.size()-1 == employes2.size());
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test

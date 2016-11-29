@@ -12,6 +12,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.myapp.entities.Employe;
+import com.adaming.myapp.exception.NullListException;
 
 @Transactional
 public class ServiceEmployeImpl extends AbstractServiceEmployeJPA implements IServiceEmploye {
@@ -27,7 +28,7 @@ public class ServiceEmployeImpl extends AbstractServiceEmployeJPA implements ISe
 	}
 
 	@Override
-	public List<Employe> getAll() {
+	public List<Employe> getAll() throws NullListException {
 		return getAllAbstract();
 	}
 

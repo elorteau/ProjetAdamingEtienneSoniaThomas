@@ -15,6 +15,7 @@ import com.adaming.myapp.entities.Banque;
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
 import com.adaming.myapp.entities.Employe;
+import com.adaming.myapp.exception.NullListException;
 
 @Transactional
 public class ServiceBanqueImpl extends AbstractServiceBanqueJPA implements IServiceBanque {
@@ -30,7 +31,7 @@ public class ServiceBanqueImpl extends AbstractServiceBanqueJPA implements IServ
 	}
 
 	@Override
-	public List<Banque> getAll() {
+	public List<Banque> getAll() throws NullListException {
 		return getAllAbstract();
 	}
 

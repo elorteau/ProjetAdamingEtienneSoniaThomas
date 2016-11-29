@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.myapp.entities.Employe;
 import com.adaming.myapp.entities.Groupe;
+import com.adaming.myapp.exception.NullListException;
 
 @Transactional
 public class ServiceGroupeImpl extends AbstractServiceGroupeJPA implements IServiceGroupe {
@@ -28,7 +29,7 @@ public class ServiceGroupeImpl extends AbstractServiceGroupeJPA implements IServ
 	}
 
 	@Override
-	public List<Groupe> getAll() {
+	public List<Groupe> getAll() throws NullListException {
 		return getAllAbstract();
 	}
 

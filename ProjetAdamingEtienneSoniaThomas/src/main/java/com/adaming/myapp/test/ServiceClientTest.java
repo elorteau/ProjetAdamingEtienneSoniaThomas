@@ -3,6 +3,7 @@ package com.adaming.myapp.test;
 import static org.junit.Assert.*;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,8 @@ import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
 import com.adaming.myapp.entities.CompteCourant;
 import com.adaming.myapp.entities.Employe;
+import com.adaming.myapp.exception.AlreadyLinkedException;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.servicebanque.IServiceBanque;
 import com.adaming.myapp.serviceclient.IServiceClient;
 import com.adaming.myapp.servicecompte.IServiceCompte;
@@ -67,7 +70,12 @@ public class ServiceClientTest {
     @Test
     @Ignore
     public void testGetAll() {
-        List<Client> clients = serviceClient.getAll();
+        List<Client> clients = new ArrayList<Client>();
+		try {
+			clients = serviceClient.getAll();
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
         assertNotNull(clients);
     }
 
@@ -83,11 +91,15 @@ public class ServiceClientTest {
     @Test
     @Ignore
     public void testDelete() {
-        List<Client> clients = serviceClient.getAll();
-        int c1= clients.size();
-        serviceClient.delete(1L);
-        int c2 = clients.size();
-        assert(c1-c2==1);
+		try {
+			List<Client> clients = serviceClient.getAll();
+	        int c1= clients.size();
+	        serviceClient.delete(1L);
+	        int c2 = clients.size();
+	        assert(c1-c2==1);
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
         
     }
 
@@ -124,7 +136,11 @@ public class ServiceClientTest {
 		serviceBanque.add(banque);
 		Client client = new Client(0L, "nom", "prenom", new Date(), "adresse");
 		serviceClient.add(client);
-		serviceClient.addClientToBanque(client.getIdClient(), banque.getIdBanque());
+		try {
+			serviceClient.addClientToBanque(client.getIdClient(), banque.getIdBanque());
+		} catch (AlreadyLinkedException e) {
+			e.printStackTrace();
+		}
 		assertNotNull(serviceBanque.getOne(banque.getIdBanque()).getClients().size());
     }
 

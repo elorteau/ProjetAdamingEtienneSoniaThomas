@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.model.AddEmployeModel;
 import com.adaming.myapp.model.GestionBanqueModel;
 import com.adaming.myapp.model.GestionClientModel;
@@ -84,11 +85,17 @@ public class HomeController {
 
 	@RequestMapping(value = "/toGestionBanque", method = RequestMethod.GET)
 	public String toGestionBanque(Model model) {
-		GestionBanqueModel gestionBanqueModel = new GestionBanqueModel();
-		gestionBanqueModel.setBanques(serviceBanque.getAll());
-		model.addAttribute("gestionBanqueModel", gestionBanqueModel);
-		LOGGER.info("<-----------toGestionBanque-------------->");
-		return "gestionBanque";
+		try {
+			GestionBanqueModel gestionBanqueModel = new GestionBanqueModel();
+			gestionBanqueModel.setBanques(serviceBanque.getAll());
+			model.addAttribute("gestionBanqueModel", gestionBanqueModel);
+			LOGGER.info("<-----------toGestionBanque-------------->");
+			return "gestionBanque";
+		} catch (NullListException e) {
+			e.printStackTrace();
+			LOGGER.warn("<------------ No Banque in DataBase ------------->");
+			return "home";
+		}
 	}
 
 	// ============================
@@ -103,11 +110,18 @@ public class HomeController {
 
 	@RequestMapping(value = "/toGestionClient", method = RequestMethod.GET)
 	public String toGestionClient(Model model) {
-		GestionClientModel gestionClientModel = new GestionClientModel();
-		gestionClientModel.setClients(serviceClient.getAll());
-		model.addAttribute("gestionClientModel", gestionClientModel);
-		LOGGER.info("<-----------toGestionClient-------------->");
-		return "gestionClient";
+		try {
+			GestionClientModel gestionClientModel = new GestionClientModel();
+			gestionClientModel.setClients(serviceClient.getAll());
+			model.addAttribute("gestionClientModel", gestionClientModel);
+			LOGGER.info("<-----------toGestionClient-------------->");
+			return "gestionClient";
+		} catch (NullListException e) {
+			e.printStackTrace();
+			LOGGER.warn("<------------------ No Client in DataBase ------------------>");
+			model.addAttribute("message", "Veuillez creer un client avant de passer en mode gestion.");
+			return "home";
+		}
 	}
 
 	// ============================
@@ -116,21 +130,35 @@ public class HomeController {
 
 	@RequestMapping(value = "/toAddEmploye", method = RequestMethod.GET)
     public String toAddEmploye(Model model) {
-        AddEmployeModel employeModel =new AddEmployeModel();
-        employeModel.setBanques(serviceBanque.getAll());
-        model.addAttribute("employeModel", employeModel);
-        System.out.println("------------------------ " + employeModel.getBanques());
-        LOGGER.info("<-----------toAddEmploye-------------->");
-        return "addEmploye";
+        try {
+            AddEmployeModel employeModel =new AddEmployeModel();
+			employeModel.setBanques(serviceBanque.getAll());
+	        model.addAttribute("employeModel", employeModel);
+	        System.out.println("------------------------ " + employeModel.getBanques());
+	        LOGGER.info("<-----------toAddEmploye-------------->");
+	        return "addEmploye";
+		} catch (NullListException e) {
+			e.printStackTrace();
+			LOGGER.warn("<------------------ No Banque in DataBase ------------------>");
+			model.addAttribute("message", "Veuillez creer une banque avant de creer un employé.");
+			return "home";
+		}
     }
 
 	@RequestMapping(value = "/toGestionEmploye", method = RequestMethod.GET)
 	public String toGestionEmploye(Model model) {
-		GestionEmployeModel gestionEmployeModel = new GestionEmployeModel();
-		gestionEmployeModel.setEmployes(serviceEmploye.getAll());
-		model.addAttribute("gestionEmployeModel", gestionEmployeModel);
-		LOGGER.info("<-----------toGestionEmploye-------------->");
-		return "gestionEmploye";
+		try {
+			GestionEmployeModel gestionEmployeModel = new GestionEmployeModel();
+			gestionEmployeModel.setEmployes(serviceEmploye.getAll());
+			model.addAttribute("gestionEmployeModel", gestionEmployeModel);
+			LOGGER.info("<-----------toGestionEmploye-------------->");
+			return "gestionEmploye";
+		} catch (NullListException e) {
+			e.printStackTrace();
+			LOGGER.warn("<------------------ No Employe in DataBase ------------------>");
+			model.addAttribute("message", "Veuillez creer un employé avant de passer en mode gestion.");
+			return "home";
+		}
 	}
 
 	// ============================
@@ -145,12 +173,19 @@ public class HomeController {
 
 	@RequestMapping(value = "/toGestionGroupe", method = RequestMethod.GET)
 	public String toGestionGroupe(Model model) {
-		GestionGroupeModel gestionGroupeModel = new GestionGroupeModel();
-		gestionGroupeModel.setGroupes(serviceGroupe.getAll());
-		gestionGroupeModel.setEmployes(serviceEmploye.getAll());
-		model.addAttribute("gestionGroupeModel", gestionGroupeModel);
-		LOGGER.info("<-----------toGestionGroupe-------------->");
-		return "gestionGroupe";
+		try {
+			GestionGroupeModel gestionGroupeModel = new GestionGroupeModel();
+			gestionGroupeModel.setGroupes(serviceGroupe.getAll());
+			gestionGroupeModel.setEmployes(serviceEmploye.getAll());
+			model.addAttribute("gestionGroupeModel", gestionGroupeModel);
+			LOGGER.info("<-----------toGestionGroupe-------------->");
+			return "gestionGroupe";
+		} catch (NullListException e) {
+			e.printStackTrace();
+			LOGGER.warn("<------------------ No Employe or No Groupe in DataBase ------------------>");
+			model.addAttribute("message", "Veuillez vérifier que la DataBase possède des Employés et des Groupes avant de passer en mode gestion.");
+			return "home";
+		}
 	}
 	
 	

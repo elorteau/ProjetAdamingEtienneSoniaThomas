@@ -9,6 +9,7 @@ package com.adaming.myapp.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hamcrest.core.IsEqual;
@@ -20,6 +21,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.adaming.myapp.entities.Employe;
 import com.adaming.myapp.entities.Groupe;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.serviceemployee.IServiceEmploye;
 import com.adaming.myapp.servicegroupe.IServiceGroupe;
 
@@ -49,7 +51,12 @@ public class ServiceGroupeTest {
 	@Test
 	@Ignore
 	public void testGetOne() {
-		List<Groupe> groupes = serviceGroupe.getAll();
+		List<Groupe> groupes = new ArrayList<Groupe>();
+		try {
+			groupes = serviceGroupe.getAll();
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 		Groupe groupe = serviceGroupe.getOne(groupes.get(0).getIdGroupe());
 		assertNotNull(groupe);
 	}
@@ -57,26 +64,40 @@ public class ServiceGroupeTest {
 	@Test
 	@Ignore
 	public void testGetAll() {
-		List<Groupe> groupes = serviceGroupe.getAll();
+		List<Groupe> groupes = new ArrayList<Groupe>();
+		try {
+			groupes = serviceGroupe.getAll();
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 		assertNotNull(groupes.size());
 	}
 
 	@Test
 	@Ignore
 	public void testUpdate() {
-		Groupe groupe = serviceGroupe.getAll().get(0);
-		String newName = "newName";
-		groupe.setNom(newName);
-		serviceGroupe.update(groupe);
-		assertThat(newName, IsEqual.equalTo(serviceGroupe.getOne(groupe.getIdGroupe()).getNom()));
+		Groupe groupe;
+		try {
+			groupe = serviceGroupe.getAll().get(0);
+			String newName = "newName";
+			groupe.setNom(newName);
+			serviceGroupe.update(groupe);
+			assertThat(newName, IsEqual.equalTo(serviceGroupe.getOne(groupe.getIdGroupe()).getNom()));
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	@Ignore
 	public void testDelete() {
-		List<Groupe> groupes = serviceGroupe.getAll();
-		serviceGroupe.delete(groupes.get(0).getIdGroupe());
-		assertTrue((groupes.size() - 1) == serviceGroupe.getAll().size());
+		try {
+			List<Groupe> groupes = serviceGroupe.getAll();
+			serviceGroupe.delete(groupes.get(0).getIdGroupe());
+			assertTrue((groupes.size() - 1) == serviceGroupe.getAll().size());			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Test
@@ -94,7 +115,12 @@ public class ServiceGroupeTest {
 	@Test
 	@Ignore
 	public void testGetEmployeByGroupe() {
-		List<Employe> employes = serviceGroupe.getEmployeByGroupe(serviceGroupe.getAll().get(0).getIdGroupe());
+		List<Employe> employes = new ArrayList<Employe>();
+		try {
+			employes = serviceGroupe.getEmployeByGroupe(serviceGroupe.getAll().get(0).getIdGroupe());
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 		assertNotNull(employes.size());
 	}
 

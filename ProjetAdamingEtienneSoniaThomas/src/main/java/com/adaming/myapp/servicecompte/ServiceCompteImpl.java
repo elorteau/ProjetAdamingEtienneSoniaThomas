@@ -12,6 +12,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.myapp.entities.Compte;
+import com.adaming.myapp.exception.NullListException;
 
 @Transactional
 public class ServiceCompteImpl extends AbstractServiceCompteJPA implements IServiceCompte {
@@ -27,7 +28,7 @@ public class ServiceCompteImpl extends AbstractServiceCompteJPA implements IServ
 	}
 
 	@Override
-	public List<Compte> getAll() {
+	public List<Compte> getAll() throws NullListException {
 		return getAllAbstract();
 	}
 

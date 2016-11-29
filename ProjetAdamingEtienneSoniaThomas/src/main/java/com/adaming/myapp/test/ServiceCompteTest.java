@@ -2,6 +2,7 @@ package com.adaming.myapp.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
 import com.adaming.myapp.entities.CompteCourant;
 import com.adaming.myapp.entities.Employe;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.servicebanque.IServiceBanque;
 import com.adaming.myapp.serviceclient.IServiceClient;
 import com.adaming.myapp.servicecompte.IServiceCompte;
@@ -59,7 +61,12 @@ public class ServiceCompteTest {
 	@Test
 	@Ignore
 	public void testGetAll() {
-		List<Compte> comptes = serviceCompte.getAll();
+		List<Compte> comptes = new ArrayList<Compte>();
+		try {
+			comptes = serviceCompte.getAll();
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 		assertTrue(comptes != null);
 		
 	}
@@ -77,10 +84,14 @@ public class ServiceCompteTest {
 	@Test
 	@Ignore
 	public void testDelete() {
-		List<Compte> comptes = serviceCompte.getAll();
-		int size1 = comptes.size();
-		serviceCompte.delete(7L);
-		assertTrue(size1-serviceCompte.getAll().size()==1);
+		try {
+			List<Compte> comptes = serviceCompte.getAll();
+			int size1 = comptes.size();
+			serviceCompte.delete(7L);
+			assertTrue(size1-serviceCompte.getAll().size()==1);
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test

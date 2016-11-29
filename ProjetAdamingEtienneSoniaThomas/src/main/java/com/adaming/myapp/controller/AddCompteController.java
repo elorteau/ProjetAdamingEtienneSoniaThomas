@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.adaming.myapp.entities.Compte;
 import com.adaming.myapp.entities.CompteCourant;
 import com.adaming.myapp.entities.CompteEpargne;
+import com.adaming.myapp.exception.AlreadyLinkedException;
 import com.adaming.myapp.model.AddCompteModel;
 import com.adaming.myapp.serviceclient.IServiceClient;
 import com.adaming.myapp.servicecompte.IServiceCompte;
@@ -43,7 +44,11 @@ public class AddCompteController {
 	@RequestMapping(value= "toAddCompte/addCompte/{idClient}", method = RequestMethod.GET)
 	public String addCompte(AddCompteModel compteModel, @PathVariable Long idClient){
 		String action = compteModel.getAction();
-		serviceClient.addClientToBanque(idClient, compteModel.getIdBanque());
+		try {
+			serviceClient.addClientToBanque(idClient, compteModel.getIdBanque());
+		} catch (AlreadyLinkedException e) {
+			e.printStackTrace();
+		}
 		if(action.equals("courant")){
 			
 			Compte compteCourant = new CompteCourant(compteModel.getNumeroCompte(), compteModel.getSolde(), compteModel.getDateCreation(), compteModel.getDecouvert());

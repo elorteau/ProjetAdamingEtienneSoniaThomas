@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
+import com.adaming.myapp.exception.AlreadyLinkedException;
+import com.adaming.myapp.exception.NullListException;
 
 @Transactional
 public class ServiceClientImpl extends AbstractServiceClientJPA implements IServiceClient {
@@ -29,7 +31,7 @@ public class ServiceClientImpl extends AbstractServiceClientJPA implements IServ
 	}
 
 	@Override
-	public List<Client> getAll() {
+	public List<Client> getAll() throws NullListException {
 		return getAllAbstract();
 	}
 
@@ -58,7 +60,7 @@ public class ServiceClientImpl extends AbstractServiceClientJPA implements IServ
 		return getCompteByClientAbstract(idClient);
 	}
 	
-	public Client addClientToBanque(Long idClient, Long idBanque) {
+	public Client addClientToBanque(Long idClient, Long idBanque) throws AlreadyLinkedException {
 		return addClientToBanqueAbstract(idClient, idBanque);
 	}
 
