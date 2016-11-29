@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 
@@ -118,25 +119,34 @@
                                             <input type="submit" class="btn btn-info" value="Afficher les comptes associés">                                           
                                         </div>
                                     </form> 
-                                    <table class="table table-striped">
                                     
-	                                    <tr>
-	                                    	<th>Numéro de Compte</th>
-	                                    	<th>Solde</th>
-	                                    	<th>Date de création</th>
-	                                    	
-	                                    </tr>
+                                    
+                                    <c:if test="${fn:length(gestionEmployeModel.comptes) > 0}">
+	                                    <table class="table table-striped">
 	                                    
-	                                    <c:forEach items="${gestionEmployeModel.comptes}" var="compte">
 		                                    <tr>
-		                                    	<td>${compte.numeroCompte}</td>
-		                                    	<td>${compte.solde}</td>
-		                                    	<td>${compte.dateCreation}</td>
+		                                    	<th>Numéro de Compte</th>
+		                                    	<th>Solde</th>
+		                                    	<th>Date de création</th>
 		                                    	
 		                                    </tr>
-	                                    </c:forEach>
-                                    
-                                    </table>    
+		                                    
+		                                    <c:forEach items="${gestionEmployeModel.comptes}" var="compte">
+			                                    <tr>
+			                                    	<td>${compte.numeroCompte}</td>
+			                                    	<td>${compte.solde}</td>
+			                                    	<td>${compte.dateCreation}</td>
+			                                    	
+			                                    </tr>
+		                                    </c:forEach>
+	                                    
+	                                    </table> 
+                                    </c:if> 
+                                    <c:if test="${fn:length(gestionEmployeModel.comptes) <= 0}">
+                                            <div class="alert alert-danger">
+                                              <p style="color: red;text-align: center">Cet employé ne gère aucun compte.</p>
+                                            </div>
+                                    </c:if>  
                     </div>
                     <!-- /.panel -->
                 </div>
