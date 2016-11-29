@@ -57,18 +57,26 @@ public class ComptesClientController {
 			return "gestionCompte";
 		} catch (NullListException e) {
 			e.printStackTrace();
+			return "toCompte";
 		}
 	}
 	
 	@RequestMapping(value = "/toAddCompte/{idClient}", method = RequestMethod.GET)
 	public String toAddCompte(Model model, @PathVariable Long idClient) {
-		AddCompteModel addCompteModel = new AddCompteModel();
-		addCompteModel.setClient(serviceClient.getOne(idClient));
-		addCompteModel.setBanques(serviceBanque.getAll());
-		addCompteModel.setEmployes(serviceEmploye.getAll());
-		model.addAttribute("addCompteModel", addCompteModel);
-		LOGGER.info("<-------------------- to addCompte ------------------------->");
-		return "addCompte";
+		try {
+			AddCompteModel addCompteModel = new AddCompteModel();
+			addCompteModel.setClient(serviceClient.getOne(idClient));
+			addCompteModel.setBanques(serviceBanque.getAll());
+			addCompteModel.setEmployes(serviceEmploye.getAll());
+			model.addAttribute("addCompteModel", addCompteModel);
+			LOGGER.info("<-------------------- to addCompte ------------------------->");
+			return "addCompte";
+		} catch (NullListException e) {
+			e.printStackTrace();
+			model.addAttribute("message", "Veuillez vérifier la présence de banques et d'employé dans la base de données.");
+			LOGGER.warning("<------------------ No Banque or No Employe in DataBase ----------------------->");
+			return "home";
+		}
 	}
 
 }
