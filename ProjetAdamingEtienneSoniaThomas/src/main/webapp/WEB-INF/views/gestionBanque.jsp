@@ -129,7 +129,12 @@
                                     	<input type="submit" class="btn btn-info" value="Afficher">
                                     </div>
                                      
-                                    </form>   
+                                    </form><br/>
+                                     <c:if test="${not empty message}">
+                                    	<div class="alert alert-danger">
+                                    		<p>${message}</p>
+                                    	</div>
+                                    </c:if>   
                     </div>
                     <!-- /.panel -->
                 </div>

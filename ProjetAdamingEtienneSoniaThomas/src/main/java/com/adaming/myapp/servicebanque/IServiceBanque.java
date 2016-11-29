@@ -13,6 +13,7 @@ import com.adaming.myapp.entities.Banque;
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
 import com.adaming.myapp.entities.Employe;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.service.IServiceGenerique;
 
 public interface IServiceBanque extends IServiceGenerique<Banque> {
@@ -22,8 +23,8 @@ public interface IServiceBanque extends IServiceGenerique<Banque> {
 	 * 
 	 */
 	
-	List <Employe> getEmployeByBanque(Long idBanque);
-	List <Client> getClientByBanque (Long idBanque);
-	List <Compte> getCompteByBanque (Long idBanque);
+	List <Employe> getEmployeByBanque(Long idBanque) throws NullListException;
+	List <Client> getClientByBanque (Long idBanque)throws NullListException;
+	List <Compte> getCompteByBanque (Long idBanque)throws NullListException;
 
 }

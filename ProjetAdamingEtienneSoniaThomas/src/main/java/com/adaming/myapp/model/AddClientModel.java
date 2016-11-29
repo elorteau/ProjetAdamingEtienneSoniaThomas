@@ -9,6 +9,10 @@ package com.adaming.myapp.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class AddClientModel {
 	
 	//=========================
@@ -16,6 +20,8 @@ public class AddClientModel {
 	//=========================
 
 	private Long idClient;
+	@NotEmpty
+	@Size(min=4)
 	private Long code;
 	private String nom;
 	private String prenom;

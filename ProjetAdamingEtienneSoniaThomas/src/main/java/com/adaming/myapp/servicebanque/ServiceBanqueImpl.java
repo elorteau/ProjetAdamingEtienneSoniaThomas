@@ -51,19 +51,19 @@ public class ServiceBanqueImpl extends AbstractServiceBanqueJPA implements IServ
 	//========================================
 	
 	@Override
-	public List<Employe> getEmployeByBanque(Long idBanque) {
+	public List<Employe> getEmployeByBanque(Long idBanque) throws NullListException {
 		
 		return getEmployeByBanqueAbstract(idBanque);
 	}
 
 	@Override
-	public List<Client> getClientByBanque(Long idBanque) {
+	public List<Client> getClientByBanque(Long idBanque)throws NullListException {
 		
 		return getClientByBanqueAbstract(idBanque);
 	}
 
 	@Override
-	public List<Compte> getCompteByBanque(Long idBanque) {
+	public List<Compte> getCompteByBanque(Long idBanque) throws NullListException{
 		
 		return getCompteByBanqueAbstract(idBanque);
 	}

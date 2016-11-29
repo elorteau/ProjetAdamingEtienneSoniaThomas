@@ -14,6 +14,7 @@ import com.adaming.myapp.entities.Banque;
 import com.adaming.myapp.entities.Client;
 import com.adaming.myapp.entities.Compte;
 import com.adaming.myapp.entities.Employe;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.service.AbstractServiceGeneriqueJPA;
 
 public class AbstractServiceBanqueJPA extends AbstractServiceGeneriqueJPA<Banque> {
@@ -34,17 +35,29 @@ public class AbstractServiceBanqueJPA extends AbstractServiceGeneriqueJPA<Banque
 	//======================================================
 
 	
-	public List <Employe> getEmployeByBanqueAbstract(Long idBanque){
-		return daobanque.getEmployeByBanque(idBanque);
+	public List <Employe> getEmployeByBanqueAbstract(Long idBanque) throws NullListException{
+		List<Employe> employes = daobanque.getEmployeByBanque(idBanque);
+		if(employes.size() <=0){
+			throw new NullListException("No Employe in the Bank " +dao.getOne(idBanque));
+		}
+		return employes;
 		
 	}
 	
-	public List<Client> getClientByBanqueAbstract(Long idBanque) {
-		return daobanque.getClientByBanque(idBanque);
+	public List<Client> getClientByBanqueAbstract(Long idBanque) throws NullListException {
+		List<Client> clients = daobanque.getClientByBanque(idBanque);
+		if(clients.size() <=0){
+			throw new NullListException("No Clients in the Bank " +dao.getOne(idBanque));
+		}
+		return clients ;
 	}
 	
-	public List<Compte> getCompteByBanqueAbstract(Long idBanque) {
-		return daobanque.getCompteByBanque(idBanque);
+	public List<Compte> getCompteByBanqueAbstract(Long idBanque) throws NullListException {
+		List<Compte> comptes = daobanque.getCompteByBanque(idBanque);
+		if(comptes.size() <=0){
+			throw new NullListException("No Comptes in the Bank " +dao.getOne(idBanque));
+		}
+		return comptes;
 	}
 
 }
