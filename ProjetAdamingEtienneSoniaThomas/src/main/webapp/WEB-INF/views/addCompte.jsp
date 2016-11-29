@@ -43,44 +43,46 @@
 		<!-- /.navbar-top-links -->
 
 		<div class="navbar-default sidebar">
-			<div class="sidebar-nav navbar-collapse" ;>
+			<div class="sidebar-nav navbar-collapse";>
 				<ul class="nav" id="side-menu">
-				
-				<li style ="color : #b4e4b4;"><a href="toHome"><i class="fa fa-home fa-fw"></i>
-							Home <span class="fa arrow"></span></a></li>
-					
-				
-					<li><a href="#"><i class="fa fa-bank fa-fw"></i>
-							Banque <span class="fa arrow"></span></a>
+
+					<li style="color: #b4e4b4;"><a href="toHome"><i
+							class="fa fa-home fa-fw"></i> Accueil <span class="fa arrow"></span></a></li>
+
+
+					<li><a href="#"><i class="fa fa-bank fa-fw"></i> Banque <span
+							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="toAddBanque">Ajouter une banque</a></li>
 							<li><a href="toGestionBanque">Gestion banque </a></li>
 							</a></li>
-						</ul> <!-- /.nav-second-level --></li>
-					<li><a href="tables.html"><i class="fa fa-user fa-fw"></i>Client<span
-							class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-							<li><a href="toAddClient">Ajouter un client</a></li>
-							<li><a href="toGestionClient">Gestion clients</a></li>
-							
-						</ul> <!-- /.nav-second-level --></li>
+				</ul>
+				<!-- /.nav-second-level -->
+				</li>
+				<li><a href="tables.html"><i class="fa fa-user fa-fw"></i>Client<span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="toAddClient">Ajouter un client</a></li>
+						<li><a href="toGestionClient">Gestion clients</a></li>
 
-					
+					</ul> <!-- /.nav-second-level --></li>
 
-					<li><a href="#"><i class="fa fa-users fa-fw"></i> Employe
-							<span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-							<li><a href="toAddEmploye">Ajouter un employe</a></li>
-							<li><a href="toGestionEmploye">Gestion d'employes</a></li>
 
-						</ul> <!-- /.nav-second-level --></li>
-					<li><a href="#"><i class="fa fa-code-fork fa-fw"></i> Groupe
-							<span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-							<li><a href="toAddGroupe">Ajouter un groupe</a></li>
-							<li><a href="toGestionGroupe">Gestion groupe</a></li>
-						</ul> <!-- /.nav-second-level --></li>
-					
+
+				<li><a href="#"><i class="fa fa-users fa-fw"></i> Employé <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="toAddEmploye">Ajouter un employe</a></li>
+						<li><a href="toGestionEmploye">Gestion d'employes</a></li>
+
+					</ul> <!-- /.nav-second-level --></li>
+				<li><a href="#"><i class="fa fa-code-fork fa-fw"></i>
+						Groupe <span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="toAddGroupe">Ajouter un groupe</a></li>
+						<li><a href="toGestionGroupe">Gestion groupe</a></li>
+					</ul> <!-- /.nav-second-level --></li>
+
 				</ul>
 			</div>
 			<!-- /.sidebar-collapse -->
@@ -91,7 +93,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Formulaire</h1>
+                    <h1 class="page-header">Ajout d'un compte</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -117,7 +119,7 @@
                                    		 </div>
                                    		 
                                     	 <div class="form-group">
-                                        	<label>Employe :</label>
+                                        	<label>Employé :</label>
                                         	<select class="form-control" name="idEmploye">
                                         		<c:forEach items="${addCompteModel.employes}" var="employe">
                                           			<option value="${employe.idEmploye}">${employe.nom}</option>
@@ -126,25 +128,25 @@
                                    		 </div>
 
                                     	 <div class="form-group">
-                                        	<label>Type compte :</label>
+                                        	<label>Type du compte :</label>
                                         	<select class="form-control" name="action">
                                           		<option value="courant">Compte courant</option>
-                                          		<option value="epargne">Compte epargne</option>
+                                          		<option value="epargne">Compte épargne</option>
                                         	</select>
                                    		 </div>
                                     	
                                         <div class="form-group">
-                                            <label>Numero du compte</label>
-                                            <input class="form-control" placeholder="Enter le numero du compte bancaire" name="numeroCompte">
-                                            <p class="help-block">Example : 1254L</p>
+                                            <label>Numéro du compte</label>
+                                            <input class="form-control" placeholder="Entrer le numero du compte bancaire" name="numeroCompte">
+                                            <p class="help-block">Exemple : 1254</p>
                                         </div>
                                         <div class="form-group">
                                             <label>Solde</label>
-                                            <input class="form-control" placeholder="Enter le solde initial du compte" name ="solde">
+                                            <input class="form-control" placeholder="Entrer le solde initial du compte" name ="solde">
                                         </div>
                                         <div class="form-group">
-                                            <label>Date de creation</label>
-                                            <input class="form-control" placeholder="Enter la date de creation du compte" name="dateCreation">
+                                            <label>Date de création</label>
+                                            <input class="form-control" placeholder="Entrer la date de création du compte" name="dateCreation">
                                         </div>
                                         
                            

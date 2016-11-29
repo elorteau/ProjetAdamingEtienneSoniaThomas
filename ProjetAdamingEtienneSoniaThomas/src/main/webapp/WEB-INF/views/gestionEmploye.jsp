@@ -43,44 +43,46 @@
 		<!-- /.navbar-top-links -->
 
 		<div class="navbar-default sidebar">
-			<div class="sidebar-nav navbar-collapse" ;>
+			<div class="sidebar-nav navbar-collapse";>
 				<ul class="nav" id="side-menu">
-				
-				<li style ="color : #b4e4b4;"><a href="toHome"><i class="fa fa-home fa-fw"></i>
-							Home <span class="fa arrow"></span></a></li>
-					
-				
-					<li><a href="#"><i class="fa fa-bank fa-fw"></i>
-							Banque <span class="fa arrow"></span></a>
+
+					<li style="color: #b4e4b4;"><a href="toHome"><i
+							class="fa fa-home fa-fw"></i> Accueil <span class="fa arrow"></span></a></li>
+
+
+					<li><a href="#"><i class="fa fa-bank fa-fw"></i> Banque <span
+							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="toAddBanque">Ajouter une banque</a></li>
 							<li><a href="toGestionBanque">Gestion banque </a></li>
 							</a></li>
-						</ul> <!-- /.nav-second-level --></li>
-					<li><a href="tables.html"><i class="fa fa-user fa-fw"></i>Client<span
-							class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-							<li><a href="toAddClient">Ajouter un client</a></li>
-							<li><a href="toGestionClient">Gestion clients</a></li>
-							
-						</ul> <!-- /.nav-second-level --></li>
+				</ul>
+				<!-- /.nav-second-level -->
+				</li>
+				<li><a href="tables.html"><i class="fa fa-user fa-fw"></i>Client<span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="toAddClient">Ajouter un client</a></li>
+						<li><a href="toGestionClient">Gestion clients</a></li>
 
-					
+					</ul> <!-- /.nav-second-level --></li>
 
-					<li><a href="#"><i class="fa fa-users fa-fw"></i> Employe
-							<span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-							<li><a href="toAddEmploye">Ajouter un employe</a></li>
-							<li><a href="toGestionEmploye">Gestion d'employes</a></li>
 
-						</ul> <!-- /.nav-second-level --></li>
-					<li><a href="#"><i class="fa fa-code-fork fa-fw"></i> Groupe
-							<span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-							<li><a href="toAddGroupe">Ajouter un groupe</a></li>
-							<li><a href="toGestionGroupe">Gestion groupe</a></li>
-						</ul> <!-- /.nav-second-level --></li>
-					
+
+				<li><a href="#"><i class="fa fa-users fa-fw"></i> Employé <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="toAddEmploye">Ajouter un employe</a></li>
+						<li><a href="toGestionEmploye">Gestion d'employes</a></li>
+
+					</ul> <!-- /.nav-second-level --></li>
+				<li><a href="#"><i class="fa fa-code-fork fa-fw"></i>
+						Groupe <span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="toAddGroupe">Ajouter un groupe</a></li>
+						<li><a href="toGestionGroupe">Gestion groupe</a></li>
+					</ul> <!-- /.nav-second-level --></li>
+
 				</ul>
 			</div>
 			<!-- /.sidebar-collapse -->
@@ -92,7 +94,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"></h1>
+                    <h1 class="page-header">Gestion des employés</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -101,14 +103,14 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Gestion employés
+                            Sélection de l'employé
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-6">
                                     <form role="form" action="getComptesByEmploye" method="get">
                                     <div class="form-group">
-                                            <label>Selection de l'employé :</label>
+                                            <label>Employé :</label>
                                             <select class="form-control" name="selectedEmploye">
                                             	<c:forEach items="${gestionEmployeModel.employes}" var="employe">
                                             		<option value="${employe.idEmploye}">${employe.nom}</option>
