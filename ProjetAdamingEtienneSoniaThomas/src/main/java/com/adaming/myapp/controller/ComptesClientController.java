@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.model.AddCompteModel;
 import com.adaming.myapp.model.GestionCompteModel;
 import com.adaming.myapp.servicebanque.IServiceBanque;
@@ -47,12 +48,16 @@ public class ComptesClientController {
 	
 	@RequestMapping(value = "/toCompte/{idCompte}", method = RequestMethod.GET)
 	public String toCompte(Model model, @PathVariable Long idCompte) {
-		GestionCompteModel gestionCompteModel = new GestionCompteModel();
-		gestionCompteModel.setCompte(serviceCompte.getOne(idCompte));
-		gestionCompteModel.setClients(serviceClient.getAll());
-		model.addAttribute("gestionCompteModel", gestionCompteModel);
-		LOGGER.info("<-------------------- toCompte --------------------->");
-		return "gestionCompte";
+		try {
+			GestionCompteModel gestionCompteModel = new GestionCompteModel();
+			gestionCompteModel.setCompte(serviceCompte.getOne(idCompte));
+			gestionCompteModel.setClients(serviceClient.getAll());
+			model.addAttribute("gestionCompteModel", gestionCompteModel);
+			LOGGER.info("<-------------------- toCompte --------------------->");
+			return "gestionCompte";
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@RequestMapping(value = "/toAddCompte/{idClient}", method = RequestMethod.GET)

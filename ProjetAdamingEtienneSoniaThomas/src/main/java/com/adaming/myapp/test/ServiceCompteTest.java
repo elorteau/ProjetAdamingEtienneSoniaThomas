@@ -97,13 +97,17 @@ public class ServiceCompteTest {
 	@Test
 	@Ignore
 	public void testGetCompteByEmploye() {
-		Employe employe = new Employe(456L, "nomda");
-		IServiceEmploye serviceEmploye = (IServiceEmploye)context.getBean("ServiceEmployeImpl");
-		serviceEmploye.add(employe);
-		Compte compte = new CompteCourant(0L, 156.0, new Date(), 0.0);
-		serviceCompte.add(compte);
-		serviceCompte.addCompteToEmploye(compte.getIdCompte(), employe.getIdEmploye());
-		assertNotNull(serviceCompte.getCompteByEmploye(employe.getIdEmploye()).size());
+		try {
+			Employe employe = new Employe(456L, "nomda");
+			IServiceEmploye serviceEmploye = (IServiceEmploye)context.getBean("ServiceEmployeImpl");
+			serviceEmploye.add(employe);
+			Compte compte = new CompteCourant(0L, 156.0, new Date(), 0.0);
+			serviceCompte.add(compte);
+			serviceCompte.addCompteToEmploye(compte.getIdCompte(), employe.getIdEmploye());
+			assertNotNull(serviceCompte.getCompteByEmploye(employe.getIdEmploye()).size());
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test

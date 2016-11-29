@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.adaming.myapp.daocompte.IDaoCompte;
 import com.adaming.myapp.entities.Compte;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.service.AbstractServiceGeneriqueJPA;
 
 public class AbstractServiceCompteJPA extends AbstractServiceGeneriqueJPA<Compte> {
@@ -29,8 +30,12 @@ public class AbstractServiceCompteJPA extends AbstractServiceGeneriqueJPA<Compte
 	// rédéfinition des méthodes spéciques de IDaoCompte
 	//======================================================
 	
-	protected List<Compte> getCompteByEmployeAbstract(Long idEmploye){
-		return daoCompte.getCompteByEmploye(idEmploye);
+	protected List<Compte> getCompteByEmployeAbstract(Long idEmploye) throws NullListException{
+		List<Compte> comptes = daoCompte.getCompteByEmploye(idEmploye);
+		if (comptes.size() <= 0) {
+			throw new NullListException("No Compte for this employe");
+		}
+		return comptes;
 	}
 	
 	public Compte addCompteToBanqueAbstract(Long idCompte, Long idBanque) {

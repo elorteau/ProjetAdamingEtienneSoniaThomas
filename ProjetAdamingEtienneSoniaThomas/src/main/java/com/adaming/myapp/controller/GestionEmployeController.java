@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.adaming.myapp.entities.Compte;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.model.GestionEmployeModel;
 import com.adaming.myapp.servicecompte.IServiceCompte;
 import com.adaming.myapp.serviceemployee.IServiceEmploye;
@@ -60,10 +61,23 @@ public class GestionEmployeController {
 	 */
 	@RequestMapping(value ="/getComptesByEmploye", method=RequestMethod.GET)
 	public String getComptesByEmploye(Model model, GestionEmployeModel gestionEmployeModel){
-		gestionEmployeModel.setComptes(serviceCompte.getCompteByEmploye(gestionEmployeModel.getSelectedEmploye()));
-		model.addAttribute("gestionEmployeModel", gestionEmployeModel);
-		gestionEmployeModel.setEmployes(serviceGestionEmploye.getAll());
-		return "gestionEmploye";
+		try {
+			gestionEmployeModel.setComptes(serviceCompte.getCompteByEmploye(gestionEmployeModel.getSelectedEmploye()));
+			gestionEmployeModel.setEmployes(serviceGestionEmploye.getAll());
+			model.addAttribute("gestionEmployeModel", gestionEmployeModel);
+			return "gestionEmploye";
+		} catch (NullListException e) {
+			e.printStackTrace();
+			try {
+				gestionEmployeModel.setEmployes(serviceGestionEmploye.getAll());
+			} catch (NullListException e1) {
+				e1.printStackTrace();
+			}
+			model.addAttribute("gestionEmployeModel", gestionEmployeModel);
+			model.addAttribute("message", "L'employé " + serviceGestionEmploye.getOne(gestionEmployeModel.getSelectedEmploye()).getNom() + " ne gère aucun compte.");
+			LOGGER.warning("<-------------------- No comptes for this Employe -------------------->");
+			return "gestionEmploye";
+		}
 	}
 
 }

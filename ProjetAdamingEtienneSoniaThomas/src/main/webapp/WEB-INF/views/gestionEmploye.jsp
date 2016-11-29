@@ -142,9 +142,9 @@
 	                                    
 	                                    </table> 
                                     </c:if> 
-                                    <c:if test="${fn:length(gestionEmployeModel.comptes) <= 0}">
+                                    <c:if test="${not empty message}">
                                             <div class="alert alert-danger">
-                                              <p style="color: red;text-align: center">Cet employé ne gère aucun compte.</p>
+                                              <p>${message}</p>
                                             </div>
                                     </c:if>  
                     </div>

@@ -10,6 +10,7 @@ package com.adaming.myapp.servicecompte;
 import java.util.List;
 
 import com.adaming.myapp.entities.Compte;
+import com.adaming.myapp.exception.NullListException;
 import com.adaming.myapp.service.IServiceGenerique;
 
 public interface IServiceCompte extends IServiceGenerique<Compte> {
@@ -23,7 +24,7 @@ public interface IServiceCompte extends IServiceGenerique<Compte> {
 	 * @param (idEmploye)
 	 * @return comptesByEmploye
 	 */
-	List<Compte> getCompteByEmploye(Long idEmploye);
+	List<Compte> getCompteByEmploye(Long idEmploye) throws NullListException;
 	
 	Compte addCompteToBanque(Long idCompte, Long idBanque);
 

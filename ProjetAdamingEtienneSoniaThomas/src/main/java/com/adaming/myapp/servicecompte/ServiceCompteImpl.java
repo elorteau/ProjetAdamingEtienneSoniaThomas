@@ -47,7 +47,7 @@ public class ServiceCompteImpl extends AbstractServiceCompteJPA implements IServ
 	// =====================
 
 	@Override
-	public List<Compte> getCompteByEmploye(Long idEmploye) {
+	public List<Compte> getCompteByEmploye(Long idEmploye) throws NullListException {
 		return getCompteByEmployeAbstract(idEmploye);
 	}
 	
