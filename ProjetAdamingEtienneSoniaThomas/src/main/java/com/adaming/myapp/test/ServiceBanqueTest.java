@@ -139,8 +139,12 @@ public class ServiceBanqueTest {
     	IServiceCompte serviceCompte = (IServiceCompte)context.getBean("ServiceCompteImpl");
     	serviceCompte.add(new CompteCourant());
     	
-        List<Compte> comptes = serviceBanque.getCompteByBanque(4L);
-        assertNotNull(comptes);
+		try {
+	        List<Compte> comptes = serviceBanque.getCompteByBanque(4L);
+	        assertNotNull(comptes);
+		} catch (NullListException e) {
+			e.printStackTrace();
+		}
     }
 
 }

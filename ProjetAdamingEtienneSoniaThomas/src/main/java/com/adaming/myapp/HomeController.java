@@ -83,6 +83,13 @@ public class HomeController {
 		return "addBanque";
 	}
 
+//	@RequestMapping(value = "/toAddBanque", method = RequestMethod.GET)
+//	public String toAddBanque(Model model) {
+//		
+//		LOGGER.info("<-----------toAddBnaque-------------->");
+//		return "sessionTest";
+//	}
+
 	@RequestMapping(value = "/toGestionBanque", method = RequestMethod.GET)
 	public String toGestionBanque(Model model) {
 		try {
