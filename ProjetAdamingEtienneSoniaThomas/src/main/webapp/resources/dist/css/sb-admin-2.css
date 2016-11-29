@@ -3,11 +3,24 @@
  * Copyright 2013-2016 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
+
+.panel-heading{
+	color : #b4e4b4;
+}
+
 body {
   background-color: #f8f8f8;
+  background-image :url(../../img/bankroute.png);
+  
+      background-repeat: no-repeat;
+    background-position: right top;
+    opacity : 0.50;
+    background-size : 30%;
 }
 #wrapper {
   width: 100%;
+   background-color : #d1e0e0;
+  
 }
 #page-wrapper {
   padding: 0 15px;
@@ -27,6 +40,7 @@ body {
 }
 .navbar-top-links li {
   display: inline-block;
+  
 }
 .navbar-top-links li:last-child {
   margin-right: 15px;
@@ -70,6 +84,8 @@ body {
 .sidebar .sidebar-nav.navbar-collapse {
   padding-left: 0;
   padding-right: 0;
+  
+  
 }
 .sidebar .sidebar-search {
   padding: 15px;
@@ -105,6 +121,7 @@ body {
     position: absolute;
     width: 250px;
     margin-top: 51px;
+    
   }
   .navbar-top-links .dropdown-messages,
   .navbar-top-links .dropdown-tasks,
@@ -239,6 +256,9 @@ table.dataTable thead .sorting:after {
 }
 .panel-green {
   border-color: #5cb85c;
+}
+.panel-heading{
+	background-color: 
 }
 .panel-green > .panel-heading {
   border-color: #5cb85c;

@@ -40,7 +40,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css"
+	href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
 	rel="stylesheet">
 
 
@@ -48,27 +48,28 @@
 
 <body>
 
+
 	<div id="wrapper">
 
 
 		<!-- /.navbar-top-links -->
 
 		<div class="navbar-default sidebar">
-			<div class="sidebar-nav navbar-collapse">
+			<div class="sidebar-nav navbar-collapse" ;>
 				<ul class="nav" id="side-menu">
 				
-				<li><a href="toHome"><i class="fa fa-bar-chart-o fa-fw"></i>
+				<li style ="color : #b4e4b4;"><a href="toHome"><i class="fa fa-home fa-fw"></i>
 							Home <span class="fa arrow"></span></a></li>
 					
 				
-					<li><a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>
+					<li><a href="#"><i class="fa fa-bank fa-fw"></i>
 							Banque <span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="toAddBanque">Ajouter une banque</a></li>
 							<li><a href="toGestionBanque">Gestion banque </a></li>
 							</a></li>
 						</ul> <!-- /.nav-second-level --></li>
-					<li><a href="tables.html"><i class="fa fa-table fa-fw"></i>Client<span
+					<li><a href="tables.html"><i class="fa fa-user fa-fw"></i>Client<span
 							class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="toAddClient">Ajouter un client</a></li>
@@ -78,14 +79,14 @@
 
 					
 
-					<li><a href="#"><i class="fa fa-wrench fa-fw"></i> Employe
+					<li><a href="#"><i class="fa fa-users fa-fw"></i> Employe
 							<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="toAddEmploye">Ajouter un employe</a></li>
 							<li><a href="toGestionEmploye">Gestion d'employes</a></li>
 
 						</ul> <!-- /.nav-second-level --></li>
-					<li><a href="#"><i class="fa fa-sitemap fa-fw"></i> Groupe
+					<li><a href="#"><i class="fa fa-code-fork fa-fw"></i> Groupe
 							<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
 							<li><a href="toAddGroupe">Ajouter un groupe</a></li>
@@ -105,6 +106,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<h1 class="page-header">Home</h1>
+						
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
