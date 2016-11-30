@@ -12,8 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
-
+    <title>Bankroute - Gestion de banque</title>
     <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -144,6 +143,15 @@
                                             <label>Solde</label>
                                             <input class="form-control" placeholder="Entrer le solde initial du compte" name ="solde">
                                         </div>
+                                         <div class="form-group">
+                                            <label>Taux d'intérêt</label>
+                                            <input class="form-control" placeholder="Entrer le taux d'intérêt du compte" name="tauxInteret">
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Découvert autorisé</label>
+                                            <input class="form-control" placeholder="Entrer le découvert autorisé du compte" name="decouvert">
+                                        </div>
+                                        
                                         <div class="form-group">
                                             <label>Date de création</label>
                                             <input class="form-control" placeholder="Entrer la date de création du compte" name="dateCreation">

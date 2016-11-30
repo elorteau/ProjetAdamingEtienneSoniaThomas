@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Sélectionner un Compte pour ce client</title>
+    <title>Bankroute - Gestion de banque</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

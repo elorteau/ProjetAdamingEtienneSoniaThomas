@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Compte</title>
+<title>Bankroute - Gestion de banque</title>
 
 <!-- Bootstrap Core CSS -->
 <link
